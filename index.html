@@ -1059,7 +1059,8 @@
   .dossie b{color:var(--rust)}
   .item-card.duplo{border-left:8px solid var(--mustard-2)}
   .item-badge{background:var(--mustard)!important;color:var(--ink)!important;border:2px solid var(--ink)!important;transform:rotate(-4deg);box-shadow:2px 2px 0 var(--rust);padding:1px 8px!important}
-  .item-card.premium::after{content:"CONFIDENCIAL";position:absolute;left:18px;bottom:16px;font:15px 'Bangers',cursive;letter-spacing:2px;color:rgba(193,68,14,.55);border:2px solid rgba(193,68,14,.55);padding:1px 8px;transform:rotate(-6deg);pointer-events:none}
+  .carimbo{position:absolute;left:18px;bottom:16px;font:15px 'Bangers',cursive;letter-spacing:2px;color:rgba(193,68,14,.6);border:2px solid rgba(193,68,14,.6);padding:1px 8px;transform:rotate(-6deg);pointer-events:none}
+  .dossie{color:#6f6250!important}
   .tab .tab-sub{font-size:11px!important}
   .launch-panel.opened{padding:10px 16px}
   .launch-panel.opened .launch-title,.launch-panel.opened .launch-count{display:none}
@@ -1788,6 +1789,7 @@
       card.innerHTML = `
         ${item.premium ? `<div class="premium-tag">★ PREMIUM</div>` : ""}
         <div class="dossie">ARQUIVO #${String(nth).padStart(2,"0")} · BLEND ${"●".repeat(g+1)}${["roswell","area51"].includes(item.id) ? ` · <b>⭐ MAIS PEDIDO</b>` : ""}</div>
+        ${item.premium ? `<div class="carimbo">CONFIDENCIAL</div>` : ""}
         <div class="item-top">
           <div class="item-name">${item.name}${item.badge ? `<span class="item-badge">${item.badge}</span>` : ""}${out ? `<span class="sold-out-tag">ESGOTADO</span>` : ""}</div>
           ${priceHtml}
