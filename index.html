@@ -1065,6 +1065,14 @@
   .launch-panel.opened{padding:10px 16px}
   .launch-panel.opened .launch-title,.launch-panel.opened .launch-count{display:none}
   .launch-panel.opened .launch-kicker{font-size:12px;letter-spacing:2px}
+
+  /* alien da logo piscando */
+  .eyes{position:absolute;inset:0;pointer-events:none;z-index:2;animation:logo-land .95s cubic-bezier(.22,.9,.3,1) .25s both,logo-float 3.8s ease-in-out 1.4s infinite}
+  .eyelid{position:absolute;background:#d6c63a;border-radius:50%;transform:scaleY(0);transform-origin:50% 0;animation:et-blink 5.5s infinite 2.4s}
+  .eyelid.l{left:40.6%;top:58.7%;width:14%;height:13.9%}
+  .eyelid.r{left:54.2%;top:61%;width:15.4%;height:12.7%;animation-delay:2.44s}
+  @keyframes et-blink{0%,93%,100%{transform:scaleY(0)}96%{transform:scaleY(1)}}
+  @media(prefers-reduced-motion:reduce){.eyes{display:none}}
 </style>
 <script src="https://unpkg.com/@supabase/supabase-js@2.45.0"></script>
 </head>
@@ -1081,7 +1089,7 @@
   <div class="sunburst"></div>
   <div class="hero-inner">
     <div class="badge-top" id="statusBadge"><span class="dot"></span> DELIVERY DIRETO &bull; SEM APP</div>
-    <h1 class="headline"><span class="logo-wrap"><span class="ufo-beam" aria-hidden="true"></span><img src="./logo.png" alt="ET BURGER 2077" class="hero-logo"></span></h1>
+    <h1 class="headline"><span class="logo-wrap"><span class="ufo-beam" aria-hidden="true"></span><img src="./logo.png" alt="ET BURGER 2077" class="hero-logo"><span class="eyes" aria-hidden="true"><i class="eyelid l"></i><i class="eyelid r"></i></span></span></h1>
     <p class="tagline" id="tagline">Sabor de outro mundo, direto na sua porta. Blend com 120g de carne, suculento do primeiro ao último pedaço.</p>
     <div class="hero-ctas">
       <a href="#cardapio" class="btn btn-primary">🛸 Ver o Cardápio</a>
@@ -1356,7 +1364,7 @@
       { id: "roswell", name: "ROSWELL", price: 20.00, desc: "Pão de brioche, blend 120g, mussarela, presunto, alface, tomate, maionese e cebola caramelizada" },
       { id: "area51", name: "ÁREA 51", price: 22.00, desc: "Pão de brioche, blend 120g, mussarela, ovo, presunto, alface, tomate, maionese e cebola caramelizada" },
       { id: "hangar18", name: "HANGAR 18", price: 24.00, desc: "Pão de brioche, blend 120g, calabresa fatiada, mussarela, ovo, presunto, alface, tomate, maionese e cebola caramelizada" },
-      { id: "voyager", name: "COSMOS", price: 30.00, desc: "Pão de brioche, blend 120g, mussarela, ovo, bacon crocante, presunto, alface, tomate, maionese e cebola caramelizada" },
+      { id: "voyager", name: "VOYAGER", price: 30.00, desc: "Pão de brioche, blend 120g, mussarela, ovo, bacon crocante, presunto, alface, tomate, maionese e cebola caramelizada" },
       { id: "supernova", name: "SUPERNOVA", price: 30.00, desc: "Pão de brioche, blend 120g, mussarela, ovo, presunto, bacon, calabresa, alface, tomate, maionese e cebola caramelizada" },
       { id: "darkside", name: "DARKSIDE", price: 30.00, desc: "Pão de brioche, 2x blend 120g, mussarela em dobro, presunto, alface, tomate, maionese e cebola caramelizada", badge: "2X BLEND" },
       { id: "parallax", name: "PARALLAX", price: 36.00, desc: "Pão de brioche, 2x blend 120g, mussarela em dobro, ovo, presunto, alface, tomate, maionese e cebola caramelizada", badge: "2X BLEND" },
@@ -2393,7 +2401,7 @@
     };
     const burgerNames = {
       roswell: "Roswell", area51: "Área 51", hangar18: "Hangar 18",
-      voyager: "Cosmos", supernova: "Supernova", darkside: "Darkside", parallax: "Parallax", sputnik: "Sputnik", mothership: "Mothership"
+      voyager: "Voyager", supernova: "Supernova", darkside: "Darkside", parallax: "Parallax", sputnik: "Sputnik", mothership: "Mothership"
     };
     function orderItemLabel(item){
       const itemId = item.id || (Array.isArray(item.parts) && item.parts.length === 1 ? item.parts[0] : "");
