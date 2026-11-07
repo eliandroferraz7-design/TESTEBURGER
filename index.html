@@ -1098,34 +1098,34 @@
   /* ============ EASTER EGG: MODO SYNTHWAVE — 3 toques na logo ============
      Só troca as cores do site (sem animações extras). A logo continua em neon. */
   body.area51-mode{
-    --space:#0d0221; --paper:#1c0a3c; --cream:#f6ecff; --cream-2:#cdb6ff;
-    --ink:#0d0221; --rust:#ff2e97; --rust-2:#ff7ab9; --teal:#2b1068; --teal-2:#1c0b47;
-    --mustard:#00e5ff; --mustard-2:#ffd319;
-    --sw-line:#7b3df0; --sw-muted:#b9a2ee; --sw-field:#12052b;
+    --space:#030a07; --paper:#0b1f17; --cream:#eafff0; --cream-2:#a9e8c0;
+    --ink:#030a07; --rust:#ff2e97; --rust-2:#ff7ab9; --teal:#0c3a2a; --teal-2:#082418;
+    --mustard:#39ff14; --mustard-2:#ffd319;
+    --sw-line:#1fbf55; --sw-muted:#8fcfa6; --sw-field:#06140e;
     color:var(--cream);
-    background:linear-gradient(180deg,#10042a 0%,#1a0838 55%,#2a0a4a 100%);
+    background:linear-gradient(180deg,#050d0a 0%,#08170f 55%,#0b2a1c 100%);
   }
   /* topo */
   body.area51-mode .hero{
     background:
-      radial-gradient(ellipse at 50% 110%, rgba(255,46,151,.55), transparent 62%),
-      radial-gradient(ellipse at 18% 8%, rgba(123,61,240,.5), transparent 55%),
-      linear-gradient(180deg,#0d0221,#240a52);
-    border-bottom-color:var(--rust);
+      radial-gradient(ellipse at 50% 110%, rgba(57,255,20,.38), transparent 62%),
+      radial-gradient(ellipse at 18% 8%, rgba(0,229,255,.22), transparent 55%),
+      linear-gradient(180deg,#030a07,#0a2a18);
+    border-bottom-color:var(--mustard);
   }
-  body.area51-mode .sunburst{ opacity:.12; }
-  body.area51-mode .ticker{ background:linear-gradient(90deg,#ff2e97,#7b3df0); }
-  body.area51-mode .ticker-track{ color:#fff; }
+  body.area51-mode .sunburst{ opacity:.12; background:repeating-conic-gradient(from 0deg,#39ff14 0deg 8deg,transparent 8deg 20deg); }
+  body.area51-mode .ticker{ background:linear-gradient(90deg,#39ff14,#00e5ff); }
+  body.area51-mode .ticker-track{ color:#03140a; }
   /* logo em neon (estático) */
   body.area51-mode .hero-logo,
   body.area51-mode .nav-logo-img,
   body.area51-mode footer .flogo img{
-    filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 8px #ff2e97) drop-shadow(0 0 22px #ff2e97) drop-shadow(0 0 38px #00e5ff);
+    filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 8px #39ff14) drop-shadow(0 0 22px #39ff14) drop-shadow(0 0 38px #00e5ff);
   }
   /* títulos e textos sobre fundo escuro */
   body.area51-mode .section-title,
   body.area51-mode .menu-sec-t{ color:var(--cream); }
-  body.area51-mode .menu-sec-s{ color:var(--cream-2); border-bottom-color:rgba(185,162,238,.35); }
+  body.area51-mode .menu-sec-s{ color:var(--cream-2); border-bottom-color:rgba(143,207,166,.35); }
   body.area51-mode .dossie{ color:var(--sw-muted)!important; }
   body.area51-mode .carimbo{ color:rgba(255,46,151,.7); border-color:rgba(255,46,151,.7); }
   body.area51-mode .item-desc,
@@ -1137,18 +1137,19 @@
   body.area51-mode footer .fine{ color:var(--sw-muted); }
   /* abas e cartões */
   body.area51-mode .tab{ background:var(--paper); color:var(--cream); border-color:var(--sw-line); }
-  body.area51-mode .tab.active{ background:var(--rust); border-color:var(--rust); color:#fff; box-shadow:3px 3px 0 var(--mustard); }
+  body.area51-mode .tab.active{ background:var(--mustard); border-color:var(--mustard); color:#031007; box-shadow:3px 3px 0 var(--rust); }
   body.area51-mode .item-card{ background:var(--paper); border-color:var(--sw-line); box-shadow:0 6px 20px rgba(0,0,0,.35); }
+  body.area51-mode .item-price{ color:var(--mustard); }
   body.area51-mode .item-card.premium,
-  body.area51-mode .combo-card.featured{ border-color:var(--rust); background:linear-gradient(180deg,#2a1055,var(--paper)); }
+  body.area51-mode .combo-card.featured{ border-color:var(--rust); background:linear-gradient(180deg,#103324,var(--paper)); }
   body.area51-mode .combo-card{ border-color:var(--sw-line); }
   body.area51-mode .combo-includes,
   body.area51-mode .combo-promo-banner{ color:var(--mustard); }
   body.area51-mode .combo-field label,
   body.area51-mode .field label{ color:var(--cream); }
   body.area51-mode .combo-note{ background:rgba(255,211,25,.1); border-color:#ffd319; color:#ffe680; }
-  body.area51-mode .add-btn{ background:#6a2cf0; border-color:#a77bff; color:#fff; }
-  body.area51-mode .add-btn.added{ background:var(--rust); border-color:var(--rust); }
+  body.area51-mode .add-btn{ background:#39ff14; border-color:#b9ff4b; color:#031007; }
+  body.area51-mode .add-btn.added{ background:var(--rust); border-color:var(--rust); color:#fff; }
   body.area51-mode .drinks-panel{ border-color:var(--sw-line); }
   /* campos e carrinho */
   body.area51-mode .combo-select, body.area51-mode .combo-fries-select, body.area51-mode .combo-drink-select,
@@ -1158,7 +1159,7 @@
   body.area51-mode .field input::placeholder, body.area51-mode .field textarea::placeholder{ color:var(--sw-muted); }
   body.area51-mode .field select:focus, body.area51-mode .field input:focus, body.area51-mode .field textarea:focus{ outline-color:var(--rust); }
   body.area51-mode .drawer{ border-left-color:var(--sw-line); }
-  body.area51-mode .drawer-item{ border-bottom-color:rgba(246,236,255,.16); }
+  body.area51-mode .drawer-item{ border-bottom-color:rgba(234,255,240,.16); }
   body.area51-mode .drawer-total-row.grand{ color:#fff; border-top-color:var(--sw-line); }
   body.area51-mode .qty-btn{ background:var(--sw-field); color:var(--cream); border-color:var(--sw-line); }
   body.area51-mode .hours-note{ background:rgba(255,46,151,.12); }
@@ -1167,71 +1168,71 @@
   body.area51-mode .drawer-gift.on{ background:rgba(57,255,182,.1); border-color:#39ffb6; color:#b9ffe6; }
   body.area51-mode .drawer-gift.hint{ background:rgba(255,211,25,.1); border-color:#ffd319; color:#ffe680; }
   body.area51-mode .dg-free{ color:#39ffb6; }
-  body.area51-mode .gift-pill{ background:linear-gradient(135deg,#ff2e97,#7b3df0); }
+  body.area51-mode .gift-pill{ background:linear-gradient(135deg,#ff2e97,#ff7ae0); }
   /* promoções em destaque */
-  body.area51-mode .spotlight-card[data-tone="0"]{ --b1:#2b1068; --b2:#12052b; --ac:#00e5ff; }
-  body.area51-mode .spotlight-card[data-tone="1"]{ --b1:#4a1a8c; --b2:#1d0b3d; --ac:#ff2e97; }
-  body.area51-mode .spotlight-card[data-tone="2"]{ --b1:#8a1f6b; --b2:#3b0a3a; --ac:#ffd319; }
-  body.area51-mode .spotlight-card[data-tone="3"]{ --b1:#1b2a8c; --b2:#0b0f45; --ac:#ff7ae0; }
-  body.area51-mode .spotlight-card[data-tone="4"]{ --b1:#5b1a9e; --b2:#230a4d; --ac:#39ffb6; }
-  body.area51-mode .spotlight-card[data-tone="5"]{ --b1:#a8135e; --b2:#3d0724; --ac:#ffd319; }
-  body.area51-mode .promo-pill:nth-child(6n+1){ --pc:#ff2e97; }
-  body.area51-mode .promo-pill:nth-child(6n+2){ --pc:#00e5ff; }
-  body.area51-mode .promo-pill:nth-child(6n+3){ --pc:#ffd319; }
-  body.area51-mode .promo-pill:nth-child(6n+4){ --pc:#b57bff; }
+  body.area51-mode .spotlight-card[data-tone="0"]{ --b1:#0c3a2a; --b2:#06190f; --ac:#39ff14; }
+  body.area51-mode .spotlight-card[data-tone="1"]{ --b1:#2a1a5e; --b2:#120a30; --ac:#ff2e97; }
+  body.area51-mode .spotlight-card[data-tone="2"]{ --b1:#0d3b3b; --b2:#06201f; --ac:#00e5ff; }
+  body.area51-mode .spotlight-card[data-tone="3"]{ --b1:#4a1040; --b2:#240820; --ac:#ff7ae0; }
+  body.area51-mode .spotlight-card[data-tone="4"]{ --b1:#0f4a22; --b2:#062b12; --ac:#b9ff4b; }
+  body.area51-mode .spotlight-card[data-tone="5"]{ --b1:#3a3a08; --b2:#1f1f04; --ac:#ffd319; }
+  body.area51-mode .promo-pill:nth-child(6n+1){ --pc:#39ff14; }
+  body.area51-mode .promo-pill:nth-child(6n+2){ --pc:#ff2e97; }
+  body.area51-mode .promo-pill:nth-child(6n+3){ --pc:#00e5ff; }
+  body.area51-mode .promo-pill:nth-child(6n+4){ --pc:#ffd319; }
   body.area51-mode .promo-pill:nth-child(6n+5){ --pc:#ff7ae0; }
-  body.area51-mode .promo-pill:nth-child(6n+6){ --pc:#39ffb6; }
+  body.area51-mode .promo-pill:nth-child(6n+6){ --pc:#b9ff4b; }
   /* sugestão do carrinho */
-  body.area51-mode .upsell{ border-color:var(--sw-line); background:rgba(123,61,240,.12); }
+  body.area51-mode .upsell{ border-color:var(--sw-line); background:rgba(57,255,20,.07); }
   body.area51-mode .upsell-head, body.area51-mode .upsell-dt b{ color:var(--mustard); }
-  body.area51-mode .upsell-row, body.area51-mode .upsell-drinks{ border-top-color:rgba(246,236,255,.14); }
+  body.area51-mode .upsell-row, body.area51-mode .upsell-drinks{ border-top-color:rgba(234,255,240,.14); }
   body.area51-mode .upsell-name{ color:var(--cream); }
   body.area51-mode .upsell-why, body.area51-mode .upsell-dt small, body.area51-mode .upsell-close{ color:var(--sw-muted); }
   body.area51-mode .upsell-chip{ background:var(--sw-field); color:var(--cream); border-color:var(--sw-line); box-shadow:2px 2px 0 var(--sw-line); }
-  body.area51-mode .upsell-chip.rec{ background:#2b1068; border-color:var(--rust); box-shadow:2px 2px 0 var(--rust); }
+  body.area51-mode .upsell-chip.rec{ background:#0c3a2a; border-color:var(--mustard); box-shadow:2px 2px 0 var(--mustard); }
   body.area51-mode .upsell-chip .uc-price{ color:var(--mustard); }
-  body.area51-mode .upsell-chip .uc-rec{ background:var(--rust); color:#fff; }
+  body.area51-mode .upsell-chip .uc-rec{ background:var(--mustard); color:#031007; }
 
   /* aviso rápido ao ligar/desligar (estático, sem animação) */
   .neon-sign{
     position:fixed; left:50%; bottom:calc(96px + env(safe-area-inset-bottom,0px)); z-index:9999; width:max-content; max-width:min(92vw,360px); text-align:center;
-    padding:12px 22px 14px; border-radius:16px; background:rgba(13,2,33,.94); border:2px solid #ff2e97;
-    box-shadow:0 0 14px rgba(255,46,151,.55), 0 0 30px rgba(0,229,255,.25);
+    padding:12px 22px 14px; border-radius:16px; background:rgba(3,10,7,.94); border:2px solid #39ff14;
+    box-shadow:0 0 14px rgba(57,255,20,.55), 0 0 30px rgba(0,229,255,.25);
     opacity:0; pointer-events:none; transform:translate(-50%,10px); transition:opacity .25s, transform .25s;
   }
   .neon-sign.show{ opacity:1; pointer-events:auto; transform:translate(-50%,0); }
   .neon-sign-k{ display:block; font:700 10.5px 'Oswald',sans-serif; letter-spacing:3px; color:#00e5ff; }
-  .neon-sign b{ display:block; margin:2px 0; font:400 30px 'Alfa Slab One',cursive; letter-spacing:2px; color:#fff; text-shadow:0 0 10px #ff2e97; }
-  .neon-sign-s{ display:block; font:600 12px 'Oswald',sans-serif; letter-spacing:1.5px; text-transform:uppercase; color:#ff7ab9; }
-  .neon-code{ margin-top:10px; font:700 14px 'Oswald',sans-serif; letter-spacing:2px; color:#0d0221; background:#00e5ff; border:0; border-radius:10px; padding:9px 14px; cursor:pointer; }
+  .neon-sign b{ display:block; margin:2px 0; font:400 30px 'Alfa Slab One',cursive; letter-spacing:2px; color:#fff; text-shadow:0 0 10px #39ff14; }
+  .neon-sign-s{ display:block; font:600 12px 'Oswald',sans-serif; letter-spacing:1.5px; text-transform:uppercase; color:#b9ff4b; }
+  .neon-code{ margin-top:10px; font:700 14px 'Oswald',sans-serif; letter-spacing:2px; color:#031007; background:#39ff14; border:0; border-radius:10px; padding:9px 14px; cursor:pointer; }
   @media (prefers-reduced-motion: reduce){ .neon-sign{ transition:none; } }
 
   /* ============ EFEITOS DO MODO SYNTHWAVE (flash, scanner, OVNI, rastro, grade, piscar, pulsar) ============ */
-  body.area51-mode .nav{ border-bottom:2px solid var(--rust); box-shadow:0 0 18px rgba(255,46,151,.5); }
+  body.area51-mode .nav{ border-bottom:2px solid var(--mustard); box-shadow:0 0 18px rgba(57,255,20,.5); }
   body.area51-mode .hero-logo{ animation:logo-float 3.8s ease-in-out infinite, neon-flicker 4.6s linear infinite; }
   body.area51-mode .nav-logo-img{ animation:neon-flicker 4.6s linear infinite; }
   @keyframes neon-flicker{
-    0%,18%,22%,25%,53%,57%,100%{ opacity:1; filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 8px #ff2e97) drop-shadow(0 0 22px #ff2e97) drop-shadow(0 0 38px #00e5ff); }
-    20%,24%,55%{ opacity:.82; filter:drop-shadow(0 0 1px #fff) drop-shadow(0 0 4px #ff2e97); }
+    0%,18%,22%,25%,53%,57%,100%{ opacity:1; filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 8px #39ff14) drop-shadow(0 0 22px #39ff14) drop-shadow(0 0 38px #00e5ff); }
+    20%,24%,55%{ opacity:.82; filter:drop-shadow(0 0 1px #fff) drop-shadow(0 0 4px #39ff14); }
   }
   body.area51-mode .btn-primary,
-  body.area51-mode .nav-cta{ box-shadow:0 0 0 2px #0d0221, 0 0 16px var(--rust), 0 0 34px rgba(0,229,255,.55); animation:neon-pulse 1.8s ease-in-out infinite; }
-  @keyframes neon-pulse{ 50%{ box-shadow:0 0 0 2px #0d0221, 0 0 24px var(--mustard), 0 0 52px rgba(255,46,151,.6); } }
+  body.area51-mode .nav-cta{ box-shadow:0 0 0 2px #030a07, 0 0 16px var(--mustard), 0 0 34px rgba(0,229,255,.5); animation:neon-pulse 1.8s ease-in-out infinite; }
+  @keyframes neon-pulse{ 50%{ box-shadow:0 0 0 2px #030a07, 0 0 24px var(--mustard), 0 0 52px rgba(57,255,20,.6); } }
   .logo-wrap.tap{ animation:neon-tap .28s ease-out; }
   @keyframes neon-tap{ 50%{ transform:scale(1.05); filter:brightness(1.5); } }
 
   .neon-fx{ position:fixed; inset:0; z-index:9998; pointer-events:none; overflow:hidden; visibility:hidden; }
   .neon-fx.run{ visibility:visible; }
-  .neon-fx::before{ content:""; position:absolute; inset:0; background:#ff2e97; opacity:0; }
+  .neon-fx::before{ content:""; position:absolute; inset:0; background:#39ff14; opacity:0; }
   .neon-fx.run::before{ animation:neon-flash .55s ease-out; }
   @keyframes neon-flash{ 0%{ opacity:.55; } 100%{ opacity:0; } }
   .neon-scan{ position:absolute; left:0; right:0; top:-4%; height:6px; opacity:0;
-    background:linear-gradient(90deg, transparent, #fff, #00e5ff, #fff, transparent);
-    box-shadow:0 0 22px 6px rgba(0,229,255,.8), 0 0 60px 14px rgba(255,46,151,.5); }
+    background:linear-gradient(90deg, transparent, #fff, #39ff14, #fff, transparent);
+    box-shadow:0 0 22px 6px rgba(57,255,20,.8), 0 0 60px 14px rgba(0,229,255,.5); }
   .neon-fx.run .neon-scan{ animation:neon-scan 1s cubic-bezier(.5,0,.3,1) .1s forwards; }
   @keyframes neon-scan{ 0%{ top:-4%; opacity:1; } 100%{ top:104%; opacity:1; } }
   .neon-ufo{ position:absolute; top:22%; left:-20%; font-size:46px; opacity:0;
-    filter:drop-shadow(0 0 12px #ff2e97) drop-shadow(0 0 26px #00e5ff); }
+    filter:drop-shadow(0 0 12px #39ff14) drop-shadow(0 0 26px #00e5ff); }
   .neon-fx.run .neon-ufo{ animation:neon-ufo 1.7s ease-in-out .25s forwards; }
   @keyframes neon-ufo{ 0%{ left:-20%; top:22%; opacity:1; transform:rotate(-8deg); } 50%{ top:13%; transform:rotate(6deg); } 100%{ left:118%; top:24%; opacity:1; transform:rotate(-6deg); } }
   .neon-dot{ position:fixed; z-index:9997; pointer-events:none; font-size:14px; text-shadow:0 0 8px currentColor; animation:neon-dot .9s ease-out forwards; }
@@ -2905,7 +2906,7 @@
       d.className = "neon-dot";
       d.textContent = ["✦", "✧", "⋆"][Math.floor(Math.random() * 3)];
       d.style.left = pt.clientX + "px"; d.style.top = pt.clientY + "px";
-      d.style.color = ["#ff2e97", "#00e5ff", "#ffd319"][Math.floor(Math.random() * 3)];
+      d.style.color = ["#39ff14", "#00e5ff", "#ff2e97"][Math.floor(Math.random() * 3)];
       d.style.setProperty("--dx", (Math.random() * 40 - 20) + "px");
       d.style.setProperty("--dy", (10 + Math.random() * 30) + "px");
       document.body.appendChild(d); setTimeout(() => d.remove(), 900);
