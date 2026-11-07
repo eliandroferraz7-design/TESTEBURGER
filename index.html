@@ -497,6 +497,11 @@
     margin-top: 8px;
   }
   .combo-field{ margin-top: 10px; }
+  .combo-note{
+    margin: 8px 0 2px; padding: 8px 10px; border-radius: 8px;
+    font-family:'Oswald', sans-serif; font-size: 12.5px; line-height: 1.45; letter-spacing:.2px;
+    background:#fff3cf; border:1.5px dashed #c98a00; color:#5e4300;
+  }
   .combo-field label{
     display:block;
     font-family:'Oswald', sans-serif;
@@ -898,13 +903,37 @@
   .launch-panel.opened{border-color:#8de8a1;}
   .launch-panel.opened .launch-count{color:#8de8a1;text-shadow:2px 2px 0 var(--teal);}
   .ufo-fly.closed-flight{animation-duration:15s;filter:drop-shadow(0 0 10px rgba(232,169,58,.95));}
-  body.area51-mode{--mustard:#b9ff4b;--mustard-2:#91d52b;--teal:#073f43;}
-  body.area51-mode .hero{background:radial-gradient(ellipse at 50% 25%,rgba(58,255,131,.2),transparent 50%),var(--space);}
-  body.area51-mode .stars{opacity:1;animation:twinkle .65s ease-in-out infinite alternate;}
-  body.area51-mode .nav{border-bottom-color:#b9ff4b;}
-  body.area51-mode .hero-logo{filter:drop-shadow(0 0 13px rgba(185,255,75,.55));}
-  .area51-toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);z-index:9999;background:#091b20;color:#b9ff4b;border:2px solid #b9ff4b;border-radius:14px;padding:12px 17px;box-shadow:0 0 25px #4cff8b55;font:700 13px 'Oswald',sans-serif;letter-spacing:1px;text-align:center;opacity:0;pointer-events:none;transition:.3s ease;max-width:90vw;}
-  .area51-toast.show{opacity:1;transform:translate(-50%,0);}
+  /* ============ SUGESTÃO NA HORA DE FINALIZAR (batata / refri) ============ */
+  .upsell{ margin:14px 0 6px; padding:12px; border:2px dashed var(--teal); border-radius:14px; background:rgba(27,77,77,.07); animation: gift-pop .45s cubic-bezier(.2,1.4,.4,1) both; }
+  .upsell-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-family:'Oswald',sans-serif; font-weight:700; font-size:14px; letter-spacing:.5px; color:var(--teal); }
+  .upsell-close{ border:0; background:none; font-size:20px; line-height:1; color:#7a6f61; cursor:pointer; padding:0 4px; }
+  .upsell-row{ display:flex; align-items:center; gap:10px; padding:9px 0; border-top:1px solid rgba(26,20,16,.14); }
+  .upsell-head + .upsell-row{ border-top:0; }
+  .upsell-ic{ font-size:26px; line-height:1; }
+  .upsell-info{ flex:1; min-width:0; font-family:'Oswald',sans-serif; }
+  .upsell-name{ font-weight:700; font-size:14px; color:var(--ink); }
+  .upsell-why{ font-size:12px; color:#6b6155; }
+  .upsell-price{ font-family:'Oswald',sans-serif; font-weight:700; font-size:14px; color:var(--rust); white-space:nowrap; }
+  .upsell-add{ border:2px solid var(--ink); background:var(--mustard); color:var(--ink); border-radius:10px; padding:7px 12px; font:700 13px 'Oswald',sans-serif; cursor:pointer; box-shadow:2px 2px 0 var(--ink); white-space:nowrap; }
+  .upsell-add:active{ transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink); }
+  @media (prefers-reduced-motion: reduce){ .upsell{ animation:none; } }
+
+  /* ============ LEVE E GANHE (brindes criados no painel) ============ */
+  .gift-banner{ display:flex; flex-wrap:wrap; gap:8px; }
+  .gift-pill{
+    display:inline-flex; align-items:center; gap:8px; font-family:'Oswald',sans-serif; font-weight:700; font-size:14px; letter-spacing:.3px;
+    color:#fff; background:linear-gradient(135deg, var(--rust), #e0561a); border:2px solid var(--ink); border-radius:999px;
+    padding:7px 14px; box-shadow:3px 3px 0 var(--ink); animation: gift-bob 2.8s ease-in-out infinite;
+  }
+  @keyframes gift-bob{ 0%,100%{ transform:translateY(0) rotate(-.6deg); } 50%{ transform:translateY(-3px) rotate(.6deg); } }
+  .drawer-gift{ display:flex; gap:10px; align-items:flex-start; margin:10px 0; padding:10px 12px; border-radius:12px; font-family:'Oswald',sans-serif; font-size:14px; line-height:1.4; }
+  .drawer-gift.on{ background:#e8f6e6; border:2px solid #2f8f4a; color:#17421f; animation: gift-pop .5s cubic-bezier(.2,1.4,.4,1) both; }
+  .drawer-gift.hint{ background:#fff3cf; border:2px dashed #c98a00; color:#5e4300; }
+  .drawer-gift .dg-ic{ font-size:22px; line-height:1; }
+  .drawer-gift small{ display:block; opacity:.75; font-size:11.5px; margin-top:2px; }
+  .dg-free{ font-weight:700; letter-spacing:1px; color:#1b7a36; }
+  @keyframes gift-pop{ from{ opacity:0; transform:scale(.85); } to{ opacity:1; transform:scale(1); } }
+  @media (prefers-reduced-motion: reduce){ .gift-pill, .drawer-gift.on{ animation:none; } }
   .nav-logo,.hero-logo{cursor:pointer;}
   @keyframes panel-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
   @keyframes alert-glow{0%,100%{box-shadow:0 0 12px rgba(255,91,56,.18)}50%{box-shadow:0 0 30px rgba(255,91,56,.45)}}
@@ -1066,13 +1095,135 @@
   .launch-panel.opened .launch-title,.launch-panel.opened .launch-count{display:none}
   .launch-panel.opened .launch-kicker{font-size:12px;letter-spacing:2px}
 
-  /* alien da logo piscando */
-  .eyes{position:absolute;inset:0;pointer-events:none;z-index:2;animation:logo-land .95s cubic-bezier(.22,.9,.3,1) .25s both,logo-float 3.8s ease-in-out 1.4s infinite}
-  .eyelid{position:absolute;background:#d6c63a;border-radius:50%;transform:scaleY(0);transform-origin:50% 0;animation:et-blink 5.5s infinite 2.4s}
-  .eyelid.l{left:40.6%;top:58.7%;width:14%;height:13.9%}
-  .eyelid.r{left:54.2%;top:61%;width:15.4%;height:12.7%;animation-delay:2.44s}
-  @keyframes et-blink{0%,93%,100%{transform:scaleY(0)}96%{transform:scaleY(1)}}
-  @media(prefers-reduced-motion:reduce){.eyes{display:none}}
+  /* ============ EASTER EGG: MODO SYNTHWAVE — 3 toques na logo ============
+     Só troca as cores do site (sem animações extras). A logo continua em neon. */
+  body.area51-mode{
+    --space:#0d0221; --paper:#1c0a3c; --cream:#f6ecff; --cream-2:#cdb6ff;
+    --ink:#0d0221; --rust:#ff2e97; --rust-2:#ff7ab9; --teal:#2b1068; --teal-2:#1c0b47;
+    --mustard:#00e5ff; --mustard-2:#ffd319;
+    --sw-line:#7b3df0; --sw-muted:#b9a2ee; --sw-field:#12052b;
+    color:var(--cream);
+    background:linear-gradient(180deg,#10042a 0%,#1a0838 55%,#2a0a4a 100%);
+  }
+  /* topo */
+  body.area51-mode .hero{
+    background:
+      radial-gradient(ellipse at 50% 110%, rgba(255,46,151,.55), transparent 62%),
+      radial-gradient(ellipse at 18% 8%, rgba(123,61,240,.5), transparent 55%),
+      linear-gradient(180deg,#0d0221,#240a52);
+    border-bottom-color:var(--rust);
+  }
+  body.area51-mode .sunburst{ opacity:.12; }
+  body.area51-mode .ticker{ background:linear-gradient(90deg,#ff2e97,#7b3df0); }
+  body.area51-mode .ticker-track{ color:#fff; }
+  /* logo em neon (estático) */
+  body.area51-mode .hero-logo,
+  body.area51-mode .nav-logo-img,
+  body.area51-mode footer .flogo img{
+    filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 8px #ff2e97) drop-shadow(0 0 22px #ff2e97) drop-shadow(0 0 38px #00e5ff);
+  }
+  /* títulos e textos sobre fundo escuro */
+  body.area51-mode .section-title,
+  body.area51-mode .menu-sec-t{ color:var(--cream); }
+  body.area51-mode .menu-sec-s{ color:var(--cream-2); border-bottom-color:rgba(185,162,238,.35); }
+  body.area51-mode .dossie{ color:var(--sw-muted)!important; }
+  body.area51-mode .carimbo{ color:rgba(255,46,151,.7); border-color:rgba(255,46,151,.7); }
+  body.area51-mode .item-desc,
+  body.area51-mode .drawer-total-row{ color:var(--cream-2); }
+  body.area51-mode .drawer-item-meta,
+  body.area51-mode .drawer-empty,
+  body.area51-mode .empty-combos,
+  body.area51-mode .combo-price-old{ color:var(--sw-muted); }
+  body.area51-mode footer .fine{ color:var(--sw-muted); }
+  /* abas e cartões */
+  body.area51-mode .tab{ background:var(--paper); color:var(--cream); border-color:var(--sw-line); }
+  body.area51-mode .tab.active{ background:var(--rust); border-color:var(--rust); color:#fff; box-shadow:3px 3px 0 var(--mustard); }
+  body.area51-mode .item-card{ background:var(--paper); border-color:var(--sw-line); box-shadow:0 6px 20px rgba(0,0,0,.35); }
+  body.area51-mode .item-card.premium,
+  body.area51-mode .combo-card.featured{ border-color:var(--rust); background:linear-gradient(180deg,#2a1055,var(--paper)); }
+  body.area51-mode .combo-card{ border-color:var(--sw-line); }
+  body.area51-mode .combo-includes,
+  body.area51-mode .combo-promo-banner{ color:var(--mustard); }
+  body.area51-mode .combo-field label,
+  body.area51-mode .field label{ color:var(--cream); }
+  body.area51-mode .combo-note{ background:rgba(255,211,25,.1); border-color:#ffd319; color:#ffe680; }
+  body.area51-mode .add-btn{ background:#6a2cf0; border-color:#a77bff; color:#fff; }
+  body.area51-mode .add-btn.added{ background:var(--rust); border-color:var(--rust); }
+  body.area51-mode .drinks-panel{ border-color:var(--sw-line); }
+  /* campos e carrinho */
+  body.area51-mode .combo-select, body.area51-mode .combo-fries-select, body.area51-mode .combo-drink-select,
+  body.area51-mode .field select, body.area51-mode .field input, body.area51-mode .field textarea{
+    background:var(--sw-field); color:var(--cream); border-color:var(--sw-line);
+  }
+  body.area51-mode .field input::placeholder, body.area51-mode .field textarea::placeholder{ color:var(--sw-muted); }
+  body.area51-mode .field select:focus, body.area51-mode .field input:focus, body.area51-mode .field textarea:focus{ outline-color:var(--rust); }
+  body.area51-mode .drawer{ border-left-color:var(--sw-line); }
+  body.area51-mode .drawer-item{ border-bottom-color:rgba(246,236,255,.16); }
+  body.area51-mode .drawer-total-row.grand{ color:#fff; border-top-color:var(--sw-line); }
+  body.area51-mode .qty-btn{ background:var(--sw-field); color:var(--cream); border-color:var(--sw-line); }
+  body.area51-mode .hours-note{ background:rgba(255,46,151,.12); }
+  body.area51-mode .coupon-msg.ok, body.area51-mode .drawer-total-row.coupon-line{ color:#5ef0c4; }
+  body.area51-mode .coupon-field.applied .coupon-row input{ background:#0e3b33; border-color:#5ef0c4; }
+  body.area51-mode .drawer-gift.on{ background:rgba(57,255,182,.1); border-color:#39ffb6; color:#b9ffe6; }
+  body.area51-mode .drawer-gift.hint{ background:rgba(255,211,25,.1); border-color:#ffd319; color:#ffe680; }
+  body.area51-mode .dg-free{ color:#39ffb6; }
+  body.area51-mode .gift-pill{ background:linear-gradient(135deg,#ff2e97,#7b3df0); }
+  /* promoções em destaque */
+  body.area51-mode .spotlight-card[data-tone="0"]{ --b1:#2b1068; --b2:#12052b; --ac:#00e5ff; }
+  body.area51-mode .spotlight-card[data-tone="1"]{ --b1:#4a1a8c; --b2:#1d0b3d; --ac:#ff2e97; }
+  body.area51-mode .spotlight-card[data-tone="2"]{ --b1:#8a1f6b; --b2:#3b0a3a; --ac:#ffd319; }
+  body.area51-mode .spotlight-card[data-tone="3"]{ --b1:#1b2a8c; --b2:#0b0f45; --ac:#ff7ae0; }
+  body.area51-mode .spotlight-card[data-tone="4"]{ --b1:#5b1a9e; --b2:#230a4d; --ac:#39ffb6; }
+  body.area51-mode .spotlight-card[data-tone="5"]{ --b1:#a8135e; --b2:#3d0724; --ac:#ffd319; }
+  body.area51-mode .promo-pill:nth-child(6n+1){ --pc:#ff2e97; }
+  body.area51-mode .promo-pill:nth-child(6n+2){ --pc:#00e5ff; }
+  body.area51-mode .promo-pill:nth-child(6n+3){ --pc:#ffd319; }
+  body.area51-mode .promo-pill:nth-child(6n+4){ --pc:#b57bff; }
+  body.area51-mode .promo-pill:nth-child(6n+5){ --pc:#ff7ae0; }
+  body.area51-mode .promo-pill:nth-child(6n+6){ --pc:#39ffb6; }
+  /* sugestão do carrinho */
+  body.area51-mode .upsell{ border-color:var(--sw-line); background:rgba(123,61,240,.12); }
+  body.area51-mode .upsell-head, body.area51-mode .upsell-dt b{ color:var(--mustard); }
+  body.area51-mode .upsell-row, body.area51-mode .upsell-drinks{ border-top-color:rgba(246,236,255,.14); }
+  body.area51-mode .upsell-name{ color:var(--cream); }
+  body.area51-mode .upsell-why, body.area51-mode .upsell-dt small, body.area51-mode .upsell-close{ color:var(--sw-muted); }
+  body.area51-mode .upsell-chip{ background:var(--sw-field); color:var(--cream); border-color:var(--sw-line); box-shadow:2px 2px 0 var(--sw-line); }
+  body.area51-mode .upsell-chip.rec{ background:#2b1068; border-color:var(--rust); box-shadow:2px 2px 0 var(--rust); }
+  body.area51-mode .upsell-chip .uc-price{ color:var(--mustard); }
+  body.area51-mode .upsell-chip .uc-rec{ background:var(--rust); color:#fff; }
+
+  /* aviso rápido ao ligar/desligar (estático, sem animação) */
+  .neon-sign{
+    position:fixed; left:50%; bottom:calc(96px + env(safe-area-inset-bottom,0px)); z-index:9999; width:max-content; max-width:min(92vw,360px); text-align:center;
+    padding:12px 22px 14px; border-radius:16px; background:rgba(13,2,33,.94); border:2px solid #ff2e97;
+    box-shadow:0 0 14px rgba(255,46,151,.55), 0 0 30px rgba(0,229,255,.25);
+    opacity:0; pointer-events:none; transform:translate(-50%,10px); transition:opacity .25s, transform .25s;
+  }
+  .neon-sign.show{ opacity:1; pointer-events:auto; transform:translate(-50%,0); }
+  .neon-sign-k{ display:block; font:700 10.5px 'Oswald',sans-serif; letter-spacing:3px; color:#00e5ff; }
+  .neon-sign b{ display:block; margin:2px 0; font:400 30px 'Alfa Slab One',cursive; letter-spacing:2px; color:#fff; text-shadow:0 0 10px #ff2e97; }
+  .neon-sign-s{ display:block; font:600 12px 'Oswald',sans-serif; letter-spacing:1.5px; text-transform:uppercase; color:#ff7ab9; }
+  .neon-code{ margin-top:10px; font:700 14px 'Oswald',sans-serif; letter-spacing:2px; color:#0d0221; background:#00e5ff; border:0; border-radius:10px; padding:9px 14px; cursor:pointer; }
+  @media (prefers-reduced-motion: reduce){ .neon-sign{ transition:none; } }
+
+  /* ============ SUGESTÃO: REFRIS DISPONÍVEIS (mini lata / lata / 1 L / 2 L) ============ */
+  .upsell-drinks{ padding:10px 0 2px; border-top:1px solid rgba(26,20,16,.14); }
+  .upsell-head + .upsell-drinks{ border-top:0; padding-top:4px; }
+  .upsell-dt{ display:flex; justify-content:space-between; align-items:baseline; gap:8px; font-family:'Oswald',sans-serif; }
+  .upsell-dt b{ font-size:14px; color:var(--teal); }
+  .upsell-dt small{ font-size:12px; color:#6b6155; }
+  .upsell-chips{ display:grid; grid-template-columns:repeat(auto-fit,minmax(70px,1fr)); gap:8px; margin-top:14px; }
+  .upsell-chip{
+    position:relative; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:3px;
+    padding:9px 4px 8px; border:2px solid var(--ink); border-radius:12px; background:var(--cream); color:var(--ink);
+    font-family:'Oswald',sans-serif; cursor:pointer; box-shadow:2px 2px 0 var(--ink);
+  }
+  .upsell-chip:active{ transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink); }
+  .upsell-chip.rec{ background:var(--mustard); }
+  .upsell-chip svg{ width:30px; height:46px; display:block; }
+  .upsell-chip .uc-name{ font-weight:700; font-size:12.5px; line-height:1.1; text-align:center; }
+  .upsell-chip .uc-price{ font-weight:700; font-size:13px; color:var(--rust); }
+  .upsell-chip .uc-rec{ position:absolute; top:-9px; left:50%; transform:translateX(-50%); font:700 9px 'Oswald',sans-serif; letter-spacing:.6px; background:var(--ink); color:var(--cream); border-radius:8px; padding:1px 7px; white-space:nowrap; }
 </style>
 <script src="https://unpkg.com/@supabase/supabase-js@2.45.0"></script>
 </head>
@@ -1089,7 +1240,7 @@
   <div class="sunburst"></div>
   <div class="hero-inner">
     <div class="badge-top" id="statusBadge"><span class="dot"></span> DELIVERY DIRETO &bull; SEM APP</div>
-    <h1 class="headline"><span class="logo-wrap"><span class="ufo-beam" aria-hidden="true"></span><img src="./logo.png" alt="ET BURGER 2077" class="hero-logo"><span class="eyes" aria-hidden="true"><i class="eyelid l"></i><i class="eyelid r"></i></span></span></h1>
+    <h1 class="headline"><span class="logo-wrap"><span class="ufo-beam" aria-hidden="true"></span><img src="./logo.png" alt="ET BURGER 2077" class="hero-logo"></span></h1>
     <p class="tagline" id="tagline">Sabor de outro mundo, direto na sua porta. Blend com 120g de carne, suculento do primeiro ao último pedaço.</p>
     <div class="hero-ctas">
       <a href="#cardapio" class="btn btn-primary">🛸 Ver o Cardápio</a>
@@ -1155,6 +1306,7 @@
   </div>
 
   <div class="combo-promo-banner" id="comboPromoBanner" style="display:none;"></div>
+  <div class="combo-promo-banner gift-banner" id="giftBanner" style="display:none;"></div>
 
   <div class="menu-grid" id="menu-grid"></div>
 </section>
@@ -1257,7 +1409,12 @@
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite">Item adicionado ao pedido</div>
-<div class="area51-toast" id="area51Toast" role="status" aria-live="polite">🛸 ACESSO CONFIDENCIAL LIBERADO — MODO ÁREA 51</div>
+<div class="neon-sign" id="neonSign" role="status" aria-live="polite">
+  <span class="neon-sign-k">// SINAL INTERCEPTADO</span>
+  <b id="neonSignT">ÁREA 51</b>
+  <span class="neon-sign-s" id="neonSignS">acesso confidencial liberado</span>
+  <button type="button" class="neon-code" id="neonCode" style="display:none"></button>
+</div>
 
 <script>
   // ======= CONFIG =======
@@ -1369,7 +1526,8 @@
       { id: "darkside", name: "DARKSIDE", price: 30.00, desc: "Pão de brioche, 2x blend 120g, mussarela em dobro, presunto, alface, tomate, maionese e cebola caramelizada", badge: "2X BLEND" },
       { id: "parallax", name: "PARALLAX", price: 36.00, desc: "Pão de brioche, 2x blend 120g, mussarela em dobro, ovo, presunto, alface, tomate, maionese e cebola caramelizada", badge: "2X BLEND" },
       { id: "mothership", name: "MOTHERSHIP", price: 38.00, desc: "Pão de brioche, 2x blend 120g, calabresa fatiada, mussarela em dobro, ovo, presunto, alface, tomate, maionese e cebola caramelizada", badge: "2X BLEND" },
-      { id: "sputnik", name: "SPUTNIK", price: 42.00, desc: "Pão de brioche, 3x blend 120g, mussarela em triplo, alface, tomate, maionese e cebola caramelizada", badge: "3X BLEND", premium: true, tag: "O Premium da Casa" }
+      { id: "sputnik", name: "SPUTNIK", price: 42.00, desc: "Pão de brioche, 3x blend 120g, mussarela em triplo, alface, tomate, maionese e cebola caramelizada", badge: "3X BLEND", premium: true, tag: "O Premium da Casa" },
+      { id: "prometheus", name: "PROMETHEUS", price: 48.00, desc: "Pão de brioche, 3x blend 120g, calabresa fatiada, mussarela em triplo, ovo, presunto, alface, tomate, maionese e cebola caramelizada", badge: "3X BLEND", seal: "🧬 ORIGEM DESCONHECIDA", stamp: "ULTRASSECRETO", tag: "O mais completo da galáxia" }
     ],
     fritas: [
       { id: "fritas_p", name: "BATATA FRITA PEQUENA", price: 10.00, desc: "Porção individual, crocante" },
@@ -1540,20 +1698,43 @@
   }
 
   function comboActive(key){
-    return !isComboOff(key) && comboSelections[key].burgers.every(Boolean);
+    return !isComboOff(key) && comboSelections[key].burgers.every(Boolean)
+      && !(HIDE_COMBO_WHEN_DRINK_OUT && isSoldOut(COMBO_DEFAULTS[key].drink));
   }
   function activeComboKeys(){
     normalizeComboSelections();
     return Object.keys(COMBOS).filter(comboActive);
   }
 
+  // O texto do combo segue o que realmente existe: o refri que está escolhido e os tamanhos de batata disponíveis.
+  const DRINK_PHRASE = { refri: "refrigerante em lata", refri1l: "refrigerante de 1 litro", refri2l: "refrigerante de 2 litros" };
+  const DRINK_LABEL  = { refri: "O refri em lata", refri1l: "O refri de 1 litro", refri2l: "O refri de 2 litros" };
+  const FRIES_SIZE   = { fritas_p: "pequena", fritas_m: "média", fritas_g: "grande" };
+  // true = o combo some da vitrine quando o refri "de vitrine" dele (1 L / 2 L / lata) está esgotado
+  const HIDE_COMBO_WHEN_DRINK_OUT = false;
+
+  function friesPhrase(){
+    const sizes = menuData.fritas.filter(f => !isSoldOut(f.id)).map(f => FRIES_SIZE[f.id] || f.name.toLowerCase());
+    if (!sizes.length) return "";
+    if (sizes.length === 1) return `batata ${sizes[0]}`;
+    return `batata ${sizes.slice(0, -1).join(", ")} ou ${sizes[sizes.length - 1]} à escolha`;
+  }
   function comboDesc(key){
     const sel = comboSelections[key];
     const n = COMBOS[key].burgers;
     const parts = [`${n} lanche${n > 1 ? "s" : ""} à sua escolha`];
-    if (sel.fries) parts.push("batata pequena, média ou grande à escolha");
-    if (sel.drink) parts.push(key === "individual" ? "refrigerante em lata" : key === "familia" ? "refrigerante de 2 litros" : "refrigerante de 1 litro");
-    return parts.join(" + ") + " — monte do seu jeito";
+    if (sel.fries) parts.push(friesPhrase());
+    if (sel.drink) parts.push(DRINK_PHRASE[sel.drink] || "refrigerante");
+    return parts.filter(Boolean).join(" + ") + " — monte do seu jeito";
+  }
+  // Aviso claro quando o item de vitrine do combo acabou e ele sai com outra opção (ou sem o item)
+  function comboNote(key){
+    const sel = comboSelections[key], def = COMBO_DEFAULTS[key];
+    const notes = [];
+    if (!sel.drink) notes.push("🥤 Sem refrigerante disponível agora — o combo sai sem refri.");
+    else if (sel.drink !== def.drink && isSoldOut(def.drink)) notes.push(`🥤 ${DRINK_LABEL[def.drink] || "O refri"} está esgotado hoje — este combo sai com ${DRINK_PHRASE[sel.drink] || "outro refrigerante"}.`);
+    if (!sel.fries) notes.push("🍟 Sem batata disponível agora — o combo sai sem batata.");
+    return notes.length ? `<div class="combo-note">${notes.join("<br>")}</div>` : "";
   }
 
   function comboPrice(key){
@@ -1782,22 +1963,22 @@
       comboBanner.style.display = "none";
     }
     const GRP = i => /^3X/i.test(i.badge||"") ? 2 : /^2X/i.test(i.badge||"") ? 1 : 0;
-    const GRP_INFO = [["MISSÃO 01","CLÁSSICOS","blend 120g · brioche, alface, tomate e maionese"],["MISSÃO 02","DUPLOS","2x blend 120g · mussarela em dobro"],["PROTOCOLO SPUTNIK","TRIPLO","3x blend 120g · o premium da casa"]];
+    const GRP_INFO = [["MISSÃO 01","CLÁSSICOS","blend 120g · brioche, alface, tomate e maionese"],["MISSÃO 02","DUPLOS","2x blend 120g · mussarela em dobro"],["PROTOCOLO TRIPLO","TRIPLOS","3x blend 120g · mussarela em triplo"]];
     let lastGrp = -1, nth = 0;
     [...visibleItems(menuData[line])].sort((a,b)=>GRP(a)-GRP(b)).forEach(item => {
       const g = GRP(item); nth++;
       if (g !== lastGrp){ lastGrp = g; const h = document.createElement("div"); h.className = "menu-sec"; h.innerHTML = `<span class="menu-sec-k">${GRP_INFO[g][0]}</span><span class="menu-sec-t">${GRP_INFO[g][1]}</span><span class="menu-sec-s">${GRP_INFO[g][2]}</span>`; grid.appendChild(h); }
       const out = isSoldOut(item.id);
       const card = document.createElement("div");
-      card.className = "item-card visible" + (item.premium ? " premium" : "") + (g === 1 ? " duplo" : "") + (out ? " sold-out" : "");
+      card.className = "item-card visible" + ((item.premium || item.seal) ? " premium" : "") + (g === 1 ? " duplo" : "") + (out ? " sold-out" : "");
       const ep = effectivePrice(item);
       const priceHtml = ep.pct
         ? `<div class="price-box"><span class="combo-price-old">${fmt(ep.old)}</span><span class="item-price">${fmt(ep.price)}</span></div>`
         : `<div class="item-price">${fmt(item.price)}</div>`;
       card.innerHTML = `
-        ${item.premium ? `<div class="premium-tag">★ PREMIUM</div>` : ""}
+        ${(item.seal || item.premium) ? `<div class="premium-tag">${item.seal || "★ PREMIUM"}</div>` : ""}
         <div class="dossie">ARQUIVO #${String(nth).padStart(2,"0")} · BLEND ${"●".repeat(g+1)}${["roswell","area51"].includes(item.id) ? ` · <b>⭐ MAIS PEDIDO</b>` : ""}</div>
-        ${item.premium ? `<div class="carimbo">CONFIDENCIAL</div>` : ""}
+        ${(item.stamp || item.premium) ? `<div class="carimbo">${item.stamp || "CONFIDENCIAL"}</div>` : ""}
         <div class="item-top">
           <div class="item-name">${item.name}${item.badge ? `<span class="item-badge">${item.badge}</span>` : ""}${out ? `<span class="sold-out-tag">ESGOTADO</span>` : ""}</div>
           ${priceHtml}
@@ -1901,6 +2082,7 @@
         </div>
         ${isFeatured ? `<div class="combo-discount-tag">⭐ combo do dia · ${pct}% OFF · você economiza ${fmt(subtotal - discounted)}</div>` : ""}
         <div class="item-desc">${comboDesc(key)}</div>
+        ${comboNote(key)}
         ${burgerSelects}
         ${friesSelect}
         ${drinkSelect}
@@ -2134,6 +2316,7 @@
     cartCount.textContent = totalQty + (totalQty === 1 ? " item na nave" : " itens na nave");
     cartTotal.textContent = fmt(subtotal());
     updateDrawer();
+    giftNotify();
   }
 
 
@@ -2314,6 +2497,9 @@
         </div>`).join("");
     }
 
+    if (!entries.length) upsellDismissed = false;
+    if (entries.length) body.insertAdjacentHTML("beforeend", giftDrawerHtml() + upsellHtml());
+
     const t = orderTotals();
     const delPaid = t.del - t.deliveryDiscount;
     document.getElementById("drawerSubtotal").textContent = fmt(t.sub);
@@ -2323,6 +2509,9 @@
   }
 
   document.getElementById("drawerBody").addEventListener("click", (e) => {
+    const up = e.target.closest(".upsell-add, .upsell-chip");
+    if (up){ addSuggestion(up.dataset.id); return; }
+    if (e.target.closest(".upsell-close")){ upsellDismissed = true; updateDrawer(); return; }
     const q = e.target.closest(".qty-btn");
     if (q){
       const it = cart[q.dataset.id];
@@ -2397,11 +2586,12 @@
       darkside: "XBD",     // X-Burger Duplo
       parallax: "XSD",     // X-Salada Duplo
       sputnik: "XBT",      // X-Burger Triplo
-      mothership: "XCD"    // X-Calabresa Duplo
+      mothership: "XCD",   // X-Calabresa Duplo
+      prometheus: "XCT"    // X-Calabresa Triplo
     };
     const burgerNames = {
       roswell: "Roswell", area51: "Área 51", hangar18: "Hangar 18",
-      voyager: "Voyager", supernova: "Supernova", darkside: "Darkside", parallax: "Parallax", sputnik: "Sputnik", mothership: "Mothership"
+      voyager: "Voyager", supernova: "Supernova", darkside: "Darkside", parallax: "Parallax", sputnik: "Sputnik", mothership: "Mothership", prometheus: "Prometheus"
     };
     function orderItemLabel(item){
       const itemId = item.id || (Array.isArray(item.parts) && item.parts.length === 1 ? item.parts[0] : "");
@@ -2420,6 +2610,7 @@
         });
       }
     });
+    giftLines().forEach(gl => lines.push(`🎁 ${gl.qty}x ${gl.name} — BRINDE (${gl.promo})`));
     lines.push("");
     lines.push(`Subtotal: ${fmt(sub)}`);
     if (t.itemsDiscount > 0) lines.push(`🎟️ Cupom ${t.coupon.code}: -${fmt(t.itemsDiscount)}`);
@@ -2515,7 +2706,7 @@
       customer_name: name,
       customer_address: type === "delivery" ? address : null,
       delivery_type: type,
-      items: cartItems().map(i => ({ name: i.name, qty: i.qty, price: i.price })),
+      items: cartItems().map(i => ({ name: i.name, qty: i.qty, price: i.price })).concat(giftLines().map(gl => ({ name: "🎁 Brinde: " + gl.name + " (" + gl.promo + ")", qty: gl.qty, price: 0 }))),
       subtotal: sub,
       delivery_fee: type === "delivery" ? del : 0,
       total: grand,
@@ -2629,19 +2820,40 @@
   updateStatus();
   setInterval(updateStatus, 1000);
 
-  // Easter egg: toque 3 vezes na logo para ativar/desativar o Modo Área 51.
+  // Easter egg: toque 3 vezes na logo para ligar/desligar o modo synthwave (só muda as cores).
+  // Opcional: coloque aqui o código de um cupom secreto (crie o cupom na aba 🎟️ Cupons do painel) para ele aparecer ao ativar.
+  const EASTER_EGG_COUPON = "";
   (function(){
-    let taps=0, tapTimer=null, toastTimer=null;
-    function logoTap(e){
-      taps++; clearTimeout(tapTimer);
-      tapTimer=setTimeout(()=>{taps=0;},850);
-      if(taps>=3){
-        taps=0; document.body.classList.toggle("area51-mode");
-        const toast=document.getElementById("area51Toast");
-        if(toast){toast.textContent=document.body.classList.contains("area51-mode")?"🛸 ACESSO CONFIDENCIAL LIBERADO — MODO ÁREA 51":"🔒 MODO NORMAL RESTAURADO";toast.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("show"),2600);}
-      }
+    let taps = 0, tapTimer = null, signTimer = null;
+    const sign = document.getElementById("neonSign");
+    const signT = document.getElementById("neonSignT"), signS = document.getElementById("neonSignS"), codeBtn = document.getElementById("neonCode");
+    const vibrate = p => { try { navigator.vibrate && navigator.vibrate(p); } catch(e){} };
+
+    function showSign(on){
+      if (!sign) return;
+      signT.textContent = on ? "ÁREA 51" : "MODO NORMAL";
+      signS.textContent = on ? "modo synthwave ligado" : "sinal restaurado • bom apetite";
+      const code = on ? EASTER_EGG_COUPON : "";
+      codeBtn.style.display = code ? "inline-block" : "none";
+      if (code) codeBtn.textContent = "🎟️ " + code + " · toque para copiar";
+      sign.classList.add("show");
+      clearTimeout(signTimer); signTimer = setTimeout(() => sign.classList.remove("show"), code ? 8000 : 3000);
     }
-    document.querySelectorAll(".nav-logo-img,.hero-logo").forEach(el=>el.addEventListener("click",logoTap));
+    if (codeBtn) codeBtn.addEventListener("click", () => {
+      const code = EASTER_EGG_COUPON; if (!code) return;
+      const ok = () => showToast("Cupom " + code + " copiado! Cole no carrinho 🎟️");
+      try { navigator.clipboard.writeText(code).then(ok, () => showToast("Seu cupom: " + code)); } catch(e){ showToast("Seu cupom: " + code); }
+    });
+    function toggleNeon(){
+      const on = document.body.classList.toggle("area51-mode");
+      showSign(on); vibrate(on ? [30, 40, 60] : 30);
+    }
+    function logoTap(){
+      taps++; clearTimeout(tapTimer);
+      tapTimer = setTimeout(() => { taps = 0; }, 850);
+      if (taps >= 3){ taps = 0; toggleNeon(); }
+    }
+    document.querySelectorAll(".nav-logo-img,.hero-logo").forEach(el => el.addEventListener("click", logoTap));
   })();
 
   // ======= TABS =======
@@ -2704,15 +2916,16 @@
     else { grid.innerHTML = `<div class="empty-combos">Nenhum item disponível no momento.</div>`; comboBanner.style.display = "none"; }
     renderDrinks();
     renderSpotlights();
+    renderGiftBanner();
   }
 
   // Busca estoque + promoções e redesenha só se algo mudou
   async function refreshRemote(){
-    const before = JSON.stringify([stockStatus, promos, remoteCatalog, remoteStoreOpen, customMenuSig]);
+    const before = JSON.stringify([stockStatus, promos, remoteCatalog, remoteStoreOpen, customMenuSig, giftPromos]);
     await loadCustomMenu();
-    await Promise.all([loadStock(), loadPromos(), loadStoreSetting()]);
+    await Promise.all([loadStock(), loadPromos(), loadStoreSetting(), loadGiftPromos()]);
     applyRemotePrices();
-    if (JSON.stringify([stockStatus, promos, remoteCatalog, remoteStoreOpen, customMenuSig]) !== before){
+    if (JSON.stringify([stockStatus, promos, remoteCatalog, remoteStoreOpen, customMenuSig, giftPromos]) !== before){
       // item desligado no painel sai também do carrinho de quem já tinha adicionado
       let removed = 0;
       Object.keys(cart).forEach(k => {
@@ -2723,6 +2936,7 @@
       updateCartUI();
       if (removed) showToast("Um item do seu pedido saiu do cardápio e foi removido");
     }
+    renderGiftBanner();
   }
 
   // A cada 15s e sempre que o cliente volta para a página: o que você mudar no painel some/aparece no site sem recarregar
@@ -2730,10 +2944,178 @@
   document.addEventListener("visibilitychange", () => { if (!document.hidden) refreshRemote(); });
   window.addEventListener("focus", refreshRemote);
 
+  // ======= LEVE E GANHE (brindes criados no painel) =======
+  // settings.gift_promos = [{ id, name, buyQty, target:"any"|idDoBurger, gift:idDoItem, giftQty, repeat, countCombos, startAt, endAt, active, badge }]
+  let giftPromos = [];
+  let giftSeen = {};   // quantos brindes cada promoção já tinha liberado (para avisar só quando libera de novo)
+  const giftEsc = t => String(t == null ? "" : t).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+  async function loadGiftPromos(){
+    if (!supabaseClient) return;
+    try {
+      const { data, error } = await supabaseClient.from("settings").select("value").eq("key", "gift_promos").maybeSingle();
+      if (!error) giftPromos = data && Array.isArray(data.value) ? data.value : [];
+    } catch(e){ console.warn("Promoções de brinde indisponíveis", e); }
+  }
+  // só vale se estiver ativa, dentro da validade e com o brinde em estoque
+  function giftLive(g){
+    const now = Date.now();
+    return !!g && g.active !== false && Number(g.buyQty) >= 1 && Number(g.giftQty) >= 1
+      && (!g.startAt || new Date(g.startAt).getTime() <= now) && (!g.endAt || new Date(g.endAt).getTime() >= now)
+      && !!getItemById(g.gift) && !isSoldOut(g.gift);
+  }
+  function giftName(g){ const it = getItemById(g.gift); return it ? it.name : g.gift; }
+  function giftWhat(g, n){
+    if (g.target && g.target !== "any") return (allBurgers().find(b => b.id === g.target) || {}).name || g.target;
+    return n > 1 ? "hambúrgueres" : "hambúrguer";
+  }
+  function giftText(g){
+    if (g.badge && String(g.badge).trim()) return String(g.badge).trim();
+    const n = Number(g.buyQty), q = Number(g.giftQty);
+    return `${g.repeat ? "A cada " + n : "Na compra de " + n} ${giftWhat(g, n)}, ganhe ${q}× ${giftName(g)}`;
+  }
+  function giftUnits(g){
+    const ids = new Set(allBurgers().map(b => b.id));
+    let n = 0;
+    cartItems().forEach(i => {
+      if (i.comboKey && !g.countCombos) return;
+      (Array.isArray(i.parts) ? i.parts : []).forEach(id => {
+        if (ids.has(id) && (!g.target || g.target === "any" || g.target === id)) n += i.qty;
+      });
+    });
+    return n;
+  }
+  function giftStatus(){
+    return giftPromos.filter(giftLive).map(g => {
+      const need = Math.max(1, Math.floor(Number(g.buyQty)));
+      const per = Math.max(1, Math.floor(Number(g.giftQty)));
+      const units = giftUnits(g);
+      const sets = units >= need ? (g.repeat ? Math.floor(units / need) : 1) : 0;
+      const missing = units >= need ? (g.repeat ? need - (units % need) : 0) : need - units;
+      return { g, units, qty: sets * per, missing };
+    });
+  }
+  function giftLines(){
+    return giftStatus().filter(s => s.qty > 0).map(s => ({ name: giftName(s.g), qty: s.qty, promo: s.g.name || giftText(s.g) }));
+  }
+  function giftDrawerHtml(){
+    let html = "";
+    giftStatus().forEach(s => {
+      if (s.qty > 0) html += `<div class="drawer-gift on"><span class="dg-ic">🎁</span><div><b>Brinde liberado!</b><br>${s.qty}× ${giftEsc(giftName(s.g))} — <span class="dg-free">GRÁTIS</span><small>${giftEsc(s.g.name || giftText(s.g))}</small></div></div>`;
+      if (s.missing > 0){
+        const w = giftWhat(s.g, s.missing);
+        const msg = s.units > 0 ? `Falta${s.missing > 1 ? "m" : ""} <b>${s.missing}</b> ${giftEsc(w)} para ganhar` : `Adicione <b>${s.missing}</b> ${giftEsc(w)} e ganhe`;
+        html += `<div class="drawer-gift hint"><span class="dg-ic">🎯</span><div>${msg} ${Number(s.g.giftQty)}× ${giftEsc(giftName(s.g))}</div></div>`;
+      }
+    });
+    return html;
+  }
+  const giftBanner = document.getElementById("giftBanner");
+  function renderGiftBanner(){
+    const live = giftPromos.filter(giftLive);
+    if (!live.length){ giftBanner.style.display = "none"; giftBanner.innerHTML = ""; return; }
+    giftBanner.style.display = "flex";
+    giftBanner.innerHTML = live.map(g => `<span class="gift-pill">🎁 <span>${giftEsc(giftText(g))}</span></span>`).join("");
+  }
+  function giftNotify(){
+    giftStatus().forEach(s => {
+      const prev = giftSeen[s.g.id] || 0;
+      if (s.qty > prev) setTimeout(() => showToast("🎁 Brinde liberado: " + s.qty + "× " + giftName(s.g)), 380);
+      giftSeen[s.g.id] = s.qty;
+    });
+  }
+
+  // ======= SUGESTÃO NA HORA DE FINALIZAR (batata / refri) =======
+  // Aparece no carrinho quando há hambúrguer no pedido. Só sugere o que está disponível no painel
+  // e que o cliente ainda não tem (nem dentro de um combo). O "×" dispensa até esvaziar o carrinho.
+  let upsellDismissed = false;
+  const UPSELL_WHY = {
+    fritas_p: "Crocante, pra acompanhar", fritas_m: "Porção pra dividir", fritas_g: "Pra galera toda",
+    refri: "Geladinho pra acompanhar", refri1l: "Bom pra dividir", refri2l: "Pra mesa toda", refri220: "Pequeno e baratinho"
+  };
+  const UPSELL_DRINK_ORDER = ["refri220", "refri", "refri1l", "refri2l"];
+  const UPSELL_DRINK_LABEL = { refri220: "Mini lata", refri: "Lata", refri1l: "1 litro", refri2l: "2 litros" };
+  // ícone por tamanho: latinha pequena, lata, garrafa de 1 L e garrafa de 2 L (proporcionais)
+  function drinkIcon(id){
+    const S = { refri220:{k:"can",w:12,h:22}, refri:{k:"can",w:16,h:30}, refri1l:{k:"bottle",w:16,h:40}, refri2l:{k:"bottle",w:22,h:45} }[id] || {k:"can",w:16,h:30};
+    const x = (30 - S.w) / 2, y = 45 - S.h;
+    let g;
+    if (S.k === "can"){
+      g = `<rect x="${x}" y="${y}" width="${S.w}" height="${S.h}" rx="3" fill="currentColor" fill-opacity=".14" stroke="currentColor" stroke-width="2"/>` +
+          `<line x1="${x+2}" y1="${y+4.5}" x2="${x+S.w-2}" y2="${y+4.5}" stroke="currentColor" stroke-width="1.5"/>` +
+          `<rect x="${x}" y="${y+S.h*0.42}" width="${S.w}" height="${S.h*0.2}" fill="currentColor" fill-opacity=".5"/>`;
+    } else {
+      const nw = S.w * 0.4, nx = (30 - nw) / 2, by = y + 13;
+      g = `<rect x="${nx}" y="${y+4}" width="${nw}" height="10" fill="currentColor" fill-opacity=".14" stroke="currentColor" stroke-width="2"/>` +
+          `<rect x="${nx-1}" y="${y}" width="${nw+2}" height="5" rx="1.5" fill="currentColor"/>` +
+          `<rect x="${x}" y="${by}" width="${S.w}" height="${45-by}" rx="4" fill="currentColor" fill-opacity=".14" stroke="currentColor" stroke-width="2"/>` +
+          `<rect x="${x}" y="${by+(45-by)*0.35}" width="${S.w}" height="${(45-by)*0.28}" fill="currentColor" fill-opacity=".5"/>`;
+    }
+    return `<svg viewBox="0 0 30 46" aria-hidden="true">${g}</svg>`;
+  }
+  function upsellPick(){
+    const burgerIds = new Set(allBurgers().map(b => b.id));
+    const friesIds = new Set(menuData.fritas.map(f => f.id));
+    const drinkIds = new Set(drinksData.map(d => d.id));
+    let burgers = 0, hasFries = false, hasDrink = false;
+    cartItems().forEach(i => (i.parts || []).forEach(id => {
+      if (burgerIds.has(id)) burgers += i.qty;
+      if (friesIds.has(id)) hasFries = true;
+      if (drinkIds.has(id)) hasDrink = true;
+    }));
+    const out = { fries: null, drinks: [], rec: null };
+    if (!burgers) return out;
+    const ok = id => getItemById(id) && !isSoldOut(id);
+    if (!hasFries){
+      out.fries = (burgers >= 3 ? ["fritas_m","fritas_p","fritas_g"] : ["fritas_p","fritas_m","fritas_g"]).find(ok) || null;
+    }
+    if (!hasDrink){
+      // só entram os refris ligados no painel (esgotado/desligado some daqui)
+      out.drinks = UPSELL_DRINK_ORDER.filter(ok);
+      const pref = burgers >= 3 ? ["refri2l","refri1l","refri","refri220"] : burgers === 2 ? ["refri1l","refri","refri2l","refri220"] : ["refri","refri1l","refri2l","refri220"];
+      out.rec = pref.find(id => out.drinks.includes(id)) || null;
+    }
+    return out;
+  }
+  function upsellHtml(){
+    if (upsellDismissed) return "";
+    const pk = upsellPick();
+    if (!pk.fries && !pk.drinks.length) return "";
+    let html = `<div class="upsell"><div class="upsell-head"><span>🛸 Que tal levar também?</span><button type="button" class="upsell-close" aria-label="Dispensar sugestão">×</button></div>`;
+    if (pk.fries){
+      const it = getItemById(pk.fries);
+      html += `<div class="upsell-row"><span class="upsell-ic">🍟</span>
+        <div class="upsell-info"><div class="upsell-name">${giftEsc(it.name)}</div><div class="upsell-why">${giftEsc(UPSELL_WHY[pk.fries] || "")}</div></div>
+        <span class="upsell-price">${fmt(effectivePrice(it).price)}</span>
+        <button type="button" class="upsell-add" data-id="${pk.fries}">+ Adicionar</button></div>`;
+    }
+    if (pk.drinks.length){
+      html += `<div class="upsell-drinks"><div class="upsell-dt"><b>🥤 Refrigerante</b><small>toque no tamanho</small></div><div class="upsell-chips">` +
+        pk.drinks.map(id => {
+          const it = getItemById(id);
+          return `<button type="button" class="upsell-chip${id === pk.rec ? " rec" : ""}" data-id="${id}" aria-label="Adicionar ${giftEsc(it.name)}">` +
+            (id === pk.rec ? `<span class="uc-rec">SUGESTÃO</span>` : "") +
+            drinkIcon(id) +
+            `<span class="uc-name">${UPSELL_DRINK_LABEL[id] || giftEsc(it.name)}</span>` +
+            `<span class="uc-price">${fmt(effectivePrice(it).price)}</span></button>`;
+        }).join("") + `</div></div>`;
+    }
+    return html + `</div>`;
+  }
+  function addSuggestion(id){
+    const item = getItemById(id);
+    if (!item || isSoldOut(id)) return;
+    const ep = effectivePrice(item);
+    const key = ep.pct ? `${item.id}@${ep.price}` : item.id;
+    if (!cart[key]) cart[key] = { name: ep.pct ? `${item.name} (PROMO ${ep.pct}% OFF)` : item.name, price: ep.price, full: ep.old || item.price, qty: 0, parts: [item.id] };
+    cart[key].qty += 1;
+    updateCartUI();
+    showToast(item.name + " adicionado ao pedido 🛸");
+  }
+
   // ======= INIT =======
   (async function init(){
     await loadCustomMenu();
-    await Promise.all([loadStock(), loadPromos(), loadStoreSetting()]);
+    await Promise.all([loadStock(), loadPromos(), loadStoreSetting(), loadGiftPromos()]);
     applyRemotePrices();
     updateStatus();
     renderAll();
