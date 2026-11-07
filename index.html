@@ -1206,6 +1206,42 @@
   .neon-code{ margin-top:10px; font:700 14px 'Oswald',sans-serif; letter-spacing:2px; color:#0d0221; background:#00e5ff; border:0; border-radius:10px; padding:9px 14px; cursor:pointer; }
   @media (prefers-reduced-motion: reduce){ .neon-sign{ transition:none; } }
 
+  /* ============ EFEITOS DO MODO SYNTHWAVE (flash, scanner, OVNI, rastro, grade, piscar, pulsar) ============ */
+  body.area51-mode .nav{ border-bottom:2px solid var(--rust); box-shadow:0 0 18px rgba(255,46,151,.5); }
+  body.area51-mode .hero-logo{ animation:logo-float 3.8s ease-in-out infinite, neon-flicker 4.6s linear infinite; }
+  body.area51-mode .nav-logo-img{ animation:neon-flicker 4.6s linear infinite; }
+  @keyframes neon-flicker{
+    0%,18%,22%,25%,53%,57%,100%{ opacity:1; filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 8px #ff2e97) drop-shadow(0 0 22px #ff2e97) drop-shadow(0 0 38px #00e5ff); }
+    20%,24%,55%{ opacity:.82; filter:drop-shadow(0 0 1px #fff) drop-shadow(0 0 4px #ff2e97); }
+  }
+  body.area51-mode .btn-primary,
+  body.area51-mode .nav-cta{ box-shadow:0 0 0 2px #0d0221, 0 0 16px var(--rust), 0 0 34px rgba(0,229,255,.55); animation:neon-pulse 1.8s ease-in-out infinite; }
+  @keyframes neon-pulse{ 50%{ box-shadow:0 0 0 2px #0d0221, 0 0 24px var(--mustard), 0 0 52px rgba(255,46,151,.6); } }
+  .logo-wrap.tap{ animation:neon-tap .28s ease-out; }
+  @keyframes neon-tap{ 50%{ transform:scale(1.05); filter:brightness(1.5); } }
+
+  .neon-fx{ position:fixed; inset:0; z-index:9998; pointer-events:none; overflow:hidden; visibility:hidden; }
+  .neon-fx.run{ visibility:visible; }
+  .neon-fx::before{ content:""; position:absolute; inset:0; background:#ff2e97; opacity:0; }
+  .neon-fx.run::before{ animation:neon-flash .55s ease-out; }
+  @keyframes neon-flash{ 0%{ opacity:.55; } 100%{ opacity:0; } }
+  .neon-scan{ position:absolute; left:0; right:0; top:-4%; height:6px; opacity:0;
+    background:linear-gradient(90deg, transparent, #fff, #00e5ff, #fff, transparent);
+    box-shadow:0 0 22px 6px rgba(0,229,255,.8), 0 0 60px 14px rgba(255,46,151,.5); }
+  .neon-fx.run .neon-scan{ animation:neon-scan 1s cubic-bezier(.5,0,.3,1) .1s forwards; }
+  @keyframes neon-scan{ 0%{ top:-4%; opacity:1; } 100%{ top:104%; opacity:1; } }
+  .neon-ufo{ position:absolute; top:22%; left:-20%; font-size:46px; opacity:0;
+    filter:drop-shadow(0 0 12px #ff2e97) drop-shadow(0 0 26px #00e5ff); }
+  .neon-fx.run .neon-ufo{ animation:neon-ufo 1.7s ease-in-out .25s forwards; }
+  @keyframes neon-ufo{ 0%{ left:-20%; top:22%; opacity:1; transform:rotate(-8deg); } 50%{ top:13%; transform:rotate(6deg); } 100%{ left:118%; top:24%; opacity:1; transform:rotate(-6deg); } }
+  .neon-dot{ position:fixed; z-index:9997; pointer-events:none; font-size:14px; text-shadow:0 0 8px currentColor; animation:neon-dot .9s ease-out forwards; }
+  @keyframes neon-dot{ 0%{ opacity:1; transform:translate(0,0) scale(1); } 100%{ opacity:0; transform:translate(var(--dx),var(--dy)) scale(.3); } }
+  @media (prefers-reduced-motion: reduce){
+    body.area51-mode .hero-logo, body.area51-mode .nav-logo-img,
+    body.area51-mode .btn-primary, body.area51-mode .nav-cta{ animation:none !important; }
+    .neon-fx, .neon-dot{ display:none !important; }
+  }
+
   /* ============ SUGESTÃO: REFRIS DISPONÍVEIS (mini lata / lata / 1 L / 2 L) ============ */
   .upsell-drinks{ padding:10px 0 2px; border-top:1px solid rgba(26,20,16,.14); }
   .upsell-head + .upsell-drinks{ border-top:0; padding-top:4px; }
@@ -1409,6 +1445,7 @@
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite">Item adicionado ao pedido</div>
+<div class="neon-fx" id="neonFx" aria-hidden="true"><div class="neon-scan"></div><div class="neon-ufo">🛸</div></div>
 <div class="neon-sign" id="neonSign" role="status" aria-live="polite">
   <span class="neon-sign-k">// SINAL INTERCEPTADO</span>
   <b id="neonSignT">ÁREA 51</b>
@@ -2824,11 +2861,16 @@
   // Opcional: coloque aqui o código de um cupom secreto (crie o cupom na aba 🎟️ Cupons do painel) para ele aparecer ao ativar.
   const EASTER_EGG_COUPON = "";
   (function(){
-    let taps = 0, tapTimer = null, signTimer = null;
-    const sign = document.getElementById("neonSign");
+    let taps = 0, tapTimer = null, signTimer = null, lastDot = 0;
+    const fx = document.getElementById("neonFx"), sign = document.getElementById("neonSign");
     const signT = document.getElementById("neonSignT"), signS = document.getElementById("neonSignS"), codeBtn = document.getElementById("neonCode");
     const vibrate = p => { try { navigator.vibrate && navigator.vibrate(p); } catch(e){} };
 
+    function runFx(){
+      if (!fx) return;
+      fx.classList.remove("run"); void fx.offsetWidth; fx.classList.add("run");
+      clearTimeout(runFx._t); runFx._t = setTimeout(() => fx.classList.remove("run"), 2100);
+    }
     function showSign(on){
       if (!sign) return;
       signT.textContent = on ? "ÁREA 51" : "MODO NORMAL";
@@ -2846,13 +2888,30 @@
     });
     function toggleNeon(){
       const on = document.body.classList.toggle("area51-mode");
-      showSign(on); vibrate(on ? [30, 40, 60] : 30);
+      runFx(); showSign(on); vibrate(on ? [30, 40, 30, 40, 90] : 40);
     }
     function logoTap(){
       taps++; clearTimeout(tapTimer);
       tapTimer = setTimeout(() => { taps = 0; }, 850);
-      if (taps >= 3){ taps = 0; toggleNeon(); }
+      document.querySelectorAll(".logo-wrap").forEach(w => { w.classList.remove("tap"); void w.offsetWidth; w.classList.add("tap"); });
+      if (taps >= 3){ taps = 0; toggleNeon(); } else vibrate(15);
     }
+    // rastro de estrelinhas neon enquanto o modo está ligado
+    function trail(e){
+      if (reduceMotion || !document.body.classList.contains("area51-mode")) return;
+      const now = performance.now(); if (now - lastDot < 55) return; lastDot = now;
+      const pt = e.touches && e.touches[0] ? e.touches[0] : e;
+      const d = document.createElement("span");
+      d.className = "neon-dot";
+      d.textContent = ["✦", "✧", "⋆"][Math.floor(Math.random() * 3)];
+      d.style.left = pt.clientX + "px"; d.style.top = pt.clientY + "px";
+      d.style.color = ["#ff2e97", "#00e5ff", "#ffd319"][Math.floor(Math.random() * 3)];
+      d.style.setProperty("--dx", (Math.random() * 40 - 20) + "px");
+      d.style.setProperty("--dy", (10 + Math.random() * 30) + "px");
+      document.body.appendChild(d); setTimeout(() => d.remove(), 900);
+    }
+    window.addEventListener("pointermove", trail, { passive: true });
+    window.addEventListener("touchmove", trail, { passive: true });
     document.querySelectorAll(".nav-logo-img,.hero-logo").forEach(el => el.addEventListener("click", logoTap));
   })();
 
