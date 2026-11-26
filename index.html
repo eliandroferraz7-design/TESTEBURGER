@@ -1110,172 +1110,6 @@
   .note-chip:focus-visible{ outline:3px solid var(--mustard-2); outline-offset:2px; }
   @media (prefers-reduced-motion: reduce){ .note-chip{ transition:none; } }
 
-  /* ============ MODO CYBERPUNK 2077 — 3 toques na logo ============
-     Só cores: nenhuma animação, flash, rastro ou efeito de tela. Paleta: amarelo, ciano, vermelho e roxo neon
-     sobre preto azulado. Cada card, aba e selo ganha a sua cor de destaque (--cp / --tc). */
-  body.area51-mode{
-    --space:#07070d; --paper:#10101c; --cream:#eef0ff; --cream-2:#b4bad6;
-    --ink:#07070d; --rust:#ff003c; --rust-2:#ff7a95; --teal:#14142a; --teal-2:#0c0c16;
-    --mustard:#fcee09; --mustard-2:#ff8a00;
-    --sw-line:#2a2a48; --sw-muted:#9aa1bf; --sw-field:#090911;
-    --cp-y:#fcee09; --cp-c:#00f0ff; --cp-r:#ff003c; --cp-p:#b14dff; --cp-g:#00ffa3;
-    color:var(--cream);
-    background-color:#0a0a12;
-    background-image:radial-gradient(rgba(0,240,255,.07) 1px,transparent 1.3px), linear-gradient(180deg,#0a0a12 0%,#11111e 55%,#1a1020 100%);
-    background-size:5px 5px, auto;
-  }
-
-  /* topo */
-  body.area51-mode .nav{ border-bottom:2px solid var(--cp-y); }
-  body.area51-mode .hero{
-    background:
-      radial-gradient(ellipse at 50% 118%, rgba(255,0,60,.42), transparent 60%),
-      radial-gradient(ellipse at 14% 6%, rgba(0,240,255,.22), transparent 55%),
-      radial-gradient(ellipse at 90% 30%, rgba(177,77,255,.18), transparent 50%),
-      linear-gradient(180deg,#07070d,#14101f);
-    border-bottom:6px solid var(--cp-y);
-  }
-  body.area51-mode .sunburst{ opacity:.06; background:repeating-conic-gradient(from 0deg,#fcee09 0deg 6deg,transparent 6deg 18deg); }
-  body.area51-mode .hero h1 .accent{ color:#fff; text-shadow:2px 0 var(--cp-r), -2px 0 var(--cp-c); }
-  body.area51-mode .badge-top{ color:var(--cp-y); border-color:var(--cp-y); }
-  body.area51-mode .badge-top .dot{ background:var(--cp-r); box-shadow:0 0 8px var(--cp-r); }
-  body.area51-mode .hero p.tagline, body.area51-mode .hero-strip{ color:var(--cream-2); }
-  body.area51-mode .hero-logo, body.area51-mode .nav-logo-img, body.area51-mode footer .flogo img{
-    filter:drop-shadow(0 0 1px #fff) drop-shadow(0 0 8px rgba(252,238,9,.7)) drop-shadow(-5px 0 12px rgba(255,0,60,.5)) drop-shadow(5px 0 12px rgba(0,240,255,.5));
-  }
-  body.area51-mode .btn-primary{ background:var(--cp-r); color:#fff; border-color:#07070d; box-shadow:4px 4px 0 var(--cp-c); }
-  body.area51-mode .btn-secondary{ border-color:var(--cp-c); color:var(--cp-c); }
-  body.area51-mode .btn-secondary:hover{ background:rgba(0,240,255,.12); }
-  body.area51-mode .nav-cta{ background:var(--cp-y); color:#0a0a12; border-color:#0a0a12; box-shadow:3px 3px 0 var(--cp-r); }
-  body.area51-mode .ticker{ background:var(--cp-y); border-bottom-color:#0a0a12; }
-  body.area51-mode .ticker-track{ color:#0a0a12; }
-  body.area51-mode .launch-panel{ border-color:var(--cp-c); background:rgba(7,7,13,.86); box-shadow:none; }
-  body.area51-mode .launch-kicker, body.area51-mode .launch-count{ color:var(--cp-y); text-shadow:none; }
-  body.area51-mode .launch-panel.opened{ border-color:var(--cp-g); }
-  body.area51-mode .launch-panel.opened .launch-kicker{ color:var(--cp-g); }
-
-  /* títulos e textos sobre fundo escuro */
-  body.area51-mode .section-eyebrow, body.area51-mode .menu-sec-k{ color:var(--cp-c); }
-  body.area51-mode .section-title, body.area51-mode .menu-sec-t{ color:#fff; text-shadow:2px 0 var(--cp-r), -2px 0 var(--cp-c); }
-  body.area51-mode .section-title.headline::before{ color:var(--cp-c); }
-  body.area51-mode .menu-sec-s{ color:var(--cream-2); border-bottom-color:rgba(154,161,191,.35); }
-  body.area51-mode .item-desc, body.area51-mode .drawer-total-row{ color:var(--cream-2); }
-  body.area51-mode .drawer-item-meta, body.area51-mode .drawer-empty, body.area51-mode .empty-combos, body.area51-mode .combo-price-old{ color:var(--sw-muted); }
-  body.area51-mode footer{ border-top:3px solid var(--cp-y); }
-  body.area51-mode footer .fine{ color:var(--sw-muted); }
-
-  /* abas: uma cor para cada */
-  body.area51-mode .tab{ border-radius:4px; background:#10101c; }
-  body.area51-mode .tab:nth-child(4n+1){ --tc:#fcee09; --tc-ink:#0a0a12; }
-  body.area51-mode .tab:nth-child(4n+2){ --tc:#00f0ff; --tc-ink:#0a0a12; }
-  body.area51-mode .tab:nth-child(4n+3){ --tc:#ff003c; --tc-ink:#fff; }
-  body.area51-mode .tab:nth-child(4n+4){ --tc:#b14dff; --tc-ink:#fff; }
-  body.area51-mode .tab{ border-color:var(--tc,#fcee09); color:var(--tc,#fcee09); }
-  body.area51-mode .tab .tab-sub{ color:var(--cream-2); opacity:1; }
-  body.area51-mode .tab.active{ background:var(--tc,#fcee09); color:var(--tc-ink,#0a0a12); box-shadow:0 0 0 2px #07070d, 0 0 0 4px var(--tc,#fcee09); }
-  body.area51-mode .tab.active .tab-sub{ color:var(--tc-ink,#0a0a12); }
-
-  /* cards: cor de destaque própria (--cp) e secundária (--cp2) */
-  body.area51-mode .item-card:nth-child(4n+1), body.area51-mode .combo-card:nth-child(4n+1){ --cp:#fcee09; --cp-ink:#0a0a12; --cp2:#00f0ff; --cp2-ink:#0a0a12; }
-  body.area51-mode .item-card:nth-child(4n+2), body.area51-mode .combo-card:nth-child(4n+2){ --cp:#00f0ff; --cp-ink:#0a0a12; --cp2:#ff003c; --cp2-ink:#fff; }
-  body.area51-mode .item-card:nth-child(4n+3), body.area51-mode .combo-card:nth-child(4n+3){ --cp:#ff003c; --cp-ink:#fff; --cp2:#fcee09; --cp2-ink:#0a0a12; }
-  body.area51-mode .item-card:nth-child(4n+4), body.area51-mode .combo-card:nth-child(4n+4){ --cp:#b14dff; --cp-ink:#fff; --cp2:#00ffa3; --cp2-ink:#0a0a12; }
-  body.area51-mode .item-card, body.area51-mode .item-card.premium, body.area51-mode .combo-card, body.area51-mode .combo-card.featured{
-    border:1px solid color-mix(in srgb, var(--cp,#fcee09) 70%, transparent);
-    border-left:5px solid var(--cp,#fcee09);
-    border-radius:6px;
-    background:linear-gradient(180deg, color-mix(in srgb, var(--cp,#fcee09) 11%, #11111d), #0d0d18 72%);
-    box-shadow:0 10px 26px rgba(0,0,0,.5), inset 0 0 0 1px color-mix(in srgb, var(--cp,#fcee09) 10%, transparent);
-  }
-  body.area51-mode .item-card.premium::after{ display:none; }
-  body.area51-mode .item-name{ color:#fff; }
-  body.area51-mode .item-price{ color:var(--cp,#fcee09); }
-  body.area51-mode .dossie{ color:var(--cp2,#00f0ff)!important; }
-  body.area51-mode .dossie b{ color:var(--cp2,#00f0ff); }
-  body.area51-mode .item-card .item-desc[style]{ color:var(--cp2,#00f0ff)!important; }
-  body.area51-mode .carimbo{ color:color-mix(in srgb, var(--cp2,#00f0ff) 80%, transparent); border-color:color-mix(in srgb, var(--cp2,#00f0ff) 80%, transparent); }
-  body.area51-mode .item-badge{
-    background:var(--cp2,#00f0ff)!important; color:var(--cp2-ink,#0a0a12)!important; border:0!important; border-radius:0!important;
-    padding:2px 10px!important; transform:none!important; box-shadow:none!important;
-    clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));
-  }
-  body.area51-mode .premium-tag{
-    background:var(--cp2,#00f0ff); color:var(--cp2-ink,#0a0a12); border:0; border-radius:0; padding:5px 14px;
-    clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px));
-  }
-  body.area51-mode .combo-discount-tag{ background:var(--cp2,#00f0ff); color:var(--cp2-ink,#0a0a12); border-color:#07070d; }
-  body.area51-mode .combo-includes, body.area51-mode .combo-promo-banner{ color:var(--cp-y); }
-  body.area51-mode .combo-note{ background:rgba(255,138,0,.1); border-color:#ff8a00; color:#ffc27a; }
-  body.area51-mode .add-btn{
-    background:var(--cp,#fcee09); border:0; color:var(--cp-ink,#0a0a12); border-radius:0;
-    clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
-  }
-  body.area51-mode .add-btn.added{ background:var(--cp2,#00f0ff); color:var(--cp2-ink,#0a0a12); }
-  body.area51-mode .drinks-panel{ border-color:var(--sw-line); }
-  body.area51-mode .drinks-title, body.area51-mode .drink-price{ color:var(--cp-y); }
-
-  /* promoções em destaque: seis cores */
-  body.area51-mode .spotlight-card[data-tone="0"]{ --b1:#2b2a05; --b2:#12120a; --ac:#fcee09; }
-  body.area51-mode .spotlight-card[data-tone="1"]{ --b1:#00323a; --b2:#06161b; --ac:#00f0ff; }
-  body.area51-mode .spotlight-card[data-tone="2"]{ --b1:#47000f; --b2:#1a0509; --ac:#ff003c; }
-  body.area51-mode .spotlight-card[data-tone="3"]{ --b1:#2f1255; --b2:#150a28; --ac:#b14dff; }
-  body.area51-mode .spotlight-card[data-tone="4"]{ --b1:#4a2600; --b2:#1f1100; --ac:#ff8a00; }
-  body.area51-mode .spotlight-card[data-tone="5"]{ --b1:#00402c; --b2:#031a12; --ac:#00ffa3; }
-  body.area51-mode .promo-pill:nth-child(6n+1){ --pc:#fcee09; }
-  body.area51-mode .promo-pill:nth-child(6n+2){ --pc:#00f0ff; }
-  body.area51-mode .promo-pill:nth-child(6n+3){ --pc:#ff003c; }
-  body.area51-mode .promo-pill:nth-child(6n+4){ --pc:#b14dff; }
-  body.area51-mode .promo-pill:nth-child(6n+5){ --pc:#ff8a00; }
-  body.area51-mode .promo-pill:nth-child(6n+6){ --pc:#00ffa3; }
-  body.area51-mode .promo-pill{ background:var(--pc); color:#0a0a12; border-color:#0a0a12; }
-  body.area51-mode .promo-pill:nth-child(6n+3), body.area51-mode .promo-pill:nth-child(6n+4){ color:#fff; }
-  body.area51-mode .promo-pill b{ background:#0a0a12; color:var(--pc); }
-  body.area51-mode .gift-pill{ background:linear-gradient(135deg,#ff003c,#b14dff); }
-
-  /* carrinho e finalização */
-  body.area51-mode .cart-bar{ background:#0c0c16; border-top:2px solid var(--cp-y); box-shadow:0 -6px 20px rgba(0,0,0,.5); }
-  body.area51-mode .cart-info .count{ color:var(--cream); }
-  body.area51-mode .cart-info .total{ color:var(--cp-y); }
-  body.area51-mode .cart-bar .btn-primary{ background:var(--cp-y); color:#0a0a12; box-shadow:3px 3px 0 var(--cp-r); }
-  body.area51-mode .drawer{ border-left-color:var(--sw-line); }
-  body.area51-mode .drawer-head{ border-bottom-color:var(--cp-r); }
-  body.area51-mode .drawer-item{ border-bottom-color:rgba(238,240,255,.16); }
-  body.area51-mode .drawer-item-price, body.area51-mode .drawer-total-row.grand b{ color:var(--cp-y); }
-  body.area51-mode .drawer-item-remove{ color:var(--rust-2); }
-  body.area51-mode .drawer-total-row.grand{ color:#fff; border-top-color:var(--sw-line); }
-  body.area51-mode .drawer-send-btn{ background:var(--cp-r); color:#fff; box-shadow:4px 4px 0 var(--cp-c); }
-  body.area51-mode .qty-btn{ background:var(--sw-field); color:var(--cream); border-color:var(--sw-line); }
-  body.area51-mode .hours-note{ background:rgba(255,0,60,.12); color:var(--rust-2); border-color:var(--cp-r); }
-  body.area51-mode .combo-field label, body.area51-mode .field label{ color:var(--cream); }
-  body.area51-mode .combo-select, body.area51-mode .combo-fries-select, body.area51-mode .combo-drink-select,
-  body.area51-mode .field select, body.area51-mode .field input, body.area51-mode .field textarea{
-    background:var(--sw-field); color:var(--cream); border-color:var(--sw-line);
-  }
-  body.area51-mode .field input::placeholder, body.area51-mode .field textarea::placeholder{ color:var(--sw-muted); }
-  body.area51-mode .field select:focus, body.area51-mode .field input:focus, body.area51-mode .field textarea:focus{ outline-color:var(--cp-c); }
-  body.area51-mode #pixPaymentBox{ background:#10101c!important; border-color:var(--cp-c)!important; }
-  body.area51-mode .coupon-btn{ background:var(--cp-c); color:#0a0a12; box-shadow:3px 3px 0 var(--cp-r); }
-  body.area51-mode .coupon-msg.ok, body.area51-mode .drawer-total-row.coupon-line{ color:var(--cp-g); }
-  body.area51-mode .coupon-msg.bad{ color:var(--rust-2); }
-  body.area51-mode .coupon-field.applied .coupon-row input{ background:#13231f; border-color:var(--cp-g); }
-  body.area51-mode .drawer-gift.on{ background:rgba(0,255,163,.1); border-color:var(--cp-g); color:#b9ffe6; }
-  body.area51-mode .drawer-gift.hint{ background:rgba(255,138,0,.1); border-color:#ff8a00; color:#ffc27a; }
-  body.area51-mode .dg-free{ color:var(--cp-g); }
-  body.area51-mode .et-steps span.on{ background:var(--cp-y); color:#0a0a12; border-color:var(--cp-y); }
-  body.area51-mode .upsell{ border-color:var(--sw-line); background:rgba(252,238,9,.06); }
-  body.area51-mode .upsell-head, body.area51-mode .upsell-dt b{ color:var(--cp-y); }
-  body.area51-mode .upsell-row, body.area51-mode .upsell-drinks{ border-top-color:rgba(238,240,255,.14); }
-  body.area51-mode .upsell-name{ color:var(--cream); }
-  body.area51-mode .upsell-why, body.area51-mode .upsell-dt small, body.area51-mode .upsell-close{ color:var(--sw-muted); }
-  body.area51-mode .upsell-price{ color:var(--cp-y); }
-  body.area51-mode .upsell-add{ background:var(--cp-y); border-color:#0a0a12; box-shadow:2px 2px 0 var(--cp-r); }
-  body.area51-mode .upsell-chip{ background:var(--sw-field); color:var(--cream); border-color:var(--sw-line); box-shadow:2px 2px 0 var(--sw-line); }
-  body.area51-mode .upsell-chip.rec{ background:#16162a; border-color:var(--cp-y); box-shadow:2px 2px 0 var(--cp-y); }
-  body.area51-mode .upsell-chip .uc-price{ color:var(--cp-y); }
-  body.area51-mode .upsell-chip .uc-rec{ background:var(--cp-y); color:#0a0a12; }
-  body.area51-mode .note-chip{ background:var(--sw-field); color:var(--cream); border-color:var(--sw-line); }
-  body.area51-mode .note-chip.on{ background:var(--cp-c); color:#0a0a12; border-color:var(--cp-c); }
-
   /* aviso rápido ao ligar/desligar (estático) */
   .neon-sign{
     position:fixed; left:50%; bottom:calc(96px + env(safe-area-inset-bottom,0px)); z-index:9999; width:max-content; max-width:min(92vw,360px); text-align:center;
@@ -1502,6 +1336,17 @@
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite">Item adicionado ao pedido</div>
+<div class="sx" id="secretSite" role="region" aria-label="Modo ultrassecreto" tabindex="-1" hidden>
+  <div class="sx-scroll" id="sxScroll"><div class="sx-inner" id="sxInner"></div></div>
+  <div class="sx-boot" id="sxBoot" aria-hidden="true">
+    <div data-l>&gt; iniciando terminal seguro...</div>
+    <div data-l>&gt; conectando à nave-mãe ........ <span class="ok">OK</span></div>
+    <div data-l>&gt; verificando credenciais do terráqueo ........ <span class="ok">OK</span></div>
+    <div data-l>&gt; descriptografando cardápio ........ <span class="ok">OK</span></div>
+    <div data-l class="big">&gt; ACESSO NÍVEL 5 CONCEDIDO <span class="sx-cur"></span></div>
+    <div class="sx-skip">toque para pular</div>
+  </div>
+</div>
 <div class="neon-fx" id="neonFx" aria-hidden="true"><div class="neon-scan"></div><div class="neon-ufo">🛸</div></div>
 <div class="neon-sign" id="neonSign" role="status" aria-live="polite">
   <span class="neon-sign-k">// CONEXÃO ESTABELECIDA</span>
@@ -2928,14 +2773,13 @@
   updateStatus();
   setInterval(updateStatus, 1000);
 
-  // Easter egg: toque 3 vezes na logo para ligar/desligar o modo cyberpunk 2077 (só muda as cores).
+  // Easter egg: toque 3 vezes na logo para abrir/fechar o MODO ULTRASSECRETO (um site à parte, tema terminal da Área 51).
   // Opcional: coloque aqui o código de um cupom secreto (crie o cupom na aba 🎟️ Cupons do painel) para ele aparecer ao ativar.
   const EASTER_EGG_COUPON = "";
   (function(){
     let taps = 0, tapTimer = null, signTimer = null;
     const sign = document.getElementById("neonSign");
     const signT = document.getElementById("neonSignT"), signS = document.getElementById("neonSignS"), codeBtn = document.getElementById("neonCode");
-    const themeMeta = document.querySelector('meta[name="theme-color"]');
     const vibrate = p => { try { navigator.vibrate && navigator.vibrate(p); } catch(e){} };
     const fx = document.getElementById("neonFx");
     function runFx(){
@@ -2946,8 +2790,8 @@
 
     function showSign(on){
       if (!sign) return;
-      signT.textContent = on ? "NIGHT CITY" : "MODO NORMAL";
-      signS.textContent = on ? "modo cyberpunk 2077 ligado" : "cores originais • bom apetite";
+      signT.textContent = on ? "ACESSO CONCEDIDO" : "SESSÃO ENCERRADA";
+      signS.textContent = on ? "modo ultrassecreto ligado" : "de volta ao mundo terráqueo";
       const code = on ? EASTER_EGG_COUPON : "";
       codeBtn.style.display = code ? "inline-block" : "none";
       if (code) codeBtn.textContent = "🎟️ " + code + " · toque para copiar";
@@ -2960,9 +2804,11 @@
       try { navigator.clipboard.writeText(code).then(ok, () => showToast("Seu cupom: " + code)); } catch(e){ showToast("Seu cupom: " + code); }
     });
     function toggleNeon(){
-      const on = document.body.classList.toggle("area51-mode");
-      if (themeMeta) themeMeta.setAttribute("content", on ? "#07070d" : "#0A1420");
-      runFx(); showSign(on); vibrate(on ? [30, 40, 60] : 40);
+      const on = !document.body.classList.contains("secret-on");
+      runFx();
+      if (window.etSecret) on ? window.etSecret.open() : window.etSecret.close();
+      if (!on || EASTER_EGG_COUPON) showSign(on);
+      vibrate(on ? [30, 40, 60] : 40);
     }
     function logoTap(){
       taps++; clearTimeout(tapTimer);
@@ -3476,7 +3322,7 @@ footer{position:relative}
 })();
 </script>
 
-<!-- ===== MODO CYBERPUNK: animações leves (só transform/opacity, nada roda antes de ligar o modo) ===== -->
+<!-- ===== TRANSIÇÃO DO MODO ULTRASSECRETO: flash, scanner e OVNI (só transform/opacity, roda uma vez) ===== -->
 <style>
 .neon-fx{position:fixed;inset:0;z-index:9998;pointer-events:none;overflow:hidden;visibility:hidden}
 .neon-fx.run{visibility:visible}
@@ -3491,26 +3337,437 @@ footer{position:relative}
 .neon-fx.run .neon-ufo{animation:neon-ufo 1.6s ease-in-out .2s forwards}
 @keyframes neon-ufo{0%{transform:translateX(-15vw) rotate(-8deg);opacity:1}50%{transform:translateX(50vw) translateY(-18px) rotate(6deg);opacity:1}100%{transform:translateX(115vw) rotate(-6deg);opacity:1}}
 
-/* OVNI passando atrás da logo e logo piscando (só opacidade, sem filtro animado) */
-body.area51-mode .ufo-fly{z-index:1;top:150px;font-size:42px;filter:drop-shadow(0 0 8px #fcee09);animation:ufo-behind 10s linear .6s infinite}
-@keyframes ufo-behind{
-  0%{transform:translate(-15vw,0) rotate(-6deg);opacity:0}
-  8%{opacity:1}
-  50%{transform:translate(52vw,-22px) rotate(7deg)}
-  92%{opacity:1}
-  100%{transform:translate(115vw,10px) rotate(-6deg);opacity:0}
-}
-body.area51-mode .hero-logo{animation:logo-float 3.8s ease-in-out infinite, logo-flick 5s linear infinite}
-@keyframes logo-flick{
-  0%,18%,22%,25%,53%,57%,100%{opacity:1}
-  20%,24%,55%{opacity:.78}
-}
 @media (prefers-reduced-motion:reduce){
   .neon-fx{display:none!important}
-  body.area51-mode .ufo-fly{display:none}
-  body.area51-mode .hero-logo{animation:none}
 }
 </style>
+<!-- ===== MODO ULTRASSECRETO (3 toques na logo): site à parte, tema terminal classificado da Área 51 ===== -->
+<style>
+body.secret-on{
+  overflow:hidden;
+  --space:#040a07; --paper:#08130d; --cream:#d9ffe6; --cream-2:#8fc9a4;
+  --ink:#020503; --rust:#ff3b30; --rust-2:#ff8a80; --teal:#0c2216; --teal-2:#08160e;
+  --mustard:#7dffa8; --mustard-2:#ffb000;
+  --sw-line:#1f4a31; --sw-muted:#6fa384; --sw-field:#050d09;
+  color:#d9ffe6;
+}
+.sx{position:fixed;inset:0;z-index:150;background:#040a07;color:#d9ffe6;font-family:'Share Tech Mono','Courier New',monospace}
+.sx[hidden]{display:none}
+.sx *{box-sizing:border-box}
+.sx-scroll{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  background:radial-gradient(ellipse at 50% -10%,rgba(125,255,168,.13),transparent 55%),radial-gradient(ellipse at 50% 120%,rgba(255,176,0,.08),transparent 55%),#040a07}
+.sx-inner{position:relative;max-width:760px;margin:0 auto;padding:0 16px 140px}
+
+/* barra do topo */
+.sx-top{position:sticky;top:0;z-index:5;margin:0 -16px;background:#040a07;border-bottom:1px solid #1f4a31}
+.sx-bar{display:flex;align-items:center;gap:10px;padding:10px 16px;font-size:12px;letter-spacing:2px;color:#7dffa8}
+.sx-led{width:8px;height:8px;border-radius:50%;background:#7dffa8;box-shadow:0 0 8px #7dffa8;animation:sx-blink 1.6s steps(2) infinite}
+.sx-exit{margin-left:auto;background:transparent;border:1px solid #ff3b30;color:#ff8a80;font:inherit;font-size:12px;letter-spacing:1px;padding:7px 11px;min-height:34px;cursor:pointer}
+.sx-nav{display:flex;gap:8px;overflow-x:auto;padding:0 16px 10px;scrollbar-width:none}
+.sx-nav::-webkit-scrollbar{display:none}
+.sx-nav button{flex:0 0 auto;background:transparent;border:1px solid #1f4a31;color:#8fc9a4;font:inherit;font-size:12px;letter-spacing:2px;padding:7px 12px;min-height:34px;cursor:pointer}
+.sx-nav button:active{background:#7dffa8;color:#020503}
+
+/* cabeçalho do documento */
+.sx-hero{position:relative;text-align:center;padding:26px 0 8px}
+.sx-file{font-size:10.5px;letter-spacing:1.5px;color:#ffb000;padding-right:0}
+.sx-logo{display:block;width:150px;max-width:50vw;height:auto;margin:14px auto 8px;cursor:pointer;filter:drop-shadow(0 0 10px rgba(125,255,168,.35))}
+.sx-title{font:400 28px/1.1 'Special Elite','Courier New',monospace;color:#fff;text-shadow:0 0 12px rgba(125,255,168,.45);letter-spacing:1px}
+.sx-sub{max-width:460px;margin:10px auto 0;font-size:13.5px;line-height:1.6;color:#8fc9a4}
+.sx-redact{display:inline;border:0;padding:0 3px;border-radius:2px;font:inherit;background:#d9ffe6;color:transparent;cursor:pointer}
+.sx-redact.on{background:transparent;color:#ffb000}
+.sx-stamp{position:absolute;right:-2px;top:84px;transform:rotate(-12deg);border:3px solid #ff3b30;color:#ff3b30;font:400 19px 'Special Elite','Courier New',monospace;letter-spacing:2px;padding:2px 10px;opacity:.85;pointer-events:none;animation:sx-slam .55s ease-out .2s both}
+
+/* radar + status */
+.sx-radar-wrap{display:flex;gap:16px;align-items:center;border:1px solid #1f4a31;background:rgba(8,19,13,.85);padding:14px;margin:14px 0}
+.sx-radar{position:relative;flex:0 0 112px;width:112px;height:112px;border-radius:50%;border:1px solid #1f4a31;overflow:hidden;
+  background:repeating-radial-gradient(circle at 50% 50%,transparent 0 17px,rgba(125,255,168,.22) 17px 18px),linear-gradient(#1f4a31,#1f4a31) 50% 0/1px 100% no-repeat,linear-gradient(#1f4a31,#1f4a31) 0 50%/100% 1px no-repeat}
+.sx-sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(125,255,168,.6),rgba(125,255,168,0) 75deg);animation:sx-spin 4s linear infinite;will-change:transform}
+.sx-blip{position:absolute;width:6px;height:6px;border-radius:50%;background:#ffb000;box-shadow:0 0 6px #ffb000;opacity:0;animation:sx-ping 4s ease-out infinite}
+.sx-blip.b1{top:22%;left:62%}.sx-blip.b2{top:58%;left:28%;animation-delay:1.3s}.sx-blip.b3{top:70%;left:66%;animation-delay:2.6s}
+.sx-st-k{font-size:12px;letter-spacing:3px;color:#7dffa8}
+.sx-st-t{font:400 24px/1.2 'Special Elite','Courier New',monospace;color:#fff;margin:3px 0}
+.sx-st-m{font-size:12.5px;line-height:1.5;color:#8fc9a4}
+.sx-status.closed .sx-st-k{color:#ffb000}
+
+/* alertas */
+.sx-alert{border:1px solid #ffb000;border-left:5px solid #ffb000;background:rgba(255,176,0,.07);padding:10px 12px;margin:8px 0;font-size:13.5px;line-height:1.55;color:#ffd98a}
+.sx-alert b{color:#fff}
+.sx-alert s{color:#a8842f}
+.sx-alert .w{display:inline-block;animation:sx-blink 1.2s steps(2) infinite}
+
+/* seções */
+.sx-h{margin:28px 0 2px;font:400 22px 'Special Elite','Courier New',monospace;color:#7dffa8;letter-spacing:1px}
+.sx-h span{color:#ffb000}
+.sx-hs{font-size:12.5px;color:#8fc9a4;padding-bottom:8px;border-bottom:1px dashed #1f4a31;margin-bottom:12px}
+
+/* arquivos (itens) */
+.sx-item{position:relative;border:1px solid #1f4a31;border-left:4px solid var(--t,#7dffa8);background:#08130d;padding:13px 14px 12px;margin:0 0 12px}
+.sx-item[data-t="1"]{--t:#ffb000}
+.sx-item[data-t="2"]{--t:#ff3b30}
+.sx-code{font-size:11px;letter-spacing:2px;color:#6fa384;margin-bottom:5px}
+.sx-code b{color:#ffb000;font-weight:400}
+.sx-line{display:flex;align-items:baseline;gap:8px}
+.sx-name{font:400 19px 'Special Elite','Courier New',monospace;color:#fff;letter-spacing:.5px}
+.sx-tagb{font-size:11px;letter-spacing:1px;border:1px solid var(--t,#7dffa8);color:var(--t,#7dffa8);padding:0 6px;white-space:nowrap}
+.sx-dots{flex:1;min-width:12px;border-bottom:2px dotted #1f4a31;transform:translateY(-4px)}
+.sx-price{font-size:19px;font-weight:700;color:#7dffa8;white-space:nowrap}
+.sx-old{font-size:13px;color:#6fa384;text-decoration:line-through;margin-right:6px;white-space:nowrap}
+.sx-promo{margin-top:6px;font-size:12.5px;color:#ffb000}
+.sx-desc{margin:7px 0 0;font-size:13.5px;line-height:1.55;color:#a9d9bb}
+.sx-note{margin-top:5px;font-size:12.5px;color:#ffb000;font-style:italic}
+.sx-item-bot{display:flex;justify-content:flex-end;margin-top:10px}
+.sx-item-stamp{position:absolute;left:14px;bottom:12px;transform:rotate(-6deg);border:2px solid rgba(255,59,48,.75);color:rgba(255,59,48,.8);font:400 13px 'Special Elite','Courier New',monospace;letter-spacing:2px;padding:1px 8px;pointer-events:none}
+.sx-add{background:transparent;border:1px solid #7dffa8;color:#7dffa8;font:inherit;font-size:14px;letter-spacing:1px;padding:10px 14px;min-height:44px;cursor:pointer}
+.sx-add:active{background:#7dffa8;color:#020503}
+.sx-lab{display:block;font-size:11px;letter-spacing:2px;color:#6fa384;margin-top:10px}
+.sx-sel{width:100%;min-height:44px;margin-top:5px;background:#050d09;color:#d9ffe6;border:1px solid #1f4a31;padding:9px;font:inherit;font-size:14px;border-radius:0}
+.sx .combo-note{background:rgba(255,176,0,.08);border:1px dashed #ffb000;color:#ffd98a;font-family:inherit;padding:8px 10px;margin:8px 0;font-size:12.5px;border-radius:0}
+.sx-drink{display:flex;align-items:center;gap:10px;border:1px solid #1f4a31;background:#08130d;padding:9px 12px;margin:0 0 8px}
+.sx-drink .sx-dots{flex:1}
+.sx-empty{padding:30px 10px;text-align:center;color:#8fc9a4}
+
+/* rodapé */
+.sx-foot{margin-top:30px;padding-top:16px;border-top:1px dashed #1f4a31;text-align:center;font-size:12.5px;line-height:1.9;color:#8fc9a4}
+.sx-foot b{color:#ffb000;font-weight:400}
+.sx-foot .sx-exit{margin:14px auto 0;display:inline-block}
+
+/* sequência de boot */
+.sx-boot{position:absolute;inset:0;z-index:20;background:#020503;padding:34px 20px;font-size:14px;line-height:2;color:#7dffa8;transition:opacity .4s ease;cursor:pointer}
+.sx-boot.out{opacity:0;pointer-events:none}
+.sx-boot [data-l]{opacity:0}
+.sx-boot [data-l].in{opacity:1}
+.sx-boot .ok{color:#ffb000}
+.sx-boot .big{color:#fff;font-size:16px}
+.sx-cur{display:inline-block;width:9px;height:16px;background:#7dffa8;vertical-align:-2px;animation:sx-blink 1s steps(2) infinite}
+.sx-skip{position:absolute;left:0;right:0;bottom:24px;text-align:center;font-size:11px;letter-spacing:2px;color:#6fa384}
+
+@keyframes sx-blink{50%{opacity:0}}
+@keyframes sx-spin{to{transform:rotate(360deg)}}
+@keyframes sx-ping{0%{opacity:0;transform:scale(.4)}8%{opacity:1;transform:scale(1)}60%,100%{opacity:0;transform:scale(1.8)}}
+@keyframes sx-slam{0%{opacity:0;transform:rotate(-12deg) scale(2.4)}60%{opacity:.95;transform:rotate(-12deg) scale(.94)}100%{opacity:.85;transform:rotate(-12deg) scale(1)}}
+@media (max-width:420px){.sx-title{font-size:24px}.sx-stamp{font-size:15px;top:78px}.sx-radar{flex-basis:96px;width:96px;height:96px}}
+@media (prefers-reduced-motion:reduce){
+  .sx-sweep,.sx-blip,.sx-led,.sx-cur,.sx-alert .w,.sx-stamp{animation:none}
+  .sx-blip{opacity:.9}
+  .sx-boot{display:none}
+}
+
+/* carrinho e finalização no tema terminal */
+body.secret-on .cart-bar{background:#020503;border-top:2px solid #7dffa8;box-shadow:0 -6px 20px rgba(0,0,0,.6)}
+body.secret-on .cart-info .count{color:#d9ffe6;font-family:'Share Tech Mono','Courier New',monospace}
+body.secret-on .cart-info .total{color:#7dffa8;font-family:'Special Elite','Courier New',monospace}
+body.secret-on .cart-bar .btn-primary{background:#7dffa8;color:#020503;border-color:#7dffa8;border-radius:0;box-shadow:3px 3px 0 #ffb000;font-family:'Share Tech Mono','Courier New',monospace}
+body.secret-on .drawer{background:#08130d;border-left:2px solid #1f4a31;color:#d9ffe6}
+body.secret-on .drawer *{font-family:'Share Tech Mono','Courier New',monospace}
+body.secret-on .drawer-head{background:#020503;border-bottom:2px solid #7dffa8}
+body.secret-on .drawer-head h3{font-family:'Special Elite','Courier New',monospace}
+body.secret-on .drawer-item{border-bottom-color:rgba(125,255,168,.18)}
+body.secret-on .drawer-item-name{color:#fff}
+body.secret-on .drawer-item-meta,body.secret-on .drawer-empty{color:#6fa384}
+body.secret-on .drawer-item-price,body.secret-on .drawer-total-row.grand b{color:#7dffa8}
+body.secret-on .drawer-item-remove{color:#ff8a80}
+body.secret-on .drawer-warn,body.secret-on .drawer-item-warn{color:#ff8a80}
+body.secret-on .qty-btn{background:#050d09;color:#d9ffe6;border:1px solid #1f4a31}
+body.secret-on .field label{color:#d9ffe6}
+body.secret-on .field select,body.secret-on .field input,body.secret-on .field textarea{background:#050d09;color:#d9ffe6;border:1px solid #1f4a31;border-radius:0}
+body.secret-on .field input::placeholder,body.secret-on .field textarea::placeholder{color:#6fa384}
+body.secret-on .field select:focus,body.secret-on .field input:focus,body.secret-on .field textarea:focus{outline:2px solid #7dffa8}
+body.secret-on .drawer-total-row{color:#8fc9a4}
+body.secret-on .drawer-total-row.grand{color:#fff;border-top-color:#1f4a31}
+body.secret-on .drawer-send-btn{background:#7dffa8;color:#020503;border:0;border-radius:0;box-shadow:4px 4px 0 #ffb000}
+body.secret-on .hours-note{background:rgba(255,59,48,.12);color:#ff8a80;border-color:#ff3b30}
+body.secret-on #pixPaymentBox{background:#050d09!important;border-color:#1f4a31!important}
+body.secret-on .coupon-btn{background:#7dffa8;color:#020503;border-radius:0;box-shadow:3px 3px 0 #ffb000}
+body.secret-on .coupon-msg.ok,body.secret-on .drawer-total-row.coupon-line{color:#7dffa8}
+body.secret-on .coupon-msg.bad{color:#ff8a80}
+body.secret-on .coupon-field.applied .coupon-row input{background:#0c2216;border-color:#7dffa8}
+body.secret-on .drawer-gift.on{background:rgba(125,255,168,.1);border-color:#7dffa8;color:#b9ffd0}
+body.secret-on .drawer-gift.hint{background:rgba(255,176,0,.1);border-color:#ffb000;color:#ffd98a}
+body.secret-on .dg-free{color:#7dffa8}
+body.secret-on .et-steps span.on{background:#7dffa8;color:#020503;border-color:#7dffa8}
+body.secret-on .upsell{border-color:#1f4a31;background:rgba(125,255,168,.05)}
+body.secret-on .upsell-head,body.secret-on .upsell-dt b{color:#7dffa8}
+body.secret-on .upsell-row,body.secret-on .upsell-drinks{border-top-color:rgba(125,255,168,.16)}
+body.secret-on .upsell-name{color:#d9ffe6;font-size:12.5px}
+body.secret-on .upsell-why,body.secret-on .upsell-dt small,body.secret-on .upsell-close{color:#6fa384}
+body.secret-on .upsell-price,body.secret-on .upsell-chip .uc-price{color:#7dffa8}
+body.secret-on .upsell-add{background:#7dffa8;border-color:#020503;box-shadow:2px 2px 0 #ffb000}
+body.secret-on .upsell-chip{background:#050d09;color:#d9ffe6;border-color:#1f4a31;box-shadow:2px 2px 0 #1f4a31}
+body.secret-on .upsell-chip.rec{background:#0c2216;border-color:#7dffa8;box-shadow:2px 2px 0 #7dffa8}
+body.secret-on .upsell-chip .uc-rec{background:#7dffa8;color:#020503}
+body.secret-on .note-chip{background:#050d09;color:#d9ffe6;border-color:#1f4a31}
+body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dffa8}
+</style>
+
+<script>
+/* ===== MODO ULTRASSECRETO: usa o mesmo cardápio, carrinho e pedido do site, com outra cara ===== */
+(function(){
+  var root = document.getElementById("secretSite");
+  if (!root) return;
+  var scroller = document.getElementById("sxScroll"), inner = document.getElementById("sxInner"), boot = document.getElementById("sxBoot");
+  var RM = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var active = false, timers = [], clock = null, taps = 0, tapT = null, fontsDone = false;
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  function esc(t){ return String(t == null ? "" : t).replace(/[&<>"]/g, function(c){ return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]; }); }
+  function later(fn, ms){ var id = setTimeout(fn, ms); timers.push(id); return id; }
+  function clearTimers(){ timers.forEach(clearTimeout); timers = []; }
+  function loadFonts(){
+    if (fontsDone) return; fontsDone = true;
+    var l = document.createElement("link"); l.rel = "stylesheet";
+    l.href = "https://fonts.googleapis.com/css2?family=Special+Elite&family=Share+Tech+Mono&display=swap";
+    document.head.appendChild(l);
+  }
+
+  var TIERS = [
+    ["CLÁSSICOS", "blend 120g · brioche, alface, tomate e maionese"],
+    ["OPERAÇÕES DUPLAS", "2x blend 120g · mussarela em dobro"],
+    ["PROTOCOLO TRIPLO", "3x blend 120g · mussarela em triplo"]
+  ];
+  function tierOf(i){ return /^3X/i.test(i.badge || "") ? 2 : /^2X/i.test(i.badge || "") ? 1 : 0; }
+
+  function priceHtml(item){
+    var ep = effectivePrice(item);
+    return ep.pct ? '<span class="sx-old">' + fmt(ep.old) + '</span><span class="sx-price">' + fmt(ep.price) + '</span>'
+                  : '<span class="sx-price">' + fmt(item.price) + '</span>';
+  }
+  function promoLine(item){
+    var ep = effectivePrice(item);
+    return ep.pct ? '<div class="sx-promo">▲ PROMOÇÃO DO DIA · ' + ep.pct + '% OFF · economize ' + fmt(ep.old - ep.price) + '</div>' : "";
+  }
+  function addBtn(id, label){ return '<button type="button" class="sx-add" data-add="' + esc(id) + '">' + (label || "[ + REQUISITAR ]") + '</button>'; }
+
+  function burgerCard(item, nth, tier){
+    var best = (item.id === "roswell" || item.id === "area51");
+    var stamp = item.stamp || (item.premium ? "CONFIDENCIAL" : "");
+    return '<article class="sx-item" data-t="' + tier + '">' +
+      '<div class="sx-code">ARQ-' + pad2(nth) + ' · BLEND ' + new Array(tier + 2).join("●") + (best ? ' · <b>⭐ MAIS PEDIDO</b>' : "") + '</div>' +
+      '<div class="sx-line"><span class="sx-name">' + esc(item.name) + '</span>' +
+        (item.badge ? '<span class="sx-tagb">' + esc(item.badge) + '</span>' : "") +
+        '<span class="sx-dots"></span>' + priceHtml(item) + '</div>' +
+      promoLine(item) +
+      '<p class="sx-desc">' + esc(item.desc) + '</p>' +
+      (item.seal ? '<div class="sx-note">' + esc(item.seal) + '</div>' : "") +
+      (item.tag ? '<div class="sx-note">' + esc(item.tag) + '</div>' : "") +
+      (stamp ? '<div class="sx-item-stamp">' + esc(stamp) + '</div>' : "") +
+      '<div class="sx-item-bot">' + addBtn(item.id) + '</div></article>';
+  }
+  function friesCard(item, nth){
+    return '<article class="sx-item" data-t="0">' +
+      '<div class="sx-code">SUP-' + pad2(nth) + '</div>' +
+      '<div class="sx-line"><span class="sx-name">' + esc(item.name) + '</span><span class="sx-dots"></span>' + priceHtml(item) + '</div>' +
+      promoLine(item) +
+      '<p class="sx-desc">' + esc(item.desc) + '</p>' +
+      '<div class="sx-item-bot">' + addBtn(item.id) + '</div></article>';
+  }
+  function comboCard(key){
+    var combo = COMBOS[key], sel = comboSelections[key], p = comboPrice(key);
+    var h = '<article class="sx-item" data-t="' + (p.isFeatured ? "1" : "0") + '">' +
+      '<div class="sx-code">PACOTE · ' + esc(key.toUpperCase()) + (p.isFeatured ? ' · <b>★ DO DIA</b>' : "") + '</div>' +
+      '<div class="sx-line"><span class="sx-name">' + esc(combo.label) + '</span><span class="sx-dots"></span>' +
+        (p.isFeatured ? '<span class="sx-old">' + fmt(p.subtotal) + '</span><span class="sx-price">' + fmt(p.discounted) + '</span>' : '<span class="sx-price">' + fmt(p.subtotal) + '</span>') + '</div>' +
+      (p.isFeatured ? '<div class="sx-promo">▲ COMBO DO DIA · ' + p.pct + '% OFF · economize ' + fmt(p.subtotal - p.discounted) + '</div>' : "") +
+      '<p class="sx-desc">' + esc(comboDesc(key)) + '</p>' + comboNote(key);
+    sel.burgers.forEach(function(bid, i){
+      h += '<label class="sx-lab">LANCHE ' + (i + 1) + '</label><select class="sx-sel" data-sx-combo="' + key + '" data-slot="' + i + '">' + burgerOptionsHtml(bid) + '</select>';
+    });
+    if (sel.fries) h += '<label class="sx-lab">BATATA</label><select class="sx-sel" data-sx-fries="' + key + '">' + friesOptionsHtml(sel.fries) + '</select>';
+    if (sel.drink) h += '<label class="sx-lab">REFRIGERANTE</label><select class="sx-sel" data-sx-drink="' + key + '">' + drinkOptionsHtml(sel.drink) + '</select>';
+    return h + '<div class="sx-item-bot"><button type="button" class="sx-add" data-combo-add="' + key + '">[ + REQUISITAR PACOTE ]</button></div></article>';
+  }
+
+  function alertsHtml(){
+    var out = [];
+    try {
+      var today = todaySchedule();
+      if (spotlightVisibility.combo) today.combos.filter(function(k){ return COMBOS[k] && comboActive(k) && comboPromoFor(k) > 0; }).forEach(function(k){
+        var p = comboPrice(k);
+        out.push('<div class="sx-alert"><span class="w">⚠</span> <b>COMBO DO DIA</b> · ' + esc(COMBOS[k].label) + ' · <s>' + fmt(p.subtotal) + '</s> por <b>' + fmt(p.discounted) + '</b> (' + p.pct + '% OFF)</div>');
+      });
+      var bp = activeBurgerPromo();
+      if (spotlightVisibility.promos && bp){
+        if (bp.isLine) out.push('<div class="sx-alert"><span class="w">⚠</span> <b>PROMOÇÃO DO DIA</b> · toda a linha de burgers com ' + bp.pct + '% OFF</div>');
+        else bp.items.forEach(function(it){
+          var ep = effectivePrice(it);
+          out.push('<div class="sx-alert"><span class="w">⚠</span> <b>PROMOÇÃO DO DIA</b> · ' + esc(it.name) + ' · <s>' + fmt(ep.old) + '</s> por <b>' + fmt(ep.price) + '</b> (' + bp.pctFor(it.id) + '% OFF)</div>');
+        });
+      }
+      giftPromos.filter(giftLive).forEach(function(g){
+        out.push('<div class="sx-alert"><span class="w">🎁</span> <b>LEVE E GANHE</b> · ' + esc(giftText(g)) + '</div>');
+      });
+    } catch(e){}
+    return out.join("");
+  }
+
+  function renderSecret(){
+    if (!active) return;
+    var st = scroller.scrollTop;
+    var burgers = visibleItems(menuData.classica).slice().sort(function(a, b){ return tierOf(a) - tierOf(b); });
+    var fries = visibleItems(menuData.fritas);
+    var combos = activeComboKeys();
+    var drinks = drinksData.filter(function(d){ return !isSoldOut(d.id); });
+    var nav = [];
+    if (burgers.length) nav.push(["sx-s-b", "MISSÕES"]);
+    if (fries.length) nav.push(["sx-s-f", "SUPRIMENTOS"]);
+    if (combos.length) nav.push(["sx-s-c", "PACOTES"]);
+    if (drinks.length) nav.push(["sx-s-d", "LÍQUIDOS"]);
+
+    var h = '<header class="sx-top"><div class="sx-bar"><span class="sx-led"></span><span>TERMINAL SEGURO // ÁREA 51</span>' +
+      '<button type="button" class="sx-exit" data-sx-exit>⏏ SAIR</button></div>' +
+      (nav.length ? '<nav class="sx-nav">' + nav.map(function(n){ return '<button type="button" data-jump="' + n[0] + '">' + n[1] + '</button>'; }).join("") + '</nav>' : "") + '</header>';
+
+    h += '<section class="sx-hero"><div class="sx-file">PROCESSO ET-2077/BR · ACESSO NÍVEL 5</div>' +
+      '<img class="sx-logo" src="./logo.png" alt="ET BURGER 2077">' +
+      '<h1 class="sx-title">ARQUIVOS ULTRASSECRETOS</h1>' +
+      '<p class="sx-sub">Documento restrito a terráqueos autorizados. Contém <button type="button" class="sx-redact" aria-label="Trecho censurado, toque para revelar">hambúrgueres de origem alienígena</button>. A leitura causa fome.</p>' +
+      '<div class="sx-stamp">ULTRASSECRETO</div></section>';
+
+    h += '<section class="sx-radar-wrap"><div class="sx-radar" aria-hidden="true"><i class="sx-sweep"></i><b class="sx-blip b1"></b><b class="sx-blip b2"></b><b class="sx-blip b3"></b></div>' +
+      '<div class="sx-status" id="sxStBox"><div class="sx-st-k" id="sxStK"></div><div class="sx-st-t" id="sxStT"></div><div class="sx-st-m" id="sxStM"></div></div></section>';
+
+    var al = alertsHtml();
+    if (al) h += al;
+
+    var n = 0, c = 0;
+    function sec(id, title, sub){ c++; return '<h2 class="sx-h" id="' + id + '"><span>[' + pad2(c) + ']</span> ' + title + '</h2>' + (sub ? '<div class="sx-hs">' + sub + '</div>' : ""); }
+
+    if (burgers.length){
+      var last = -1;
+      h += sec("sx-s-b", "MISSÕES", "burgers de blend 120g · escolha seu arquivo");
+      burgers.forEach(function(it){
+        var t = tierOf(it);
+        if (t !== last){ last = t; h += '<div class="sx-hs" style="margin-top:16px">▸ ' + TIERS[t][0] + ' — ' + TIERS[t][1] + '</div>'; }
+        n++; h += burgerCard(it, n, t);
+      });
+    }
+    if (fries.length){
+      h += sec("sx-s-f", "SUPRIMENTOS", "para acompanhar a missão");
+      fries.forEach(function(it, i){ h += friesCard(it, i + 1); });
+    }
+    if (combos.length){
+      h += sec("sx-s-c", "PACOTES DE ABDUÇÃO", "combos · monte do seu jeito");
+      combos.forEach(function(k){ h += comboCard(k); });
+    }
+    if (drinks.length){
+      h += sec("sx-s-d", "LÍQUIDOS", "hidratação da tripulação");
+      drinks.forEach(function(d){
+        h += '<div class="sx-drink"><span class="sx-name" style="font-size:16px">' + esc(d.name) + '</span><span class="sx-dots"></span><span class="sx-price" style="font-size:16px">' + fmt(d.price) + '</span>' + addBtn(d.id, "[ + ]") + '</div>';
+      });
+    }
+    if (!burgers.length && !fries.length && !combos.length && !drinks.length) h += '<div class="sx-empty">NENHUM ARQUIVO DISPONÍVEL NO MOMENTO.</div>';
+
+    h += '<footer class="sx-foot"><div>📍 ' + esc(STORE_ADDRESS) + '</div><div>📲 (93) 99184-8394 · 🚀 delivery R$ 4,00</div><div>⏰ todos os dias, 19h30 às 00h</div>' +
+      '<div><b>ESTE TERMINAL NÃO SE AUTODESTRUIRÁ.</b> ...provavelmente. 🛸</div>' +
+      '<button type="button" class="sx-exit" data-sx-exit>⏏ ENCERRAR SESSÃO</button></footer>';
+
+    inner.innerHTML = h;
+    scroller.scrollTop = st;
+    tick();
+  }
+
+  function tick(){
+    var k = document.getElementById("sxStK"), t = document.getElementById("sxStT"), m = document.getElementById("sxStM"), box = document.getElementById("sxStBox");
+    if (!k) return;
+    if (isStoreOpen()){
+      k.textContent = "● PORTAL ABERTO"; t.textContent = "PEDIDOS LIBERADOS"; m.textContent = "Missões aceitas até 00h. Escolha seus arquivos abaixo.";
+      box.classList.remove("closed");
+    } else {
+      var next = getNextOpening(), rem = Math.max(0, Math.floor((next.getTime() - Date.now()) / 1000));
+      var nt = new Date(next.getTime() + STORE_UTC_OFFSET * 3600000);
+      k.textContent = "● PORTAL FECHADO";
+      t.textContent = pad2(Math.floor(rem / 3600)) + ":" + pad2(Math.floor((rem % 3600) / 60)) + ":" + pad2(rem % 60);
+      m.textContent = "Próxima decolagem às " + pad2(nt.getUTCHours()) + "h" + pad2(nt.getUTCMinutes()) + ". Você pode ler os arquivos enquanto espera.";
+      box.classList.add("closed");
+    }
+  }
+
+  function endBoot(){
+    boot.classList.add("out");
+    later(function(){ boot.style.display = "none"; }, 450);
+  }
+  function startBoot(){
+    if (RM){ boot.style.display = "none"; return; }
+    boot.style.display = ""; boot.classList.remove("out");
+    var lines = boot.querySelectorAll("[data-l]");
+    lines.forEach(function(l){ l.classList.remove("in"); });
+    lines.forEach(function(l, i){ later(function(){ l.classList.add("in"); }, 340 * (i + 1)); });
+    later(endBoot, 340 * lines.length + 800);
+  }
+  boot.addEventListener("click", function(){ clearTimers(); endBoot(); });
+
+  function open(){
+    if (active) return;
+    active = true;
+    loadFonts();
+    document.body.classList.add("secret-on");
+    if (themeMeta) themeMeta.setAttribute("content", "#040a07");
+    root.hidden = false;
+    renderSecret();
+    scroller.scrollTop = 0;
+    startBoot();
+    clearInterval(clock); clock = setInterval(tick, 1000);
+    try { root.focus({ preventScroll: true }); } catch(e){}
+  }
+  function close(){
+    if (!active) return;
+    active = false;
+    clearTimers(); clearInterval(clock);
+    root.hidden = true;
+    document.body.classList.remove("secret-on");
+    if (themeMeta) themeMeta.setAttribute("content", "#0A1420");
+  }
+  window.etSecret = { open: open, close: close, toggle: function(){ active ? close() : open(); }, isOpen: function(){ return active; } };
+
+  function addItem(id, btn){
+    var item = getItemById(id);
+    if (!item || isSoldOut(id)) return;
+    var ep = effectivePrice(item), key = ep.pct ? item.id + "@" + ep.price : item.id;
+    if (!cart[key]) cart[key] = { name: ep.pct ? item.name + " (PROMO " + ep.pct + "% OFF)" : item.name, price: ep.price, full: ep.old || item.price, qty: 0, parts: [item.id] };
+    cart[key].qty += 1;
+    updateCartUI(); flyToCart(btn); showToast(item.name + " requisitado 🛸");
+    var o = btn.textContent; btn.textContent = "[ ✔ REGISTRADO ]";
+    setTimeout(function(){ if (btn.isConnected) btn.textContent = o; }, 900);
+  }
+
+  root.addEventListener("click", function(e){
+    var t = e.target, el;
+    if ((el = t.closest("[data-add]"))) { addItem(el.dataset.add, el); return; }
+    if ((el = t.closest("[data-combo-add]"))) { addComboToCart(el.dataset.comboAdd, el); return; }
+    if (t.closest("[data-sx-exit]")) { close(); return; }
+    if ((el = t.closest("[data-jump]"))) {
+      var target = document.getElementById(el.dataset.jump);
+      if (target) scroller.scrollTo({ top: target.offsetTop - 96, behavior: RM ? "auto" : "smooth" });
+      return;
+    }
+    if ((el = t.closest(".sx-redact"))) { el.classList.toggle("on"); return; }
+    if (t.closest(".sx-logo")) {
+      taps++; clearTimeout(tapT); tapT = setTimeout(function(){ taps = 0; }, 850);
+      if (taps >= 3) { taps = 0; close(); }
+    }
+  });
+  root.addEventListener("change", function(e){
+    var t = e.target, d = t.dataset || {};
+    if (d.sxCombo !== undefined && d.slot !== undefined) comboSelections[d.sxCombo].burgers[parseInt(d.slot, 10)] = t.value;
+    else if (d.sxFries !== undefined) comboSelections[d.sxFries].fries = t.value;
+    else if (d.sxDrink !== undefined) comboSelections[d.sxDrink].drink = t.value;
+    else return;
+    renderSecret();
+  });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape" && active && !document.getElementById("drawer").classList.contains("open")) close();
+  });
+
+  // quando o painel muda algo (estoque, preço, promoção), o terminal se atualiza junto
+  var _render = window.renderAll;
+  if (typeof _render === "function") window.renderAll = function(){
+    var r = _render.apply(this, arguments);
+    if (active) renderSecret();
+    return r;
+  };
+})();
+</script>
+
 <!-- ===== EASTER EGGS: Konami / ticker, vaca abduzida, console ===== -->
 <style>
 .egg-rain{position:fixed;inset:0;z-index:9999;pointer-events:none;overflow:hidden}
