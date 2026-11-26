@@ -1336,14 +1336,14 @@
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite">Item adicionado ao pedido</div>
-<div class="sx" id="secretSite" role="region" aria-label="Modo ultrassecreto" tabindex="-1" hidden>
+<div class="sx" id="secretSite" role="region" aria-label="Modo Cyberpunk 2077" tabindex="-1" hidden>
   <div class="sx-scroll" id="sxScroll"><div class="sx-inner" id="sxInner"></div></div>
   <div class="sx-boot" id="sxBoot" aria-hidden="true">
-    <div data-l>&gt; iniciando terminal seguro...</div>
-    <div data-l>&gt; conectando à nave-mãe ........ <span class="ok">OK</span></div>
-    <div data-l>&gt; verificando credenciais do terráqueo ........ <span class="ok">OK</span></div>
-    <div data-l>&gt; descriptografando cardápio ........ <span class="ok">OK</span></div>
-    <div data-l class="big">&gt; ACESSO NÍVEL 5 CONCEDIDO <span class="sx-cur"></span></div>
+    <div data-l>&gt; BOOT // NIGHT CITY OS v2.0.77</div>
+    <div data-l>&gt; conectando à rede ........ <span class="ok">OK</span></div>
+    <div data-l>&gt; carregando cardápio neural ........ <span class="ok">OK</span></div>
+    <div data-l>&gt; sincronizando pedidos ........ <span class="ok">OK</span></div>
+    <div data-l class="big">&gt; BEM-VINDO A NIGHT CITY, CHOOMBA <span class="sx-cur"></span></div>
     <div class="sx-skip">toque para pular</div>
   </div>
 </div>
@@ -2773,7 +2773,7 @@
   updateStatus();
   setInterval(updateStatus, 1000);
 
-  // Easter egg: toque 3 vezes na logo para abrir/fechar o MODO ULTRASSECRETO (um site à parte, tema terminal da Área 51).
+  // Easter egg: toque 3 vezes na logo para abrir/fechar o MODO CYBERPUNK 2077 (o site vira uma interface futurista de Night City).
   // Opcional: coloque aqui o código de um cupom secreto (crie o cupom na aba 🎟️ Cupons do painel) para ele aparecer ao ativar.
   const EASTER_EGG_COUPON = "";
   (function(){
@@ -2790,8 +2790,8 @@
 
     function showSign(on){
       if (!sign) return;
-      signT.textContent = on ? "ACESSO CONCEDIDO" : "SESSÃO ENCERRADA";
-      signS.textContent = on ? "modo ultrassecreto ligado" : "de volta ao mundo terráqueo";
+      signT.textContent = on ? "NIGHT CITY" : "DESCONECTADO";
+      signS.textContent = on ? "modo cyberpunk 2077 ligado" : "de volta ao site normal";
       const code = on ? EASTER_EGG_COUPON : "";
       codeBtn.style.display = code ? "inline-block" : "none";
       if (code) codeBtn.textContent = "🎟️ " + code + " · toque para copiar";
@@ -3341,173 +3341,206 @@ footer{position:relative}
   .neon-fx{display:none!important}
 }
 </style>
-<!-- ===== MODO ULTRASSECRETO (3 toques na logo): site à parte, tema terminal classificado da Área 51 ===== -->
+<!-- ===== MODO CYBERPUNK 2077 (3 toques na logo): o site vira uma interface futurista, mesmo cardápio e carrinho ===== -->
 <style>
 body.secret-on{
   overflow:hidden;
-  --space:#040a07; --paper:#08130d; --cream:#d9ffe6; --cream-2:#8fc9a4;
-  --ink:#020503; --rust:#ff3b30; --rust-2:#ff8a80; --teal:#0c2216; --teal-2:#08160e;
-  --mustard:#7dffa8; --mustard-2:#ffb000;
-  --sw-line:#1f4a31; --sw-muted:#6fa384; --sw-field:#050d09;
-  color:#d9ffe6;
+  --space:#07070d; --paper:#0e0e18; --cream:#e9eef5; --cream-2:#9aa0b8;
+  --ink:#05050a; --rust:#ff003c; --rust-2:#ff5c7c; --teal:#0e0e18; --teal-2:#0a0a12;
+  --mustard:#fcee09; --mustard-2:#ffd400;
+  color:#e9eef5;
 }
-.sx{position:fixed;inset:0;z-index:150;background:#040a07;color:#d9ffe6;font-family:'Share Tech Mono','Courier New',monospace}
+.neon-ufo{display:none!important}
+.neon-fx.run::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,240,255,.28) 0 2px,transparent 2px 6px);animation:neon-flash .7s ease-out}
+
+.sx{--y:#fcee09;--c:#00f0ff;--r:#ff003c;--bg:#07070d;--p:#0e0e18;--p2:#15151f;--ln:#2a2a3d;--tx:#e9eef5;--mu:#8e94ad;
+  position:fixed;inset:0;z-index:150;background:var(--bg);color:var(--tx);font-family:'Chakra Petch','Rajdhani',system-ui,sans-serif}
 .sx[hidden]{display:none}
 .sx *{box-sizing:border-box}
+.sx::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:30;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px)}
 .sx-scroll{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
-  background:radial-gradient(ellipse at 50% -10%,rgba(125,255,168,.13),transparent 55%),radial-gradient(ellipse at 50% 120%,rgba(255,176,0,.08),transparent 55%),#040a07}
-.sx-inner{position:relative;max-width:760px;margin:0 auto;padding:0 16px 140px}
+  background:
+    radial-gradient(ellipse at 90% -8%,rgba(255,0,60,.20),transparent 50%),
+    radial-gradient(ellipse at -5% 25%,rgba(0,240,255,.13),transparent 46%),
+    linear-gradient(rgba(252,238,9,.035) 1px,transparent 1px) 0 0/100% 34px,
+    linear-gradient(90deg,rgba(252,238,9,.035) 1px,transparent 1px) 0 0/34px 100%,
+    var(--bg)}
+.sx-inner{position:relative;max-width:980px;margin:0 auto;padding:0 16px 150px}
+.sx-inner.glitch{animation:sx-gin .6s steps(1) both}
 
-/* barra do topo */
-.sx-top{position:sticky;top:0;z-index:5;margin:0 -16px;background:#040a07;border-bottom:1px solid #1f4a31}
-.sx-bar{display:flex;align-items:center;gap:10px;padding:10px 16px;font-size:12px;letter-spacing:2px;color:#7dffa8}
-.sx-led{width:8px;height:8px;border-radius:50%;background:#7dffa8;box-shadow:0 0 8px #7dffa8;animation:sx-blink 1.6s steps(2) infinite}
-.sx-exit{margin-left:auto;background:transparent;border:1px solid #ff3b30;color:#ff8a80;font:inherit;font-size:12px;letter-spacing:1px;padding:7px 11px;min-height:34px;cursor:pointer}
-.sx-nav{display:flex;gap:8px;overflow-x:auto;padding:0 16px 10px;scrollbar-width:none}
-.sx-nav::-webkit-scrollbar{display:none}
-.sx-nav button{flex:0 0 auto;background:transparent;border:1px solid #1f4a31;color:#8fc9a4;font:inherit;font-size:12px;letter-spacing:2px;padding:7px 12px;min-height:34px;cursor:pointer}
-.sx-nav button:active{background:#7dffa8;color:#020503}
+/* ===== barra do topo ===== */
+.sx-top{position:sticky;top:0;z-index:5;margin:0 -16px;background:rgba(7,7,13,.93);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
+.sx-bar{display:flex;align-items:center;gap:10px;padding:10px 16px;font:12px 'Share Tech Mono','Courier New',monospace;letter-spacing:2px;color:var(--c)}
+.sx-brand{color:var(--y);font-weight:700}
+.sx-led{width:8px;height:8px;background:var(--r);box-shadow:0 0 8px var(--r);animation:sx-blink 1.4s steps(2) infinite}
+.sx-exit{margin-left:auto;background:transparent;border:1px solid var(--r);color:#ff7a96;font:inherit;font-size:12px;letter-spacing:1.5px;padding:7px 12px;min-height:36px;cursor:pointer;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px))}
+.sx-exit:active{background:var(--r);color:#fff}
+.sx-tabs{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;padding:0 16px 10px}
+.sx-tabs button{min-height:44px;min-width:0;background:var(--p);border:1px solid var(--ln);color:var(--mu);font:600 12.5px 'Chakra Petch',sans-serif;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;padding:6px 4px;line-height:1.15;
+  clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px))}
+.sx-tabs button small{display:block;font:400 10px 'Share Tech Mono',monospace;letter-spacing:1px;opacity:.8;margin-top:2px;text-transform:none}
+.sx-tabs button.on{background:var(--y);border-color:var(--y);color:#000}
 
-/* cabeçalho do documento */
-.sx-hero{position:relative;text-align:center;padding:26px 0 8px}
-.sx-file{font-size:10.5px;letter-spacing:1.5px;color:#ffb000;padding-right:0}
-.sx-logo{display:block;width:150px;max-width:50vw;height:auto;margin:14px auto 8px;cursor:pointer;filter:drop-shadow(0 0 10px rgba(125,255,168,.35))}
-.sx-title{font:400 28px/1.1 'Special Elite','Courier New',monospace;color:#fff;text-shadow:0 0 12px rgba(125,255,168,.45);letter-spacing:1px}
-.sx-sub{max-width:460px;margin:10px auto 0;font-size:13.5px;line-height:1.6;color:#8fc9a4}
-.sx-redact{display:inline;border:0;padding:0 3px;border-radius:2px;font:inherit;background:#d9ffe6;color:transparent;cursor:pointer}
-.sx-redact.on{background:transparent;color:#ffb000}
-.sx-stamp{position:absolute;right:-2px;top:84px;transform:rotate(-12deg);border:3px solid #ff3b30;color:#ff3b30;font:400 19px 'Special Elite','Courier New',monospace;letter-spacing:2px;padding:2px 10px;opacity:.85;pointer-events:none;animation:sx-slam .55s ease-out .2s both}
+/* ===== cabeçalho ===== */
+.sx-hero{position:relative;text-align:center;padding:26px 0 6px}
+.sx-file{font:11px 'Share Tech Mono',monospace;letter-spacing:3px;color:var(--r)}
+.sx-logo{display:block;width:170px;max-width:52vw;height:auto;margin:14px auto 6px;cursor:pointer;filter:drop-shadow(0 0 14px rgba(252,238,9,.35)) drop-shadow(0 0 4px rgba(0,240,255,.4))}
+.sx-title{position:relative;font:700 clamp(36px,10vw,64px)/1 'Chakra Petch',sans-serif;letter-spacing:3px;text-transform:uppercase;color:#fff;margin:4px 0 0;
+  text-shadow:2px 0 var(--r),-2px 0 var(--c);animation:sx-tg 5s steps(1) infinite}
+.sx-title span{color:var(--y)}
+.sx-sub{max-width:470px;margin:12px auto 0;font-size:14.5px;line-height:1.6;color:var(--mu)}
+.sx-sub b{color:var(--c);font-weight:600}
+.sx-bars{height:6px;margin:20px 0 0;background:repeating-linear-gradient(-45deg,var(--y) 0 8px,transparent 8px 16px);opacity:.85}
 
-/* radar + status */
-.sx-radar-wrap{display:flex;gap:16px;align-items:center;border:1px solid #1f4a31;background:rgba(8,19,13,.85);padding:14px;margin:14px 0}
-.sx-radar{position:relative;flex:0 0 112px;width:112px;height:112px;border-radius:50%;border:1px solid #1f4a31;overflow:hidden;
-  background:repeating-radial-gradient(circle at 50% 50%,transparent 0 17px,rgba(125,255,168,.22) 17px 18px),linear-gradient(#1f4a31,#1f4a31) 50% 0/1px 100% no-repeat,linear-gradient(#1f4a31,#1f4a31) 0 50%/100% 1px no-repeat}
-.sx-sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(125,255,168,.6),rgba(125,255,168,0) 75deg);animation:sx-spin 4s linear infinite;will-change:transform}
-.sx-blip{position:absolute;width:6px;height:6px;border-radius:50%;background:#ffb000;box-shadow:0 0 6px #ffb000;opacity:0;animation:sx-ping 4s ease-out infinite}
-.sx-blip.b1{top:22%;left:62%}.sx-blip.b2{top:58%;left:28%;animation-delay:1.3s}.sx-blip.b3{top:70%;left:66%;animation-delay:2.6s}
-.sx-st-k{font-size:12px;letter-spacing:3px;color:#7dffa8}
-.sx-st-t{font:400 24px/1.2 'Special Elite','Courier New',monospace;color:#fff;margin:3px 0}
-.sx-st-m{font-size:12.5px;line-height:1.5;color:#8fc9a4}
-.sx-status.closed .sx-st-k{color:#ffb000}
+/* ===== status da loja ===== */
+.sx-status{margin:16px 0 10px;padding:14px 16px;background:var(--p);border:1px solid var(--ln);border-left:5px solid var(--c);
+  clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
+.sx-status.closed{border-left-color:var(--r)}
+.sx-st-k{font:12px 'Share Tech Mono',monospace;letter-spacing:3px;color:var(--c)}
+.sx-status.closed .sx-st-k{color:#ff7a96}
+.sx-st-t{font:700 28px/1.2 'Chakra Petch',sans-serif;letter-spacing:2px;color:#fff;margin:3px 0;font-variant-numeric:tabular-nums}
+.sx-st-m{font-size:13px;line-height:1.5;color:var(--mu)}
+.sx-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.sx-chip{font:12px 'Share Tech Mono',monospace;letter-spacing:.5px;color:#c9cfe4;border:1px solid var(--ln);background:rgba(14,14,24,.8);padding:6px 10px}
 
-/* alertas */
-.sx-alert{border:1px solid #ffb000;border-left:5px solid #ffb000;background:rgba(255,176,0,.07);padding:10px 12px;margin:8px 0;font-size:13.5px;line-height:1.55;color:#ffd98a}
-.sx-alert b{color:#fff}
-.sx-alert s{color:#a8842f}
+/* ===== avisos de promoção ===== */
+.sx-alert{margin:8px 0;padding:10px 12px;border:1px solid var(--y);border-left:5px solid var(--y);background:rgba(252,238,9,.07);font-size:13.5px;line-height:1.5;color:#fff7a8}
+.sx-alert b{color:var(--y)}
+.sx-alert s{color:var(--mu)}
 .sx-alert .w{display:inline-block;animation:sx-blink 1.2s steps(2) infinite}
 
-/* seções */
-.sx-h{margin:28px 0 2px;font:400 22px 'Special Elite','Courier New',monospace;color:#7dffa8;letter-spacing:1px}
-.sx-h span{color:#ffb000}
-.sx-hs{font-size:12.5px;color:#8fc9a4;padding-bottom:8px;border-bottom:1px dashed #1f4a31;margin-bottom:12px}
+/* ===== seções ===== */
+.sx-h{display:flex;align-items:center;gap:12px;margin:24px 0 4px;font:700 24px/1.1 'Chakra Petch',sans-serif;letter-spacing:2px;text-transform:uppercase;color:#fff}
+.sx-h .n{background:var(--y);color:#000;font:700 13px 'Share Tech Mono',monospace;letter-spacing:1px;padding:4px 8px;clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%)}
+.sx-hs{font-size:13px;color:var(--mu);padding-bottom:10px;border-bottom:1px solid var(--ln);margin-bottom:14px}
+.sx-tier{display:flex;align-items:center;gap:10px;margin:20px 0 10px;font:12px 'Share Tech Mono',monospace;letter-spacing:2px;color:var(--c);text-transform:uppercase}
+.sx-tier::after{content:"";flex:1;height:1px;background:var(--ln)}
+.sx-tier i{font-style:normal;color:var(--mu);letter-spacing:.5px;text-transform:none}
+.sx-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:760px){.sx-grid{grid-template-columns:1fr 1fr}}
 
-/* arquivos (itens) */
-.sx-item{position:relative;border:1px solid #1f4a31;border-left:4px solid var(--t,#7dffa8);background:#08130d;padding:13px 14px 12px;margin:0 0 12px}
-.sx-item[data-t="1"]{--t:#ffb000}
-.sx-item[data-t="2"]{--t:#ff3b30}
-.sx-code{font-size:11px;letter-spacing:2px;color:#6fa384;margin-bottom:5px}
-.sx-code b{color:#ffb000;font-weight:400}
-.sx-line{display:flex;align-items:baseline;gap:8px}
-.sx-name{font:400 19px 'Special Elite','Courier New',monospace;color:#fff;letter-spacing:.5px}
-.sx-tagb{font-size:11px;letter-spacing:1px;border:1px solid var(--t,#7dffa8);color:var(--t,#7dffa8);padding:0 6px;white-space:nowrap}
-.sx-dots{flex:1;min-width:12px;border-bottom:2px dotted #1f4a31;transform:translateY(-4px)}
-.sx-price{font-size:19px;font-weight:700;color:#7dffa8;white-space:nowrap}
-.sx-old{font-size:13px;color:#6fa384;text-decoration:line-through;margin-right:6px;white-space:nowrap}
-.sx-promo{margin-top:6px;font-size:12.5px;color:#ffb000}
-.sx-desc{margin:7px 0 0;font-size:13.5px;line-height:1.55;color:#a9d9bb}
-.sx-note{margin-top:5px;font-size:12.5px;color:#ffb000;font-style:italic}
-.sx-item-bot{display:flex;justify-content:flex-end;margin-top:10px}
-.sx-item-stamp{position:absolute;left:14px;bottom:12px;transform:rotate(-6deg);border:2px solid rgba(255,59,48,.75);color:rgba(255,59,48,.8);font:400 13px 'Special Elite','Courier New',monospace;letter-spacing:2px;padding:1px 8px;pointer-events:none}
-.sx-add{background:transparent;border:1px solid #7dffa8;color:#7dffa8;font:inherit;font-size:14px;letter-spacing:1px;padding:10px 14px;min-height:44px;cursor:pointer}
-.sx-add:active{background:#7dffa8;color:#020503}
-.sx-lab{display:block;font-size:11px;letter-spacing:2px;color:#6fa384;margin-top:10px}
-.sx-sel{width:100%;min-height:44px;margin-top:5px;background:#050d09;color:#d9ffe6;border:1px solid #1f4a31;padding:9px;font:inherit;font-size:14px;border-radius:0}
-.sx .combo-note{background:rgba(255,176,0,.08);border:1px dashed #ffb000;color:#ffd98a;font-family:inherit;padding:8px 10px;margin:8px 0;font-size:12.5px;border-radius:0}
-.sx-drink{display:flex;align-items:center;gap:10px;border:1px solid #1f4a31;background:#08130d;padding:9px 12px;margin:0 0 8px}
-.sx-drink .sx-dots{flex:1}
-.sx-empty{padding:30px 10px;text-align:center;color:#8fc9a4}
+/* ===== cartões ===== */
+.sx-item{--t:var(--c);position:relative;display:flex;flex-direction:column;padding:16px 16px 14px 18px;background:linear-gradient(180deg,var(--p2),var(--p));border-left:3px solid var(--t);
+  clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
+.sx-item::before{content:"";position:absolute;top:0;right:0;width:16px;height:16px;background:var(--t);clip-path:polygon(0 0,100% 100%,0 100%);opacity:.9}
+.sx-item[data-t="1"]{--t:var(--y)}
+.sx-item[data-t="2"]{--t:var(--r)}
+.sx-code{font:11px 'Share Tech Mono',monospace;letter-spacing:2px;color:var(--mu);margin-bottom:6px;padding-right:18px}
+.sx-code b{color:var(--y);font-weight:400}
+.sx-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.sx-name{font:700 21px/1.15 'Chakra Petch',sans-serif;letter-spacing:.5px;text-transform:uppercase;color:#fff}
+.sx-tagb{font:11px 'Share Tech Mono',monospace;letter-spacing:1px;border:1px solid var(--t);color:var(--t);padding:0 6px;white-space:nowrap}
+.sx-pr{margin-left:auto;display:flex;align-items:baseline;gap:6px;white-space:nowrap}
+.sx-price{font:700 22px 'Chakra Petch',sans-serif;color:var(--y)}
+.sx-old{font-size:13px;color:var(--mu);text-decoration:line-through}
+.sx-promo{align-self:flex-start;margin-top:8px;background:var(--y);color:#000;font:700 12px 'Chakra Petch',sans-serif;letter-spacing:.5px;padding:3px 9px;clip-path:polygon(0 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.sx-desc{margin:9px 0 0;font-size:14px;line-height:1.55;color:#b6bcd2}
+.sx-note{margin-top:6px;font-size:12.5px;color:var(--c)}
+.sx-item-bot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:14px}
+.sx-item-stamp{font:11px 'Share Tech Mono',monospace;letter-spacing:1.5px;color:#ff7a96;border:1px solid rgba(255,0,60,.6);padding:2px 8px}
+.sx-add{margin-left:auto;min-height:44px;padding:0 18px;background:transparent;border:1px solid var(--c);color:var(--c);font:700 13px 'Chakra Petch',sans-serif;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;
+  clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px))}
+.sx-add:active{background:var(--c);color:#000}
+.sx-lab{display:block;font:11px 'Share Tech Mono',monospace;letter-spacing:2px;color:var(--mu);margin-top:10px}
+.sx-sel{width:100%;min-height:44px;margin-top:5px;background:#0a0a12;color:var(--tx);border:1px solid var(--ln);padding:9px;font:inherit;font-size:14px;border-radius:0}
+.sx-sel:focus{outline:2px solid var(--c)}
+.sx .combo-note{background:rgba(252,238,9,.07);border:1px dashed var(--y);color:#fff7a8;font-family:inherit;padding:8px 10px;margin:8px 0;font-size:12.5px;border-radius:0}
+.sx-drinks{display:grid;grid-template-columns:1fr;gap:8px}
+@media (min-width:560px){.sx-drinks{grid-template-columns:1fr 1fr}}
+.sx-drink{display:flex;align-items:center;gap:10px;background:var(--p);border:1px solid var(--ln);border-left:3px solid var(--c);padding:8px 12px}
+.sx-drink .sx-name{font-size:16px;flex:1}
+.sx-drink .sx-price{font-size:17px}
+.sx-drink .sx-add{margin-left:0;min-height:40px;padding:0 14px}
+.sx-empty{padding:34px 10px;text-align:center;color:var(--mu)}
 
-/* rodapé */
-.sx-foot{margin-top:30px;padding-top:16px;border-top:1px dashed #1f4a31;text-align:center;font-size:12.5px;line-height:1.9;color:#8fc9a4}
-.sx-foot b{color:#ffb000;font-weight:400}
+/* ===== rodapé ===== */
+.sx-foot{margin-top:34px;padding-top:18px;border-top:1px solid var(--ln);text-align:center;font-size:13px;line-height:1.9;color:var(--mu)}
+.sx-foot b{color:var(--y);font-weight:600}
 .sx-foot .sx-exit{margin:14px auto 0;display:inline-block}
 
-/* sequência de boot */
-.sx-boot{position:absolute;inset:0;z-index:20;background:#020503;padding:34px 20px;font-size:14px;line-height:2;color:#7dffa8;transition:opacity .4s ease;cursor:pointer}
+/* ===== abertura (boot) ===== */
+.sx-boot{position:absolute;inset:0;z-index:20;background:#05050a;padding:34px 20px;font:14px/2 'Share Tech Mono','Courier New',monospace;color:var(--c);transition:opacity .4s ease;cursor:pointer}
 .sx-boot.out{opacity:0;pointer-events:none}
 .sx-boot [data-l]{opacity:0}
 .sx-boot [data-l].in{opacity:1}
-.sx-boot .ok{color:#ffb000}
-.sx-boot .big{color:#fff;font-size:16px}
-.sx-cur{display:inline-block;width:9px;height:16px;background:#7dffa8;vertical-align:-2px;animation:sx-blink 1s steps(2) infinite}
-.sx-skip{position:absolute;left:0;right:0;bottom:24px;text-align:center;font-size:11px;letter-spacing:2px;color:#6fa384}
+.sx-boot .ok{color:var(--y)}
+.sx-boot .big{color:#fff;font-size:16px;text-shadow:2px 0 var(--r),-2px 0 var(--c)}
+.sx-cur{display:inline-block;width:9px;height:16px;background:var(--y);vertical-align:-2px;animation:sx-blink 1s steps(2) infinite}
+.sx-skip{position:absolute;left:0;right:0;bottom:24px;text-align:center;font-size:11px;letter-spacing:2px;color:var(--mu)}
 
 @keyframes sx-blink{50%{opacity:0}}
-@keyframes sx-spin{to{transform:rotate(360deg)}}
-@keyframes sx-ping{0%{opacity:0;transform:scale(.4)}8%{opacity:1;transform:scale(1)}60%,100%{opacity:0;transform:scale(1.8)}}
-@keyframes sx-slam{0%{opacity:0;transform:rotate(-12deg) scale(2.4)}60%{opacity:.95;transform:rotate(-12deg) scale(.94)}100%{opacity:.85;transform:rotate(-12deg) scale(1)}}
-@media (max-width:420px){.sx-title{font-size:24px}.sx-stamp{font-size:15px;top:78px}.sx-radar{flex-basis:96px;width:96px;height:96px}}
+@keyframes sx-tg{0%,91%,100%{text-shadow:2px 0 var(--r),-2px 0 var(--c);transform:none}
+  93%{text-shadow:-5px 0 var(--r),5px 0 var(--c);transform:translateX(4px) skewX(-6deg)}
+  95%{text-shadow:5px 0 var(--r),-5px 0 var(--c);transform:translateX(-4px)}
+  97%{text-shadow:2px 0 var(--r),-2px 0 var(--c);transform:none}}
+@keyframes sx-gin{0%{clip-path:inset(40% 0 40% 0);transform:translateX(-8px)}20%{clip-path:inset(10% 0 70% 0);transform:translateX(8px)}
+  40%{clip-path:inset(60% 0 10% 0);transform:translateX(-4px)}60%{clip-path:inset(0 0 55% 0);transform:translateX(5px)}
+  80%{clip-path:inset(30% 0 20% 0);transform:translateX(-2px)}100%{clip-path:inset(0);transform:none}}
+@media (max-width:420px){.sx-name{font-size:19px}.sx-st-t{font-size:25px}.sx-tabs button{font-size:11.5px;letter-spacing:.6px}}
 @media (prefers-reduced-motion:reduce){
-  .sx-sweep,.sx-blip,.sx-led,.sx-cur,.sx-alert .w,.sx-stamp{animation:none}
-  .sx-blip{opacity:.9}
+  .sx-title,.sx-led,.sx-cur,.sx-alert .w,.sx-inner.glitch{animation:none}
   .sx-boot{display:none}
+  .neon-fx.run::after{animation:none}
 }
 
-/* carrinho e finalização no tema terminal */
-body.secret-on .cart-bar{background:#020503;border-top:2px solid #7dffa8;box-shadow:0 -6px 20px rgba(0,0,0,.6)}
-body.secret-on .cart-info .count{color:#d9ffe6;font-family:'Share Tech Mono','Courier New',monospace}
-body.secret-on .cart-info .total{color:#7dffa8;font-family:'Special Elite','Courier New',monospace}
-body.secret-on .cart-bar .btn-primary{background:#7dffa8;color:#020503;border-color:#7dffa8;border-radius:0;box-shadow:3px 3px 0 #ffb000;font-family:'Share Tech Mono','Courier New',monospace}
-body.secret-on .drawer{background:#08130d;border-left:2px solid #1f4a31;color:#d9ffe6}
-body.secret-on .drawer *{font-family:'Share Tech Mono','Courier New',monospace}
-body.secret-on .drawer-head{background:#020503;border-bottom:2px solid #7dffa8}
-body.secret-on .drawer-head h3{font-family:'Special Elite','Courier New',monospace}
-body.secret-on .drawer-item{border-bottom-color:rgba(125,255,168,.18)}
+/* ===== carrinho e finalização no tema cyberpunk ===== */
+body.secret-on .cart-bar{background:#05050a;border-top:2px solid #fcee09;box-shadow:0 -6px 22px rgba(0,0,0,.7)}
+body.secret-on .cart-info .count{color:#fff;font-family:'Chakra Petch',sans-serif}
+body.secret-on .cart-info .total{color:#fcee09;font-family:'Chakra Petch',sans-serif}
+body.secret-on .cart-bar .btn-primary{background:#fcee09;color:#000;border-color:#fcee09;border-radius:0;box-shadow:3px 3px 0 #ff003c;font-family:'Chakra Petch',sans-serif;text-transform:uppercase}
+body.secret-on .drawer{background:#0c0c15;border-left:2px solid #2a2a3d;color:#e9eef5}
+body.secret-on .drawer *{font-family:'Chakra Petch',sans-serif}
+body.secret-on .drawer-head{background:#05050a;border-bottom:2px solid #fcee09}
+body.secret-on .drawer-head h3{text-transform:uppercase;letter-spacing:1.5px}
+body.secret-on .drawer-close{border-radius:0}
+body.secret-on .drawer-item{border-bottom-color:rgba(252,238,9,.15)}
 body.secret-on .drawer-item-name{color:#fff}
-body.secret-on .drawer-item-meta,body.secret-on .drawer-empty{color:#6fa384}
-body.secret-on .drawer-item-price,body.secret-on .drawer-total-row.grand b{color:#7dffa8}
-body.secret-on .drawer-item-remove{color:#ff8a80}
-body.secret-on .drawer-warn,body.secret-on .drawer-item-warn{color:#ff8a80}
-body.secret-on .qty-btn{background:#050d09;color:#d9ffe6;border:1px solid #1f4a31}
-body.secret-on .field label{color:#d9ffe6}
-body.secret-on .field select,body.secret-on .field input,body.secret-on .field textarea{background:#050d09;color:#d9ffe6;border:1px solid #1f4a31;border-radius:0}
-body.secret-on .field input::placeholder,body.secret-on .field textarea::placeholder{color:#6fa384}
-body.secret-on .field select:focus,body.secret-on .field input:focus,body.secret-on .field textarea:focus{outline:2px solid #7dffa8}
-body.secret-on .drawer-total-row{color:#8fc9a4}
-body.secret-on .drawer-total-row.grand{color:#fff;border-top-color:#1f4a31}
-body.secret-on .drawer-send-btn{background:#7dffa8;color:#020503;border:0;border-radius:0;box-shadow:4px 4px 0 #ffb000}
-body.secret-on .hours-note{background:rgba(255,59,48,.12);color:#ff8a80;border-color:#ff3b30}
-body.secret-on #pixPaymentBox{background:#050d09!important;border-color:#1f4a31!important}
-body.secret-on .coupon-btn{background:#7dffa8;color:#020503;border-radius:0;box-shadow:3px 3px 0 #ffb000}
-body.secret-on .coupon-msg.ok,body.secret-on .drawer-total-row.coupon-line{color:#7dffa8}
-body.secret-on .coupon-msg.bad{color:#ff8a80}
-body.secret-on .coupon-field.applied .coupon-row input{background:#0c2216;border-color:#7dffa8}
-body.secret-on .drawer-gift.on{background:rgba(125,255,168,.1);border-color:#7dffa8;color:#b9ffd0}
-body.secret-on .drawer-gift.hint{background:rgba(255,176,0,.1);border-color:#ffb000;color:#ffd98a}
-body.secret-on .dg-free{color:#7dffa8}
-body.secret-on .et-steps span.on{background:#7dffa8;color:#020503;border-color:#7dffa8}
-body.secret-on .upsell{border-color:#1f4a31;background:rgba(125,255,168,.05)}
-body.secret-on .upsell-head,body.secret-on .upsell-dt b{color:#7dffa8}
-body.secret-on .upsell-row,body.secret-on .upsell-drinks{border-top-color:rgba(125,255,168,.16)}
-body.secret-on .upsell-name{color:#d9ffe6;font-size:12.5px}
-body.secret-on .upsell-why,body.secret-on .upsell-dt small,body.secret-on .upsell-close{color:#6fa384}
-body.secret-on .upsell-price,body.secret-on .upsell-chip .uc-price{color:#7dffa8}
-body.secret-on .upsell-add{background:#7dffa8;border-color:#020503;box-shadow:2px 2px 0 #ffb000}
-body.secret-on .upsell-chip{background:#050d09;color:#d9ffe6;border-color:#1f4a31;box-shadow:2px 2px 0 #1f4a31}
-body.secret-on .upsell-chip.rec{background:#0c2216;border-color:#7dffa8;box-shadow:2px 2px 0 #7dffa8}
-body.secret-on .upsell-chip .uc-rec{background:#7dffa8;color:#020503}
-body.secret-on .note-chip{background:#050d09;color:#d9ffe6;border-color:#1f4a31}
-body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dffa8}
+body.secret-on .drawer-item-meta,body.secret-on .drawer-empty{color:#8e94ad}
+body.secret-on .drawer-item-price,body.secret-on .drawer-total-row.grand b{color:#fcee09}
+body.secret-on .drawer-item-remove{color:#ff7a96}
+body.secret-on .drawer-warn,body.secret-on .drawer-item-warn{color:#ff7a96}
+body.secret-on .qty-btn{background:#0a0a12;color:#e9eef5;border:1px solid #2a2a3d;border-radius:0}
+body.secret-on .field label{color:#e9eef5}
+body.secret-on .field select,body.secret-on .field input,body.secret-on .field textarea{background:#0a0a12;color:#e9eef5;border:1px solid #2a2a3d;border-radius:0}
+body.secret-on .field input::placeholder,body.secret-on .field textarea::placeholder{color:#6b7088}
+body.secret-on .field select:focus,body.secret-on .field input:focus,body.secret-on .field textarea:focus{outline:2px solid #00f0ff}
+body.secret-on .drawer-total-row{color:#9aa0b8}
+body.secret-on .drawer-total-row.grand{color:#fff;border-top-color:#2a2a3d}
+body.secret-on .drawer-send-btn{background:#fcee09;color:#000;border:0;border-radius:0;box-shadow:4px 4px 0 #ff003c;text-transform:uppercase;letter-spacing:1px}
+body.secret-on .hours-note{background:rgba(255,0,60,.12);color:#ff8aa0;border-color:#ff003c}
+body.secret-on #pixPaymentBox{background:#0a0a12!important;border-color:#2a2a3d!important}
+body.secret-on .coupon-btn{background:#fcee09;color:#000;border-radius:0;box-shadow:3px 3px 0 #ff003c}
+body.secret-on .coupon-msg.ok,body.secret-on .drawer-total-row.coupon-line{color:#00f0ff}
+body.secret-on .coupon-msg.bad{color:#ff7a96}
+body.secret-on .coupon-field.applied .coupon-row input{background:#08161a;border-color:#00f0ff}
+body.secret-on .drawer-gift.on{background:rgba(0,240,255,.1);border-color:#00f0ff;color:#bff9ff}
+body.secret-on .drawer-gift.hint{background:rgba(252,238,9,.08);border-color:#fcee09;color:#fff7a8}
+body.secret-on .dg-free{color:#00f0ff}
+body.secret-on .et-steps span.on{background:#fcee09;color:#000;border-color:#fcee09}
+body.secret-on .upsell{border-color:#2a2a3d;background:rgba(252,238,9,.04)}
+body.secret-on .upsell-head,body.secret-on .upsell-dt b{color:#fcee09}
+body.secret-on .upsell-row,body.secret-on .upsell-drinks{border-top-color:rgba(252,238,9,.16)}
+body.secret-on .upsell-name{color:#e9eef5;font-size:12.5px}
+body.secret-on .upsell-why,body.secret-on .upsell-dt small,body.secret-on .upsell-close{color:#8e94ad}
+body.secret-on .upsell-price,body.secret-on .upsell-chip .uc-price{color:#fcee09}
+body.secret-on .upsell-add{background:#fcee09;border-color:#05050a;box-shadow:2px 2px 0 #ff003c}
+body.secret-on .upsell-chip{background:#0a0a12;color:#e9eef5;border-color:#2a2a3d;box-shadow:2px 2px 0 #2a2a3d}
+body.secret-on .upsell-chip.rec{background:#17170a;border-color:#fcee09;box-shadow:2px 2px 0 #fcee09}
+body.secret-on .upsell-chip .uc-rec{background:#fcee09;color:#000}
+body.secret-on .note-chip{background:#0a0a12;color:#e9eef5;border-color:#2a2a3d}
+body.secret-on .note-chip.on{background:#fcee09;color:#000;border-color:#fcee09}
+body.secret-on .toast{background:#05050a;color:#fff;border-color:#00f0ff}
 </style>
 
 <script>
-/* ===== MODO ULTRASSECRETO: usa o mesmo cardápio, carrinho e pedido do site, com outra cara ===== */
+/* ===== MODO CYBERPUNK 2077: usa o mesmo cardápio, carrinho e pedido do site, com outra cara ===== */
 (function(){
   var root = document.getElementById("secretSite");
   if (!root) return;
   var scroller = document.getElementById("sxScroll"), inner = document.getElementById("sxInner"), boot = document.getElementById("sxBoot");
   var RM = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var active = false, timers = [], clock = null, taps = 0, tapT = null, fontsDone = false;
+  var active = false, timers = [], clock = null, taps = 0, tapT = null, fontsDone = false, tab = "burgers";
   var themeMeta = document.querySelector('meta[name="theme-color"]');
 
   function esc(t){ return String(t == null ? "" : t).replace(/[&<>"]/g, function(c){ return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]; }); }
@@ -3516,47 +3549,45 @@ body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dff
   function loadFonts(){
     if (fontsDone) return; fontsDone = true;
     var l = document.createElement("link"); l.rel = "stylesheet";
-    l.href = "https://fonts.googleapis.com/css2?family=Special+Elite&family=Share+Tech+Mono&display=swap";
+    l.href = "https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Share+Tech+Mono&display=swap";
     document.head.appendChild(l);
   }
 
   var TIERS = [
     ["CLÁSSICOS", "blend 120g · brioche, alface, tomate e maionese"],
-    ["OPERAÇÕES DUPLAS", "2x blend 120g · mussarela em dobro"],
-    ["PROTOCOLO TRIPLO", "3x blend 120g · mussarela em triplo"]
+    ["DUPLOS", "2x blend 120g · mussarela em dobro"],
+    ["TRIPLOS", "3x blend 120g · mussarela em triplo"]
   ];
   function tierOf(i){ return /^3X/i.test(i.badge || "") ? 2 : /^2X/i.test(i.badge || "") ? 1 : 0; }
 
   function priceHtml(item){
     var ep = effectivePrice(item);
-    return ep.pct ? '<span class="sx-old">' + fmt(ep.old) + '</span><span class="sx-price">' + fmt(ep.price) + '</span>'
-                  : '<span class="sx-price">' + fmt(item.price) + '</span>';
+    return '<span class="sx-pr">' + (ep.pct ? '<span class="sx-old">' + fmt(ep.old) + '</span><span class="sx-price">' + fmt(ep.price) + '</span>'
+                  : '<span class="sx-price">' + fmt(item.price) + '</span>') + '</span>';
   }
   function promoLine(item){
     var ep = effectivePrice(item);
-    return ep.pct ? '<div class="sx-promo">▲ PROMOÇÃO DO DIA · ' + ep.pct + '% OFF · economize ' + fmt(ep.old - ep.price) + '</div>' : "";
+    return ep.pct ? '<div class="sx-promo">▲ PROMO DO DIA · ' + ep.pct + '% OFF · economize ' + fmt(ep.old - ep.price) + '</div>' : "";
   }
-  function addBtn(id, label){ return '<button type="button" class="sx-add" data-add="' + esc(id) + '">' + (label || "[ + REQUISITAR ]") + '</button>'; }
+  function addBtn(id, label){ return '<button type="button" class="sx-add" data-add="' + esc(id) + '">' + (label || "+ Adicionar") + '</button>'; }
 
   function burgerCard(item, nth, tier){
     var best = (item.id === "roswell" || item.id === "area51");
-    var stamp = item.stamp || (item.premium ? "CONFIDENCIAL" : "");
+    var stamp = item.stamp || (item.premium ? "PREMIUM" : "");
     return '<article class="sx-item" data-t="' + tier + '">' +
-      '<div class="sx-code">ARQ-' + pad2(nth) + ' · BLEND ' + new Array(tier + 2).join("●") + (best ? ' · <b>⭐ MAIS PEDIDO</b>' : "") + '</div>' +
+      '<div class="sx-code">BG-' + pad2(nth) + ' · BLEND ' + new Array(tier + 2).join("●") + (best ? ' · <b>★ MAIS PEDIDO</b>' : "") + '</div>' +
       '<div class="sx-line"><span class="sx-name">' + esc(item.name) + '</span>' +
-        (item.badge ? '<span class="sx-tagb">' + esc(item.badge) + '</span>' : "") +
-        '<span class="sx-dots"></span>' + priceHtml(item) + '</div>' +
+        (item.badge ? '<span class="sx-tagb">' + esc(item.badge) + '</span>' : "") + priceHtml(item) + '</div>' +
       promoLine(item) +
       '<p class="sx-desc">' + esc(item.desc) + '</p>' +
       (item.seal ? '<div class="sx-note">' + esc(item.seal) + '</div>' : "") +
       (item.tag ? '<div class="sx-note">' + esc(item.tag) + '</div>' : "") +
-      (stamp ? '<div class="sx-item-stamp">' + esc(stamp) + '</div>' : "") +
-      '<div class="sx-item-bot">' + addBtn(item.id) + '</div></article>';
+      '<div class="sx-item-bot">' + (stamp ? '<span class="sx-item-stamp">' + esc(stamp) + '</span>' : "") + addBtn(item.id) + '</div></article>';
   }
   function friesCard(item, nth){
     return '<article class="sx-item" data-t="0">' +
-      '<div class="sx-code">SUP-' + pad2(nth) + '</div>' +
-      '<div class="sx-line"><span class="sx-name">' + esc(item.name) + '</span><span class="sx-dots"></span>' + priceHtml(item) + '</div>' +
+      '<div class="sx-code">FR-' + pad2(nth) + '</div>' +
+      '<div class="sx-line"><span class="sx-name">' + esc(item.name) + '</span>' + priceHtml(item) + '</div>' +
       promoLine(item) +
       '<p class="sx-desc">' + esc(item.desc) + '</p>' +
       '<div class="sx-item-bot">' + addBtn(item.id) + '</div></article>';
@@ -3564,9 +3595,9 @@ body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dff
   function comboCard(key){
     var combo = COMBOS[key], sel = comboSelections[key], p = comboPrice(key);
     var h = '<article class="sx-item" data-t="' + (p.isFeatured ? "1" : "0") + '">' +
-      '<div class="sx-code">PACOTE · ' + esc(key.toUpperCase()) + (p.isFeatured ? ' · <b>★ DO DIA</b>' : "") + '</div>' +
-      '<div class="sx-line"><span class="sx-name">' + esc(combo.label) + '</span><span class="sx-dots"></span>' +
-        (p.isFeatured ? '<span class="sx-old">' + fmt(p.subtotal) + '</span><span class="sx-price">' + fmt(p.discounted) + '</span>' : '<span class="sx-price">' + fmt(p.subtotal) + '</span>') + '</div>' +
+      '<div class="sx-code">COMBO // ' + esc(key.toUpperCase()) + (p.isFeatured ? ' · <b>★ DO DIA</b>' : "") + '</div>' +
+      '<div class="sx-line"><span class="sx-name">' + esc(combo.label) + '</span><span class="sx-pr">' +
+        (p.isFeatured ? '<span class="sx-old">' + fmt(p.subtotal) + '</span><span class="sx-price">' + fmt(p.discounted) + '</span>' : '<span class="sx-price">' + fmt(p.subtotal) + '</span>') + '</span></div>' +
       (p.isFeatured ? '<div class="sx-promo">▲ COMBO DO DIA · ' + p.pct + '% OFF · economize ' + fmt(p.subtotal - p.discounted) + '</div>' : "") +
       '<p class="sx-desc">' + esc(comboDesc(key)) + '</p>' + comboNote(key);
     sel.burgers.forEach(function(bid, i){
@@ -3574,7 +3605,7 @@ body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dff
     });
     if (sel.fries) h += '<label class="sx-lab">BATATA</label><select class="sx-sel" data-sx-fries="' + key + '">' + friesOptionsHtml(sel.fries) + '</select>';
     if (sel.drink) h += '<label class="sx-lab">REFRIGERANTE</label><select class="sx-sel" data-sx-drink="' + key + '">' + drinkOptionsHtml(sel.drink) + '</select>';
-    return h + '<div class="sx-item-bot"><button type="button" class="sx-add" data-combo-add="' + key + '">[ + REQUISITAR PACOTE ]</button></div></article>';
+    return h + '<div class="sx-item-bot"><button type="button" class="sx-add" data-combo-add="' + key + '">+ Adicionar combo</button></div></article>';
   }
 
   function alertsHtml(){
@@ -3607,59 +3638,70 @@ body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dff
     var fries = visibleItems(menuData.fritas);
     var combos = activeComboKeys();
     var drinks = drinksData.filter(function(d){ return !isSoldOut(d.id); });
-    var nav = [];
-    if (burgers.length) nav.push(["sx-s-b", "MISSÕES"]);
-    if (fries.length) nav.push(["sx-s-f", "SUPRIMENTOS"]);
-    if (combos.length) nav.push(["sx-s-c", "PACOTES"]);
-    if (drinks.length) nav.push(["sx-s-d", "LÍQUIDOS"]);
 
-    var h = '<header class="sx-top"><div class="sx-bar"><span class="sx-led"></span><span>TERMINAL SEGURO // ÁREA 51</span>' +
+    var tabs = [];
+    if (burgers.length) tabs.push(["burgers", "Burgers", burgers.length]);
+    if (combos.length) tabs.push(["combos", "Combos", combos.length]);
+    if (fries.length) tabs.push(["fritas", "Fritas", fries.length]);
+    if (drinks.length) tabs.push(["drinks", "Bebidas", drinks.length]);
+    if (tabs.length && !tabs.some(function(t){ return t[0] === tab; })) tab = tabs[0][0];
+
+    var h = '<header class="sx-top"><div class="sx-bar"><span class="sx-led"></span><span class="sx-brand">ET BURGER</span><span>// NIGHT CITY</span>' +
       '<button type="button" class="sx-exit" data-sx-exit>⏏ SAIR</button></div>' +
-      (nav.length ? '<nav class="sx-nav">' + nav.map(function(n){ return '<button type="button" data-jump="' + n[0] + '">' + n[1] + '</button>'; }).join("") + '</nav>' : "") + '</header>';
+      (tabs.length ? '<nav class="sx-tabs" aria-label="Categorias">' + tabs.map(function(t){
+        return '<button type="button" data-tab="' + t[0] + '"' + (t[0] === tab ? ' class="on" aria-current="true"' : "") + '>' + t[1] + '<small>' + t[2] + (t[2] === 1 ? ' item' : ' itens') + '</small></button>';
+      }).join("") + '</nav>' : "") + '</header>';
 
-    h += '<section class="sx-hero"><div class="sx-file">PROCESSO ET-2077/BR · ACESSO NÍVEL 5</div>' +
+    h += '<section class="sx-hero"><div class="sx-file">// NIGHT CITY · DELIVERY 2077</div>' +
       '<img class="sx-logo" src="./logo.png" alt="ET BURGER 2077">' +
-      '<h1 class="sx-title">ARQUIVOS ULTRASSECRETOS</h1>' +
-      '<p class="sx-sub">Documento restrito a terráqueos autorizados. Contém <button type="button" class="sx-redact" aria-label="Trecho censurado, toque para revelar">hambúrgueres de origem alienígena</button>. A leitura causa fome.</p>' +
-      '<div class="sx-stamp">ULTRASSECRETO</div></section>';
+      '<h1 class="sx-title">CARDÁPIO <span>2077</span></h1>' +
+      '<p class="sx-sub">Hambúrgueres <b>de outro mundo</b>, entregues na sua porta. Monte seu pedido e envie direto pelo WhatsApp.</p>' +
+      '<div class="sx-bars"></div></section>';
 
-    h += '<section class="sx-radar-wrap"><div class="sx-radar" aria-hidden="true"><i class="sx-sweep"></i><b class="sx-blip b1"></b><b class="sx-blip b2"></b><b class="sx-blip b3"></b></div>' +
-      '<div class="sx-status" id="sxStBox"><div class="sx-st-k" id="sxStK"></div><div class="sx-st-t" id="sxStT"></div><div class="sx-st-m" id="sxStM"></div></div></section>';
+    h += '<section class="sx-status" id="sxStBox"><div class="sx-st-k" id="sxStK"></div><div class="sx-st-t" id="sxStT"></div><div class="sx-st-m" id="sxStM"></div></section>';
+    h += '<div class="sx-chips"><span class="sx-chip">📍 ' + esc(STORE_ADDRESS) + '</span><span class="sx-chip">⏰ 19h30 às 00h</span><span class="sx-chip">🚀 Entrega R$ 4,00</span></div>';
 
     var al = alertsHtml();
     if (al) h += al;
 
-    var n = 0, c = 0;
-    function sec(id, title, sub){ c++; return '<h2 class="sx-h" id="' + id + '"><span>[' + pad2(c) + ']</span> ' + title + '</h2>' + (sub ? '<div class="sx-hs">' + sub + '</div>' : ""); }
+    h += '<div id="sxContent">';
+    function sec(n, title, sub){ return '<h2 class="sx-h"><span class="n">' + n + '</span>' + title + '</h2>' + (sub ? '<div class="sx-hs">' + sub + '</div>' : ""); }
 
-    if (burgers.length){
-      var last = -1;
-      h += sec("sx-s-b", "MISSÕES", "burgers de blend 120g · escolha seu arquivo");
+    if (tab === "burgers" && burgers.length){
+      h += sec("01", "Burgers", "blend 120g · escolha o seu");
+      var last = -1, n = 0, open = false;
       burgers.forEach(function(it){
         var t = tierOf(it);
-        if (t !== last){ last = t; h += '<div class="sx-hs" style="margin-top:16px">▸ ' + TIERS[t][0] + ' — ' + TIERS[t][1] + '</div>'; }
+        if (t !== last){
+          if (open) h += '</div>';
+          last = t;
+          h += '<div class="sx-tier">' + TIERS[t][0] + ' <i>— ' + TIERS[t][1] + '</i></div><div class="sx-grid">'; open = true;
+        }
         n++; h += burgerCard(it, n, t);
       });
-    }
-    if (fries.length){
-      h += sec("sx-s-f", "SUPRIMENTOS", "para acompanhar a missão");
-      fries.forEach(function(it, i){ h += friesCard(it, i + 1); });
-    }
-    if (combos.length){
-      h += sec("sx-s-c", "PACOTES DE ABDUÇÃO", "combos · monte do seu jeito");
+      if (open) h += '</div>';
+    } else if (tab === "combos" && combos.length){
+      h += sec("02", "Combos", "monte do seu jeito · mais barato que separado") + '<div class="sx-grid">';
       combos.forEach(function(k){ h += comboCard(k); });
-    }
-    if (drinks.length){
-      h += sec("sx-s-d", "LÍQUIDOS", "hidratação da tripulação");
+      h += '</div>';
+    } else if (tab === "fritas" && fries.length){
+      h += sec("03", "Fritas", "para acompanhar") + '<div class="sx-grid">';
+      fries.forEach(function(it, i){ h += friesCard(it, i + 1); });
+      h += '</div>';
+    } else if (tab === "drinks" && drinks.length){
+      h += sec("04", "Bebidas", "para refrescar") + '<div class="sx-drinks">';
       drinks.forEach(function(d){
-        h += '<div class="sx-drink"><span class="sx-name" style="font-size:16px">' + esc(d.name) + '</span><span class="sx-dots"></span><span class="sx-price" style="font-size:16px">' + fmt(d.price) + '</span>' + addBtn(d.id, "[ + ]") + '</div>';
+        h += '<div class="sx-drink"><span class="sx-name">' + esc(d.name) + '</span><span class="sx-price">' + fmt(d.price) + '</span>' + addBtn(d.id, "+") + '</div>';
       });
+      h += '</div>';
+    } else {
+      h += '<div class="sx-empty">NENHUM ITEM DISPONÍVEL NO MOMENTO.</div>';
     }
-    if (!burgers.length && !fries.length && !combos.length && !drinks.length) h += '<div class="sx-empty">NENHUM ARQUIVO DISPONÍVEL NO MOMENTO.</div>';
+    h += '</div>';
 
-    h += '<footer class="sx-foot"><div>📍 ' + esc(STORE_ADDRESS) + '</div><div>📲 (93) 99184-8394 · 🚀 delivery R$ 4,00</div><div>⏰ todos os dias, 19h30 às 00h</div>' +
-      '<div><b>ESTE TERMINAL NÃO SE AUTODESTRUIRÁ.</b> ...provavelmente. 🛸</div>' +
-      '<button type="button" class="sx-exit" data-sx-exit>⏏ ENCERRAR SESSÃO</button></footer>';
+    h += '<footer class="sx-foot"><div>📍 ' + esc(STORE_ADDRESS) + '</div><div>📲 (93) 99184-8394 · 🚀 delivery R$ 4,00</div><div>⏰ todos os dias, das 19h30 às 00h</div>' +
+      '<div><b>ET BURGER 2077</b> · NIGHT CITY EDITION 🛸</div>' +
+      '<button type="button" class="sx-exit" data-sx-exit>⏏ VOLTAR AO SITE</button></footer>';
 
     inner.innerHTML = h;
     scroller.scrollTop = st;
@@ -3670,14 +3712,14 @@ body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dff
     var k = document.getElementById("sxStK"), t = document.getElementById("sxStT"), m = document.getElementById("sxStM"), box = document.getElementById("sxStBox");
     if (!k) return;
     if (isStoreOpen()){
-      k.textContent = "● PORTAL ABERTO"; t.textContent = "PEDIDOS LIBERADOS"; m.textContent = "Missões aceitas até 00h. Escolha seus arquivos abaixo.";
+      k.textContent = "● ONLINE"; t.textContent = "PEDIDOS LIBERADOS"; m.textContent = "Recebendo pedidos até 00h. Escolha abaixo e finalize no carrinho.";
       box.classList.remove("closed");
     } else {
       var next = getNextOpening(), rem = Math.max(0, Math.floor((next.getTime() - Date.now()) / 1000));
       var nt = new Date(next.getTime() + STORE_UTC_OFFSET * 3600000);
-      k.textContent = "● PORTAL FECHADO";
+      k.textContent = "● OFFLINE";
       t.textContent = pad2(Math.floor(rem / 3600)) + ":" + pad2(Math.floor((rem % 3600) / 60)) + ":" + pad2(rem % 60);
-      m.textContent = "Próxima decolagem às " + pad2(nt.getUTCHours()) + "h" + pad2(nt.getUTCMinutes()) + ". Você pode ler os arquivos enquanto espera.";
+      m.textContent = "Reabrimos às " + pad2(nt.getUTCHours()) + "h" + pad2(nt.getUTCMinutes()) + ". Você pode olhar o cardápio enquanto espera.";
       box.classList.add("closed");
     }
   }
@@ -3685,14 +3727,18 @@ body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dff
   function endBoot(){
     boot.classList.add("out");
     later(function(){ boot.style.display = "none"; }, 450);
+    if (!RM){
+      inner.classList.remove("glitch"); void inner.offsetWidth; inner.classList.add("glitch");
+      later(function(){ inner.classList.remove("glitch"); }, 700);
+    }
   }
   function startBoot(){
     if (RM){ boot.style.display = "none"; return; }
     boot.style.display = ""; boot.classList.remove("out");
     var lines = boot.querySelectorAll("[data-l]");
     lines.forEach(function(l){ l.classList.remove("in"); });
-    lines.forEach(function(l, i){ later(function(){ l.classList.add("in"); }, 340 * (i + 1)); });
-    later(endBoot, 340 * lines.length + 800);
+    lines.forEach(function(l, i){ later(function(){ l.classList.add("in"); }, 260 * (i + 1)); });
+    later(endBoot, 260 * lines.length + 650);
   }
   boot.addEventListener("click", function(){ clearTimers(); endBoot(); });
 
@@ -3701,7 +3747,7 @@ body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dff
     active = true;
     loadFonts();
     document.body.classList.add("secret-on");
-    if (themeMeta) themeMeta.setAttribute("content", "#040a07");
+    if (themeMeta) themeMeta.setAttribute("content", "#07070d");
     root.hidden = false;
     renderSecret();
     scroller.scrollTop = 0;
@@ -3725,8 +3771,8 @@ body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dff
     var ep = effectivePrice(item), key = ep.pct ? item.id + "@" + ep.price : item.id;
     if (!cart[key]) cart[key] = { name: ep.pct ? item.name + " (PROMO " + ep.pct + "% OFF)" : item.name, price: ep.price, full: ep.old || item.price, qty: 0, parts: [item.id] };
     cart[key].qty += 1;
-    updateCartUI(); flyToCart(btn); showToast(item.name + " requisitado 🛸");
-    var o = btn.textContent; btn.textContent = "[ ✔ REGISTRADO ]";
+    updateCartUI(); flyToCart(btn); showToast(item.name + " adicionado ✔");
+    var o = btn.textContent; btn.textContent = "✔ OK";
     setTimeout(function(){ if (btn.isConnected) btn.textContent = o; }, 900);
   }
 
@@ -3735,12 +3781,13 @@ body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dff
     if ((el = t.closest("[data-add]"))) { addItem(el.dataset.add, el); return; }
     if ((el = t.closest("[data-combo-add]"))) { addComboToCart(el.dataset.comboAdd, el); return; }
     if (t.closest("[data-sx-exit]")) { close(); return; }
-    if ((el = t.closest("[data-jump]"))) {
-      var target = document.getElementById(el.dataset.jump);
-      if (target) scroller.scrollTo({ top: target.offsetTop - 96, behavior: RM ? "auto" : "smooth" });
+    if ((el = t.closest("[data-tab]"))) {
+      tab = el.dataset.tab;
+      renderSecret();
+      var c = document.getElementById("sxContent");
+      if (c) scroller.scrollTo({ top: Math.max(0, c.offsetTop - 130), behavior: RM ? "auto" : "smooth" });
       return;
     }
-    if ((el = t.closest(".sx-redact"))) { el.classList.toggle("on"); return; }
     if (t.closest(".sx-logo")) {
       taps++; clearTimeout(tapT); tapT = setTimeout(function(){ taps = 0; }, 850);
       if (taps >= 3) { taps = 0; close(); }
@@ -3758,7 +3805,7 @@ body.secret-on .note-chip.on{background:#7dffa8;color:#020503;border-color:#7dff
     if (e.key === "Escape" && active && !document.getElementById("drawer").classList.contains("open")) close();
   });
 
-  // quando o painel muda algo (estoque, preço, promoção), o terminal se atualiza junto
+  // quando o painel muda algo (estoque, preço, promoção), a tela se atualiza junto
   var _render = window.renderAll;
   if (typeof _render === "function") window.renderAll = function(){
     var r = _render.apply(this, arguments);
