@@ -76,6 +76,7 @@ main{position:relative;z-index:1}
 .nav-pill{display:inline-flex;align-items:center;gap:7px;font:600 11px 'Oswald',sans-serif;letter-spacing:2px;border:2px solid var(--mustard);color:var(--mustard);border-radius:20px;padding:5px 12px;white-space:nowrap}
 .nav-pill i{width:7px;height:7px;border-radius:50%;background:#8de8a1;box-shadow:0 0 8px #8de8a1}
 .nav-pill.closed{border-color:#8a8175;color:#b9ad98}.nav-pill.closed i{background:#8a8175;box-shadow:none}
+.nav-pill.warn{border-color:#ff5b38;color:#ff8a6b}.nav-pill.warn i{background:#ff5b38;box-shadow:0 0 8px #ff5b38}
 .nav-cart{display:inline-flex;align-items:center;gap:8px;background:var(--mustard);color:var(--ink);border:2px solid var(--ink);border-radius:30px;padding:8px 14px;font:700 13px 'Oswald',sans-serif;letter-spacing:.5px;cursor:pointer;box-shadow:3px 3px 0 var(--rust)}
 .nav-cart b{background:var(--ink);color:var(--mustard);border-radius:50%;min-width:20px;height:20px;display:grid;place-items:center;font-size:12px}
 @media (max-width:760px){.nav-links{display:none}.nav-pill{margin-left:auto}}
@@ -104,8 +105,6 @@ main{position:relative;z-index:1}
   background:radial-gradient(2px 2px at 30% 3%,#ffe6a0,transparent),radial-gradient(2px 2px at 41% 5%,#ffe6a0,transparent),radial-gradient(3px 3px at 52% 2.5%,#ffd36b,transparent),radial-gradient(2px 2px at 63% 4%,#ffe6a0,transparent),radial-gradient(2px 2px at 70% 6%,#ffd36b,transparent),radial-gradient(2px 2px at 36% 8%,#ffe6a0,transparent),radial-gradient(2px 2px at 58% 9%,#ffe6a0,transparent)}
 .hero-copy{position:relative;z-index:3;text-align:center;padding:96px 20px 70px;max-width:1180px}
 .badge{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--mustard);color:var(--mustard);font:600 11px 'Oswald',sans-serif;letter-spacing:3px;padding:6px 14px;border-radius:20px;margin-bottom:16px}
-.badge .dot{width:7px;height:7px;border-radius:50%;background:#8de8a1;box-shadow:0 0 8px #8de8a1}
-.badge.closed .dot{background:#8a8175;box-shadow:none}
 .hero-logo{width:clamp(120px,19vw,210px);margin:0 auto 6px;filter:drop-shadow(4px 6px 0 rgba(0,0,0,.35))}
 .hero-title{font:400 clamp(46px,11.5vw,158px)/.92 'Alfa Slab One',cursive;color:var(--cream);text-shadow:5px 5px 0 var(--rust),-1px -1px 0 var(--ink);text-transform:uppercase}
 .hero-title .line{display:block;overflow:hidden;padding:.02em .12em .14em}
@@ -453,7 +452,7 @@ body.alt .fld select,body.alt .fld input[type=text],body.alt .fld input[type=tel
     <div class="planet"></div>
 
     <div class="hero-copy">
-      <div class="badge" id="statusBadge"><span class="dot"></span> DELIVERY DIRETO &bull; SEM APP</div>
+      <div class="badge">DELIVERY DIRETO &bull; PEÇA PELO WHATSAPP</div>
       <img class="hero-logo" id="heroLogo" src="./logo.png" alt="ET BURGER 2077">
       <h1 class="hero-title">
         <span class="line"><span class="w">Sabor</span> <span class="w">de</span></span>
@@ -1247,15 +1246,23 @@ function fly(btn){
 
 /* ================== STATUS (aberto/fechado) ================== */
 let lastOpen=null;
+function minsToClose(){
+  const now=storeNow(),cur=now.hour*60,cfg=remoteSched,on=cfg&&cfg.enabled===true;
+  const tm=v=>{const m=String(v||"00:00").match(/^(\d{1,2}):(\d{2})$/);return m?Number(m[1])*60+Number(m[2]):0;};
+  const o=on?tm(cfg.open||"19:30"):OPEN_HOUR*60,c=on?tm(cfg.close||"00:00"):CLOSE_HOUR*60;
+  if(c<=o)return cur>=o?c+1440-cur:c-cur;
+  return c-cur;
+}
 function updateStatus(){
-  const open=isOpen(),badge=$("#statusBadge"),pill=$("#navPill");
-  badge.classList.toggle("closed",!open);
-  badge.innerHTML=open?`<span class="dot"></span> ABERTO AGORA &bull; ATÉ 00H`:`<span class="dot"></span> FECHADO &bull; ABRE ÀS 19H30`;
-  pill.classList.toggle("closed",!open);$("#navPillT").textContent=open?"ABERTO ATÉ 00H":"ABRE 19H30";
+  const open=isOpen(),pill=$("#navPill");
+  const left=open?Math.ceil(minsToClose()):0,closing=open&&left>0&&left<=60;
+  pill.classList.toggle("closed",!open);pill.classList.toggle("warn",closing);
+  if(open)$("#navPillT").textContent=closing?"FECHA EM "+left+" MIN":"ABERTO";
+  else{const nt=new Date(nextOpening().getTime()+UTC*36e5),h=nt.getUTCHours(),m=nt.getUTCMinutes();$("#navPillT").textContent="ABRE "+pad2(h)+"H"+(m?pad2(m):"");}
   const lp=$("#launchPanel");lp.classList.remove("soon","opened");
+  lp.style.display=open?"none":"";
   if(open){
-    lp.classList.add("opened");$("#launchKicker").textContent="🟢 PORTAL ABERTO";$("#launchTitle").textContent="PEDIDOS LIBERADOS!";
-    $("#launchCount").textContent="00:00:00";$("#launchMsg").textContent="Pedidos liberados até 00h. Escolha seu lanche abaixo 🛸";
+    lp.classList.add("opened");
   }else{
     const next=nextOpening(),rem=Math.max(0,Math.floor((next.getTime()-Date.now())/1000));
     if(rem<=600){lp.classList.add("soon");$("#launchKicker").textContent="🚨 ALERTA DE DECOLAGEM";$("#launchTitle").textContent="A BASE VAI ABRIR!";$("#launchMsg").textContent="Motores aquecendo! A missão começa em menos de 10 minutos.";}
