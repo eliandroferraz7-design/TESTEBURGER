@@ -382,6 +382,31 @@ footer .fine{font-size:11.5px;color:#8a8175;letter-spacing:2px;margin-top:14px}
 .done-card p{font:500 15px/1.5 'Oswald',sans-serif;opacity:.92;margin-bottom:18px}
 .done-card button{font:700 15px 'Oswald',sans-serif;background:var(--mustard);color:var(--ink);border:2px solid var(--ink);border-radius:30px;padding:12px 22px;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
 
+/* ===== tema alternativo (easter egg: 3 toques na logo) ===== */
+body.alt{--ink:#05050a;--rust:#ff003c;--rust-2:#cc0030;--teal:#0e0e1a;--teal-2:#08080f;--mustard:#00f0ff;--mustard-2:#00c8d6;--space:#07070d;--cream:#eaf0f7;--cream-2:#9aa3bd;--paper:#fffbd0}
+body.alt .nebula{background:radial-gradient(ellipse 60% 50% at 18% 18%,rgba(255,0,60,.30),transparent 60%),radial-gradient(ellipse 60% 60% at 86% 72%,rgba(0,240,255,.22),transparent 60%)}
+body.alt .planet{background:radial-gradient(circle at 50% 0%,#ff5c7c 0,#8a0f3a 24%,#2a0f3d 52%,#07070d 82%);box-shadow:0 -12px 70px rgba(0,240,255,.6),inset 0 28px 70px rgba(0,240,255,.25)}
+body.alt .planet::after{filter:hue-rotate(150deg)}
+body.alt .ufo svg,body.alt .ld-ufo svg,body.alt .done-card svg{filter:hue-rotate(-30deg) saturate(1.4)}
+body.alt .beam{background:linear-gradient(to bottom,rgba(200,255,255,.9),rgba(0,240,255,.35) 55%,rgba(0,240,255,0))}
+body.alt .flash{background:#e8ffff}
+body.alt .horizon{background:radial-gradient(ellipse 55% 90% at 50% 100%,rgba(0,240,255,.5),transparent 70%)}
+body.alt .horizon::before{background:#fcee09}
+body.alt .menu{background-color:#fcee09}
+body.alt .tabs-wrap{background:linear-gradient(#fcee09 72%,rgba(252,238,9,0))}
+body.alt .card,body.alt .tab{background:#fffde8}
+body.alt .tab.on{background:var(--teal)}
+body.alt .card.prem{background:linear-gradient(180deg,#fff7b8,#fffde8)}
+body.alt .menu-title{text-shadow:5px 5px 0 #ff003c}
+body.alt .launch{box-shadow:0 0 28px rgba(0,240,255,.25)}
+body.alt .anat-art .glow{background:radial-gradient(circle,rgba(0,240,255,.3),transparent 65%)}
+body.alt .hero-title .acc{text-shadow:5px 5px 0 #8a0f3a}
+body.alt .visit h2 span{text-shadow:6px 6px 0 #8a0f3a}
+body.alt .drawer{background:#0a0a12}
+body.alt .fld select,body.alt .fld input[type=text],body.alt .fld input[type=tel],body.alt .fld textarea{background:#12121c}
+.alt-fx{position:fixed;inset:0;z-index:3000;pointer-events:none;opacity:0;background:repeating-linear-gradient(0deg,rgba(0,240,255,.3) 0 2px,transparent 2px 6px),#fcee09}
+.alt-fx.run{animation:altfx .8s ease-out}
+@keyframes altfx{0%{opacity:.85}100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){
   .cur{display:none!important}
 }
@@ -405,6 +430,7 @@ footer .fine{font-size:11.5px;color:#8a8175;letter-spacing:2px;margin-top:14px}
 <div class="nebula"></div>
 <canvas id="space"></canvas>
 <div class="cur" id="cur"></div>
+<div class="alt-fx" id="altFx" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <a class="nav-logo" href="#hero" data-scroll="#hero" aria-label="ET BURGER 2077"><img src="./logo.png" alt="ET BURGER 2077"></a>
@@ -572,7 +598,6 @@ footer .fine{font-size:11.5px;color:#8a8175;letter-spacing:2px;margin-top:14px}
   </div>
   <div class="v-cta rv">
     <a class="btn btn-p" href="#cardapio" data-scroll="#cardapio">🛸 Fazer meu pedido</a>
-    <a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&query=Rua+7+de+Setembro+2528+Oriximin%C3%A1+PA" target="_blank" rel="noopener">📍 Abrir no mapa</a>
   </div>
 </section>
 </main>
@@ -1383,12 +1408,32 @@ $$("[data-go]").forEach(b=>{if(b.closest("#dealsRow"))return;b.addEventListener(
 document.addEventListener("click",e=>{const a=e.target.closest("[data-scroll]");if(!a)return;e.preventDefault();scrollToEl($(a.dataset.scroll),0);});
 $("#heroWhats").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Olá! Quero fazer um pedido no ET Burger 🛸")}`;
 
+/* ================== EASTER EGG: tema alternativo (3 toques na logo) ================== */
+const pal={a:"#E8A93A",b:"#EDE1C8"};
+function setAlt(on,fx){
+  document.body.classList.toggle("alt",on);
+  pal.a=on?"#fcee09":"#E8A93A";pal.b=on?"#bff9ff":"#EDE1C8";
+  const m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",on?"#07070d":"#0A1420");
+  try{localStorage.setItem("et_alt",on?"1":"0");}catch(e){}
+  if(fx&&!RM){const f=$("#altFx");f.classList.remove("run");void f.offsetWidth;f.classList.add("run");}
+  if(fx){toast(on?"⚡ NIGHT CITY: modo neon ligado":"🛸 De volta à órbita");try{navigator.vibrate&&navigator.vibrate(on?[30,40,60]:40);}catch(e){}}
+}
+function setupAlt(){
+  let on=false;try{on=localStorage.getItem("et_alt")==="1";}catch(e){}
+  if(on)setAlt(true,false);
+  let taps=0,tt=null;
+  $$(".nav-logo img,#heroLogo,footer img").forEach(el=>el.addEventListener("click",()=>{
+    taps++;clearTimeout(tt);tt=setTimeout(()=>{taps=0;},850);
+    if(taps>=3){taps=0;setAlt(!document.body.classList.contains("alt"),true);}
+  }));
+}
+
 /* ================== FUNDO DE ESTRELAS (warp pelo scroll) ================== */
 const cv=$("#space"),cx=cv.getContext("2d");let W=0,H=0,stars=[],dprv=1;
 function sizeStars(){
   dprv=Math.min(window.devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*dprv;cv.height=H*dprv;cx.setTransform(dprv,0,0,dprv,0,0);
   const n=clamp(Math.round(W*H/7000),110,260);stars=[];
-  for(let i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,z:.25+Math.random()*.75,tw:.5+Math.random()*2,p:Math.random()*6,c:Math.random()<.18?"#E8A93A":"#EDE1C8"});
+  for(let i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,z:.25+Math.random()*.75,tw:.5+Math.random()*2,p:Math.random()*6,a:Math.random()<.18});
   if(RM)drawStars(0,0);
 }
 function drawStars(d,t){
@@ -1396,8 +1441,9 @@ function drawStars(d,t){
   for(const s of stars){
     s.y-=v*s.z*.9+(RM?0:s.z*.12);if(s.y<0)s.y+=H;if(s.y>H)s.y-=H;
     cx.globalAlpha=clamp((.35+.65*Math.abs(Math.sin(t*.001*s.tw+s.p)))*(.4+s.z*.6),0,1);
-    if(Math.abs(v)>3){cx.strokeStyle=s.c;cx.lineWidth=s.z*1.6;cx.beginPath();cx.moveTo(s.x,s.y);cx.lineTo(s.x,s.y+v*s.z*1.8);cx.stroke();}
-    else{cx.fillStyle=s.c;const r=s.z*1.7;cx.fillRect(s.x,s.y,r,r);}
+    const col=s.a?pal.a:pal.b;
+    if(Math.abs(v)>3){cx.strokeStyle=col;cx.lineWidth=s.z*1.6;cx.beginPath();cx.moveTo(s.x,s.y);cx.lineTo(s.x,s.y+v*s.z*1.8);cx.stroke();}
+    else{cx.fillStyle=col;const r=s.z*1.7;cx.fillRect(s.x,s.y,r,r);}
   }
 }
 
@@ -1480,14 +1526,14 @@ function setupScroll(){
      .to(steps[i],{opacity:1,x:0,duration:.4},i);
     if(i>0)a.to(steps[i-1],{opacity:.5,duration:.3},i);
   });
-  a.to("#anatBurger",{rotation:-5,scale:1.06,duration:6,ease:"none"},0)
+  a.to("#anatBurger",{scale:1.06,duration:6,ease:"none"},0)
    .to(".anat-tag",{opacity:1,scale:1,duration:.5,ease:"back.out(2)"},5.3)
    .to({},{duration:.7});
 
   /* fases: scroll horizontal */
   const track=$(".ph-track"),dist=()=>Math.max(0,track.scrollWidth-innerWidth);
   const tw=gsap.to(track,{x:()=>-dist(),ease:"none",scrollTrigger:{trigger:"#phases",start:"top top",end:()=>"+="+dist(),pin:true,scrub:.6,invalidateOnRefresh:true,anticipatePin:1}});
-  $$(".ph-art").forEach(el=>gsap.fromTo(el,{rotation:-14,y:60},{rotation:8,y:-40,ease:"none",scrollTrigger:{trigger:el.closest(".ph"),containerAnimation:tw,start:"left right",end:"right left",scrub:true}}));
+  $$(".ph-art").forEach(el=>gsap.fromTo(el,{rotation:-10,y:50},{rotation:10,y:-50,ease:"none",scrollTrigger:{trigger:el.closest(".ph"),containerAnimation:tw,start:"left right",end:"right left",scrub:true}}));
   $$(".ph-num").forEach(el=>gsap.fromTo(el,{x:"-8vw"},{x:"10vw",ease:"none",scrollTrigger:{trigger:el.closest(".ph"),containerAnimation:tw,start:"left right",end:"right left",scrub:true}}));
 
   /* revelações simples */
@@ -1523,7 +1569,7 @@ function finishLoader(){
 (async function init(){
   injectArt();
   if(A){document.documentElement.classList.add("anim");gsap.registerPlugin(ScrollTrigger);}
-  sizeStars();addEventListener("resize",()=>{sizeStars();measure();});
+  setupAlt();sizeStars();addEventListener("resize",()=>{sizeStars();measure();});
   let n=0;const num=$("#ldNum"),barEl=$("#ldBar");
   const tick=setInterval(()=>{n=Math.min(92,n+Math.random()*9);num.textContent=Math.round(n);barEl.style.width=n+"%";},90);
   const ready=Promise.race([loadRemote(),sleep(2800)]);
