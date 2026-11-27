@@ -151,11 +151,16 @@ html:not(.anim) .planet{top:auto;bottom:-90vw}
 
 /* ===== manifesto ===== */
 .mani{position:relative;padding:clamp(90px,16vw,200px) clamp(18px,6vw,90px);overflow:hidden}
-.mani p{font:400 clamp(28px,5.6vw,76px)/1.12 'Alfa Slab One',cursive;max-width:1180px;margin:0 auto;text-transform:uppercase}
+.mani p{position:relative;z-index:2;font:400 clamp(28px,5.6vw,76px)/1.12 'Alfa Slab One',cursive;max-width:1180px;margin:0 auto;text-transform:uppercase}
 .mani em{font-style:normal;color:var(--mustard)}
 .orb{position:absolute;border-radius:50%;pointer-events:none}
 .orb.a{width:clamp(80px,14vw,200px);aspect-ratio:1;right:6%;top:10%;background:radial-gradient(circle at 30% 30%,#f3b05a,var(--rust) 60%,#4a1604);box-shadow:inset -14px -10px 24px rgba(0,0,0,.5)}
 .orb.a::after{content:"";position:absolute;left:-22%;right:-22%;top:44%;height:14%;border:3px solid var(--mustard);border-radius:50%;transform:rotate(-18deg);opacity:.85}
+@media (max-width:760px){
+  .mani{padding-bottom:190px}
+  .mani .orb.a{width:64px;top:2%;right:6%;opacity:.9}
+  .mani .orb.b{width:34px;bottom:3%;left:auto;right:12%}
+}
 .orb.b{width:clamp(40px,6vw,90px);aspect-ratio:1;left:5%;bottom:8%;background:radial-gradient(circle at 30% 30%,#6fd0c0,var(--teal) 65%,#06181a);box-shadow:inset -8px -6px 14px rgba(0,0,0,.5)}
 
 /* ===== anatomia ===== */
@@ -378,7 +383,6 @@ footer .fine{font-size:11.5px;color:#8a8175;letter-spacing:2px;margin-top:14px}
 .done-card button{font:700 15px 'Oswald',sans-serif;background:var(--mustard);color:var(--ink);border:2px solid var(--ink);border-radius:30px;padding:12px 22px;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
 
 @media (prefers-reduced-motion:reduce){
-  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .cur{display:none!important}
 }
 </style>
@@ -467,7 +471,7 @@ footer .fine{font-size:11.5px;color:#8a8175;letter-spacing:2px;margin-top:14px}
 
 <section class="mani" id="manifesto">
   <div class="orb a"></div><div class="orb b"></div>
-  <p id="mani">Do outro lado da <em>galáxia</em>, direto pra sua mesa. Brioche macio, <em>blend de 120g</em>, mussarela derretida e cebola caramelizada. Cada burger é uma missão, e a sua começa aqui.</p>
+  <p id="mani">Do outro lado da <em>galáxia</em>, direto pra sua mesa. Pão de brioche, <em>blend de 120g</em>, mussarela derretida e cebola caramelizada. Cada burger é uma missão, e a sua começa aqui.</p>
 </section>
 
 <section class="anat" id="anatomy">
@@ -654,7 +658,7 @@ const SUPABASE_ANON_KEY="sb_publishable_quPbICC0FuYkOKMcLXLXgQ_ZKua9Hms";
 const sb=(window.supabase&&window.supabase.createClient)?window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
 
 const RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-const A=!!(window.gsap&&window.ScrollTrigger)&&!RM;
+const A=!!(window.gsap&&window.ScrollTrigger);
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
 const clone=o=>JSON.parse(JSON.stringify(o));
@@ -1430,7 +1434,7 @@ function wrapWords(el){
 function setupScroll(){
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.config({ignoreMobileResize:true});
-  if(window.Lenis){
+  if(window.Lenis&&!RM){
     lenis=new Lenis({lerp:.1,smoothWheel:true});
     lenis.on("scroll",ScrollTrigger.update);
     gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
