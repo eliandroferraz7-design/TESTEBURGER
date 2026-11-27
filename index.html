@@ -111,7 +111,7 @@ main{position:relative;z-index:1}
 .hero-title .line{display:block;overflow:hidden;padding:.02em .12em .14em}
 .hero-title .w{display:inline-block}
 .hero-title .acc{color:var(--mustard);text-shadow:5px 5px 0 var(--teal)}
-.hero-sub{font:500 clamp(15px,2vw,19px)/1.55 'Oswald',sans-serif;letter-spacing:.5px;color:var(--cream-2);max-width:520px;margin:18px auto 26px}
+.hero-sub{font:500 clamp(15px,2vw,19px)/1.55 'Oswald',sans-serif;letter-spacing:.5px;color:var(--cream-2);max-width:520px;margin:18px auto 20px}
 .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .scroll-hint{position:absolute;left:0;right:0;bottom:22px;z-index:4;text-align:center;font:600 11px 'Oswald',sans-serif;letter-spacing:4px;color:var(--cream-2)}
 .scroll-hint::after{content:"";display:block;width:2px;height:34px;margin:8px auto 0;background:linear-gradient(var(--mustard),transparent);animation:drip 1.6s ease-in-out infinite;transform-origin:top}
@@ -456,13 +456,13 @@ body.alt .fld select,body.alt .fld input[type=text],body.alt .fld input[type=tel
     <div class="planet"></div>
 
     <div class="hero-copy">
-      <div class="badge">DELIVERY DIRETO &bull; PEÇA PELO WHATSAPP</div>
       <img class="hero-logo" id="heroLogo" src="./logo.png" alt="ET BURGER 2077">
       <h1 class="hero-title">
         <span class="line"><span class="w">Sabor</span> <span class="w">de</span></span>
         <span class="line"><span class="w acc">outro</span> <span class="w">mundo</span></span>
       </h1>
       <p class="hero-sub" id="heroSub">Blend de 120g, suculento do primeiro ao último pedaço. Direto na sua porta.</p>
+      <div class="badge">DELIVERY DIRETO &bull; PEÇA PELO WHATSAPP</div>
       <div class="hero-ctas">
         <a class="btn btn-p" href="#cardapio" data-scroll="#cardapio">🛸 Ver o cardápio</a>
         <a class="btn btn-s" id="heroWhats" href="#" target="_blank" rel="noopener">📲 Pedir no WhatsApp</a>
@@ -1560,7 +1560,7 @@ function playIntro(){
   const tl=gsap.timeline({defaults:{ease:"power4.out"}});
   tl.from(".hero-title .w",{yPercent:115,duration:1.1,stagger:.12},0)
     .from("#heroLogo",{scale:.5,rotation:-10,opacity:0,duration:1.1,ease:"back.out(1.6)"},0)
-    .from(".badge",{y:-20,opacity:0,duration:.8},.2)
+    .from(".badge",{y:20,opacity:0,duration:.8},.6)
     .from(".hero-sub,.hero-ctas",{y:30,opacity:0,duration:.9,stagger:.12},.6)
     .from(".scroll-hint",{opacity:0,duration:.8},1.2);
 }
